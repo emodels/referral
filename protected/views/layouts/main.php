@@ -22,9 +22,11 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<div id="logo"></div>
+                <div id="logo_name">Dwellings Group Referral Management System</div>
+                <div style="clear: both; height: 0px;"></div>
 	</div><!-- header -->
-
+        
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
@@ -46,9 +48,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		Copyright &copy; <?php echo date('Y'); ?> by © Dwellings group | IT Department.<br/>
 	</div><!-- footer -->
 
 </div><!-- page -->

@@ -34,19 +34,33 @@ body
 
 #footer
 {
-	padding: 10px;
-	margin: 10px 20px;
+	padding: 5px 0 5px 0;
+	margin: 10px 0 0px 0px;
 	font-size: 0.8em;
 	text-align: center;
 	border-top: 1px solid #C9E0ED;
+        background-color: #6FACCF;
+        color: #fff;
 }
 
 #logo
 {
-	padding: 10px 20px;
+	padding: 0;
 	font-size: 200%;
+        background: url(../images/logo.jpg) no-repeat;
+        height: 80px;
+        width: 200px;
+        float: left;
 }
-
+#logo_name
+{
+    font-size: 25px;
+    padding: 30px 0 20px 0;
+    font-weight: bold;
+    color: #009;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
 #mainmenu
 {
 	background:white url(bg.gif) repeat-x left top;
@@ -226,4 +240,33 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+.link_box
+{
+    border: solid 1px silver; 
+    border-radius: 5px; 
+    padding: 10px; 
+    width: 200px; 
+    background-color: #f7f7f7;
+}
+.link_box ul{
+    list-style: none;
+}
+.link_box ul li{
+       padding: 8px 0px;
+       border-bottom:dotted 1px silver;
+}
+.link_box ul li a{
+    text-decoration: none;
+ 
+}
+.link_box ul li a:hover{
+    color: red;
+}
+#login
+{
+    border: solid 1px silver;
+    border-radius: 5px;
+    width: 400px;
+    text-align: left;
 }
