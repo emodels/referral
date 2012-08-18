@@ -1,8 +1,5 @@
 <?php
 $this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
 ?>
 <div align="center">
 <div id="login">
@@ -18,31 +15,27 @@ $this->breadcrumbs=array(
                 ),
         )); ?>
 
-                <p class="note">Fields with <span class="required">*</span> are required.</p>
-
                 <div class="row">
-                        <?php echo $form->labelEx($model,'username'); ?>
-                        <?php echo $form->textField($model,'username'); ?>
-                        <?php echo $form->error($model,'username'); ?>
+                    <div style="float: left; width: 150px"><?php echo $form->labelEx($model,'username'); ?></div>
+                    <div><?php echo $form->textField($model,'username'); ?><?php echo $form->error($model,'username'); ?></div>
+                        
                 </div>
 
                 <div class="row">
-                        <?php echo $form->labelEx($model,'password'); ?>
-                        <?php echo $form->passwordField($model,'password'); ?>
-                        <?php echo $form->error($model,'password'); ?>
-                        <p class="hint">
-                                Hint: You may login with <tt>demo/demo</tt> or <tt>admin/admin</tt>.
-                        </p>
+                    <div style="float: left; width: 150px"><?php echo $form->labelEx($model,'password'); ?></div>
+                    <div><?php echo $form->passwordField($model,'password'); ?><?php echo $form->error($model,'password'); ?></div>
+                       
                 </div>
 
                 <div class="row rememberMe">
-                        <?php echo $form->checkBox($model,'rememberMe'); ?>
+                    <div style="padding-left: 150px"><?php echo $form->checkBox($model,'rememberMe'); ?>
                         <?php echo $form->label($model,'rememberMe'); ?>
                         <?php echo $form->error($model,'rememberMe'); ?>
+                    </div>
                 </div>
 
                 <div class="row buttons">
-                        <?php echo CHtml::submitButton('Login'); ?>
+                    <div style="padding-left: 150px"><?php echo CHtml::submitButton('Login',array('class'=>'button')); ?></div>
                 </div>
 
         <?php $this->endWidget(); ?>
