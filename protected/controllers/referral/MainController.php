@@ -4,33 +4,41 @@ class MainController extends Controller
 {
 	public function actionIndex()
 	{
-		$this->render('index');
+            if (isset($_POST['Entry'])) {
+                
+                if ($_POST['Entry']['status'] == ''){
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));
+                }
+                else if ($_POST['Entry']['status'] != '') {
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id . ' AND status = ' . $_POST['Entry']['status'], 'order'=>'id DESC')));
+                }
+                
+                if (isset($dataProvider)) {
+                    $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),false,true);
+                }
+                Yii::app()->end();
+            }
+            
+            $this->render('index');
 	}
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
+        
+	public function actionUpdate($id)
 	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
+            $model = Entry::model()->findByPk($id);
+            $status = CHtml::listData(Status::model()->findAll('referral_user=:referral_user', array(':referral_user' => $model->referrel_user)), 'id', 'status');
+            
+            if (isset($_POST['Entry'])) {
+                $model->attributes = $_POST['Entry'];
+                $model->entry_last_updated_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+                
+                if($model->validate()){
+                    if ($model->save()) {
+                        Yii::app()->user->setFlash('success','Entry Record Updated');
+                        $this->redirect(array('referral/main'));
+                    }
+                }
+            }
+            
+            $this->render('update', array('model'=>$model,'status'=>$status));
 	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

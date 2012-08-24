@@ -17,12 +17,12 @@
  * @property string $description
  * @property string $entry_added_date
  * @property string $entry_last_updated_date
- * @property string $referral_commission_amount
+ * @property double $referral_commission_amount
  * @property integer $status
  *
  * The followings are the available model relations:
- * @property Status $status0
  * @property User $referrelUser
+ * @property Status $status0
  */
 class Entry extends CActiveRecord
 {
@@ -54,9 +54,10 @@ class Entry extends CActiveRecord
 		return array(
 			array('referrel_user, first_name, last_name, address, state, zip, country, telephone, mobile, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'required'),
 			array('referrel_user, status', 'numerical', 'integerOnly'=>true),
+			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, telephone, mobile', 'length', 'max'=>50),
 			array('address', 'length', 'max'=>200),
-			array('zip, referral_commission_amount', 'length', 'max'=>10),
+			array('zip', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -72,8 +73,8 @@ class Entry extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'status0' => array(self::BELONGS_TO, 'Status', 'status'),
 			'referrelUser' => array(self::BELONGS_TO, 'User', 'referrel_user'),
+			'status0' => array(self::BELONGS_TO, 'Status', 'status'),
 		);
 	}
 
@@ -125,7 +126,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('entry_added_date',$this->entry_added_date,true);
 		$criteria->compare('entry_last_updated_date',$this->entry_last_updated_date,true);
-		$criteria->compare('referral_commission_amount',$this->referral_commission_amount,true);
+		$criteria->compare('referral_commission_amount',$this->referral_commission_amount);
 		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(

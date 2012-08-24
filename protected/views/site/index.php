@@ -1,16 +1,10 @@
-<?php $this->pageTitle=Yii::app()->name; ?>
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <tt><?php echo __FILE__; ?></tt></li>
-	<li>Layout file: <tt><?php echo $this->getLayoutFile('main'); ?></tt></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<div class="row">
+    <div class="column"><img src="images/referral_banner.jpg"/></div>
+    <div class="column" style="float: right"><a href="http://www.dwellingsgroup.com.au/Finance/HealthCheck.aspx"><img src="images/health_check.jpg"/></a></div>
+    <div style="width: 650px">
+        <h2>Welcome to Dwellings Group - <i style="color: red"><?php echo CHtml::encode(Yii::app()->name); ?></i></h2>
+        <div style="padding-right: 10px">
+            Dwellings Property Group brings together key expertise on Property Development from some of Australia’s most recognized corporations to provide our clients with boutique residential homes or to give a solid investment platform through property development.
+        </div>        
+    </div>
+</div>
