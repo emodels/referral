@@ -111,9 +111,7 @@ class EntryController extends Controller
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
                         
-                        $mailer->SMTPDebug = FALSE;
-                        $mailer->Mailer='smtp';
-                        $mailer->SMTPSecure='ssl';
+                        $mailer->SMTPDebug = TRUE;
                         
                         $mailer->IsSMTP();
                         $mailer->SMTPAuth = true;
