@@ -63,6 +63,10 @@
             <div><?php echo $form->textField($model, 'mobile', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'mobile'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Commission amount</div>
+            <div><?php echo $form->textField($model, 'referral_commission_amount', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'referral_commission_amount'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">Status</div>
             <div><?php echo $form->dropDownList($model, 'status', $status, array('style'=>'width:135px','empty'=>'Select Status')); ?></div>
         </div>

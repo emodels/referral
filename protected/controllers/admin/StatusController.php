@@ -2,6 +2,17 @@
 
 class StatusController extends Controller
 {
+        public function init(){
+            if (Yii::app()->user->isGuest){
+                $this->redirect(Yii::app()->createUrl('site/login'));
+            }
+            else{
+                if (Yii::app()->user->user_type != '0') {
+                    $this->redirect(Yii::app()->baseUrl . '/mission');
+                }
+            }
+        }
+    
 	public function actionIndex()
 	{
             $model = User::model()->findByPk($_GET['id']);

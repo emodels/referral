@@ -2,6 +2,17 @@
 
 class MainController extends Controller
 {
+        public function init(){
+            if (Yii::app()->user->isGuest){
+                $this->redirect(Yii::app()->createUrl('site/login'));
+            }
+            else{
+                if (Yii::app()->user->user_type != '1') {
+                    $this->redirect(Yii::app()->baseUrl . '/mission');
+                }
+            }
+        }
+    
 	public function actionIndex()
 	{
             if (isset($_POST['Entry'])) {
@@ -33,6 +44,33 @@ class MainController extends Controller
                 
                 if($model->validate()){
                     if ($model->save()) {
+                        
+                        //--------Send Email notification to Referral---------------
+                        $message = $this->renderPartial('//email/template/referral_changed_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'client_company'=>$model->referrelUser->company,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/admin/entry/update/id/' . $id), true);
+                        
+                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                        $mailer->Host = Yii::app()->params['SMTP_Host'];
+                        $mailer->IsSMTP();
+                        $mailer->SMTPAuth = true;
+                        $mailer->Username = Yii::app()->params['SMTP_Username'];
+                        $mailer->Password = Yii::app()->params['SMTP_password'];
+                        $mailer->From = Yii::app()->params['SMTP_Username'];
+                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                        $mailer->AddAddress('danesh@dwellingsgroup.com.au');
+                        $mailer->FromName = 'Dwellings Group';
+                        $mailer->CharSet = 'UTF-8';
+                        $mailer->Subject = 'Referral Management System - Referral (' . $model->referrelUser->company . ') changed Entry Status';
+                        $mailer->IsHTML();
+                        $mailer->Body = $message;
+                        
+                        try{     
+                            $mailer->Send();
+                        }
+                        catch (Exception $ex){
+                            echo $ex->getMessage();
+                        }
+                        //----------------------------------------------------------
+                        
                         Yii::app()->user->setFlash('success','Entry Record Updated');
                         $this->redirect(array('referral/main'));
                     }

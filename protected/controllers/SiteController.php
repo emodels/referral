@@ -29,7 +29,15 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+                $returnUrl = Yii::app()->request->getQuery('returnUrl');
+
+                if (isset($returnUrl)) {
+                    Yii::app()->user->setReturnUrl(Yii::app()->request->getQuery('returnUrl'));
+                    $this->redirect(array('site/login'));
+                }
+            
+                $this->render('index');
 	}
 
 	/**
@@ -90,7 +98,7 @@ class SiteController extends Controller
                                 $this->redirect(Yii::app()->baseUrl . '/mission');
                             }
                             else{
-                                $this->redirect(Yii::app()->user->returnUrl);
+                                $this->redirect(Yii::app()->baseUrl . Yii::app()->user->returnUrl);
                             }
                         }        
 		}

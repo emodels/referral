@@ -80,5 +80,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+                'SMTP_Host'=>'smtpout.asia.secureserver.net:25',
+                'SMTP_Username'=>'dwellings@dwellingsgroup.com.au',
+                'SMTP_password'=>'dwg@123'
 	),
 );
