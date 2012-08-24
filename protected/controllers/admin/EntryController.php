@@ -38,7 +38,7 @@ class EntryController extends Controller
                         $mailer->Password = Yii::app()->params['SMTP_password'];
                         $mailer->From = Yii::app()->params['SMTP_Username'];
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                        $mailer->AddAddress('danesh@dwellingsgroup.com.au');
+                        $mailer->AddAddress($model->referrelUser->email);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
                         $mailer->Subject = 'Dwellings Group Referral Management System - New Entry Added';
@@ -110,16 +110,13 @@ class EntryController extends Controller
                         
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
-                        
-                        $mailer->SMTPDebug = false;
-                        
                         $mailer->IsSMTP();
                         $mailer->SMTPAuth = true;
                         $mailer->Username = Yii::app()->params['SMTP_Username'];
                         $mailer->Password = Yii::app()->params['SMTP_password'];
                         $mailer->From = Yii::app()->params['SMTP_Username'];
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                        $mailer->AddAddress('danesh@dwellingsgroup.com.au');
+                        $mailer->AddAddress($model->referrelUser->email);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
                         $mailer->Subject = 'Dwellings Group Referral Management System - Entry Updated';

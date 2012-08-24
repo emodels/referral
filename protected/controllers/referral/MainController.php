@@ -56,7 +56,7 @@ class MainController extends Controller
                         $mailer->Password = Yii::app()->params['SMTP_password'];
                         $mailer->From = Yii::app()->params['SMTP_Username'];
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                        $mailer->AddAddress('danesh@dwellingsgroup.com.au');
+                        $mailer->AddAddress(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
                         $mailer->Subject = 'Referral Management System - Referral (' . $model->referrelUser->company . ') changed Entry Status';
