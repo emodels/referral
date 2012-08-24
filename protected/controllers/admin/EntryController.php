@@ -113,7 +113,7 @@ class EntryController extends Controller
                         
                         $mailer->SMTPDebug = true;
                         $mailer->Mailer='smtp';
-                        $mailer->SMTPSecure='ssl';
+                        //$mailer->SMTPSecure='ssl';
                         
                         $mailer->IsSMTP();
                         $mailer->SMTPAuth = true;
