@@ -28,7 +28,7 @@ class EntryController extends Controller
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
-                        $message = $this->renderPartial('//email/template/update_entry', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
+                        $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
                         
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
