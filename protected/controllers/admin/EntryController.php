@@ -39,6 +39,7 @@ class EntryController extends Controller
                         $mailer->From = Yii::app()->params['SMTP_Username'];
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                         $mailer->AddAddress($model->referrelUser->email);
+                        $mailer->AddCC(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
                         $mailer->Subject = 'Dwellings Group Referral Management System - New Entry Added';
@@ -117,6 +118,7 @@ class EntryController extends Controller
                         $mailer->From = Yii::app()->params['SMTP_Username'];
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                         $mailer->AddAddress($model->referrelUser->email);
+                        $mailer->AddCC(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
                         $mailer->Subject = 'Dwellings Group Referral Management System - Entry Updated';
