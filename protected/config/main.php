@@ -48,10 +48,10 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=referral',
+			'connectionString' => 'mysql:host=localhost;dbname=sntthrco_referral',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'sntthrco_user',
+			'password' => 'emt123',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
