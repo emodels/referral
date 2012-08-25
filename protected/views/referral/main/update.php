@@ -5,7 +5,7 @@
 </style>    
 <div style="float: left; width: 100%">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-    <h2 class="icon_search" style="padding-top: 12px">Update Entry Record<span></span></h2>
+    <h2 class="icon_search" style="padding-top: 12px">Update Entry Record - <span> ID : <?php echo $model->id; ?></span></h2>
     <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
