@@ -149,5 +149,8 @@ class SiteController extends Controller
                 }
                 //----------------------------------------------------------
             }
+            
+            echo 'Sent reminder emails to ' . count($entryCollec) . 'number of Referrals <br><br>';
+            echo 'Cron Job completed.';
         }
 }
