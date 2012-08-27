@@ -119,6 +119,7 @@ class SiteController extends Controller
             $criteria = new CDbCriteria;
             $criteria->join='LEFT JOIN status ON status.id = t.status';
             $criteria->addCondition('date_add(t.entry_last_updated_date, INTERVAL status.remind_days DAY) <= "'. Yii::app()->dateFormatter->format('yyyy-MM-dd hh:mm:ss',  time()) . '"');       
+            $criteria->addCondition('status.remind_days > 0', 'AND');
             
             $entryCollec = Entry::model()->findAll($criteria);
             
