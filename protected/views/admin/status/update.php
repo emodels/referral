@@ -27,6 +27,10 @@
             <div><?php echo $form->textField($model, 'status', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'status'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Remind Days</div>
+            <div><?php echo $form->textField($model, 'remind_days', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'remind_days'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">&nbsp;</div>
             <div><?php echo CHtml::submitButton('Update Status', array('class' => 'button')); ?></div>
         </div>

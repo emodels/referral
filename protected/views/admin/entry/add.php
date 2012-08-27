@@ -8,7 +8,7 @@
 </div>  
 <div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-    <h2 class="icon_search" style="padding-top: 12px">Add Entry Record<span></span></h2>
+    <h2 class="icon_search" style="padding-top: 12px">Add New Referral<span></span></h2>
     <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -23,11 +23,11 @@
     ?>
     <div>
         <div class="row">
-            <div class="column">Referral company</div>
+            <div class="column">Partner Company</div>
             <div>
                 <?php echo $form->dropDownList($model, 'referrel_user', 
                       CHtml::listData(User::model()->findAll('user_type=:user_type', array(':user_type'=>'1')), 'id', 'company'), 
-                      array('style'=>'width:135px','empty'=>'Select Referral', 'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),'update'=>'#Entry_status'))); ?>
+                      array('style'=>'width:135px','empty'=>'Select Partner', 'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),'update'=>'#Entry_status'))); ?>
            </div>
         </div>
         <div class="row">
@@ -84,7 +84,7 @@
         </div>
         <div class="row">
             <div class="column">&nbsp;</div>
-            <div><?php echo CHtml::submitButton('Add Entry Record', array('class' => 'button')); ?></div>
+            <div><?php echo CHtml::submitButton('Add Referral', array('class' => 'button')); ?></div>
         </div>
     </div>
     <?php $this->endWidget(); ?>    

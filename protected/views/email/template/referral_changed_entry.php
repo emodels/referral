@@ -5,7 +5,18 @@
 <br/>
 <div style="border: solid 1px silver; width: 100%; padding: 10px; background-color: #f7f7f7; font-family: arial">
     <p><b>Hi Admin,</b></p>
-    <p>Referral User <b><?php echo $client_name; ?></b> from <b><?php echo $client_company; ?></b> have recently <b>changed details and Status</b> of Referral entry record ID : <?php echo $entry_id; ?>. <a href="<?php echo $link; ?>">Click here</a> to view details.</p>
+    <p>Partner <b><?php echo $client_name; ?></b> from <b><?php echo $client_company; ?></b> have recently <b>changed details and Status</b> of Referral ID : <?php echo $entry_id; ?>. <a href="<?php echo $link; ?>">Click here</a> to view details.</p>
+    <p>
+        <b><u>Customer Details:</u></b><br/><br/>
+        Name : <?php echo $customer->first_name . ' ' . $customer->last_name; ?><br/><br/>
+        Telephone : <?php echo $customer->telephone; ?><br/><br/>
+        Mobile : <?php echo $customer->mobile; ?><br/><br/>
+        Status : <?php echo $customer->status0->status; ?><br/><br/>
+        Description : <br/><br/>
+        <div style="padding: 10px; border: solid 1px silver; background-color: white">
+            <?php echo $customer->description; ?>
+        </div>
+    </p>
     <p>Best Regards,<br/><br/>
         Dwellings Group<br/>    
         <a href="http://www.dwellingsgroup.com.au/">www.dwellingsgroup.com.au</a>

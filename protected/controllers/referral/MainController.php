@@ -30,7 +30,11 @@ class MainController extends Controller
                 Yii::app()->end();
             }
             
-            $this->render('index');
+            $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));            
+            if (isset($dataProvider)) {
+                $grid = $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),true,true);
+            }
+            $this->render('index', array('grid'=>$grid));
 	}
         
 	public function actionUpdate($id)
@@ -46,7 +50,7 @@ class MainController extends Controller
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
-                        $message = $this->renderPartial('//email/template/referral_changed_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'client_company'=>$model->referrelUser->company,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/admin/entry/update/id/' . $id), true);
+                        $message = $this->renderPartial('//email/template/referral_changed_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'client_company'=>$model->referrelUser->company,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/admin/entry/update/id/' . $id), true);
                         
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
@@ -59,7 +63,7 @@ class MainController extends Controller
                         $mailer->AddAddress(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Referral Management System - Referral (' . $model->referrelUser->company . ') changed Entry Status';
+                        $mailer->Subject = 'Referral Management System - Partner (' . $model->referrelUser->company . ') changed Referral Status for ID : ' . $id;
                         $mailer->IsHTML();
                         $mailer->Body = $message;
                         
@@ -71,7 +75,7 @@ class MainController extends Controller
                         }
                         //----------------------------------------------------------
                         
-                        Yii::app()->user->setFlash('success','Entry Record Updated');
+                        Yii::app()->user->setFlash('success','Referral Updated');
                         $this->redirect(array('referral/main'));
                     }
                 }

@@ -17,7 +17,7 @@
 </div>  
 <div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-    <h2 class="icon_search" style="padding-top: 12px">Add Referral<span></span></h2>
+    <h2 class="icon_search" style="padding-top: 12px">Add New Partner<span></span></h2>
     <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -61,7 +61,7 @@
         </div>
         <div class="row">
             <div class="column">&nbsp;</div>
-            <div><?php echo CHtml::submitButton('Add Referral', array('class' => 'button')); ?></div>
+            <div><?php echo CHtml::submitButton('Add Partner', array('class' => 'button')); ?></div>
         </div>
     </div>
     <?php $this->endWidget(); ?>    

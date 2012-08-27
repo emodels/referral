@@ -19,7 +19,7 @@
             array
             (
                 'class'=>'CButtonColumn',
-                'deleteConfirmation'=>"js:'Are you sure you want to delete this Referral ?'",
+                'deleteConfirmation'=>"js:'Are you sure you want to delete this Partner ?'",
                 'template'=>'{delete}{update}',
                 'buttons'=>array(
                     'delete' => array

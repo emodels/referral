@@ -32,7 +32,7 @@ class UserController extends Controller
                     }
                     else{
                         if($model->save()){
-                            Yii::app()->user->setFlash('success', "New Referral Added.");
+                            Yii::app()->user->setFlash('success', "New Partner Added.");
                             $this->refresh();
                         }
                         else{
@@ -52,13 +52,13 @@ class UserController extends Controller
                         if(isset($user)){
                             try{
                                 if($user->delete()){
-                                    echo 'Referral Deleted';
+                                    echo 'Partner Deleted';
                                 }else{
                                     echo 'Error while Deleting';
                                 }
                             }
                             catch(Exception $ex){
-                                echo 'Can not delete this Referral since it is used for Entry Records';
+                                echo 'Can not delete this Partner since it is used for Referral Records';
                             }
                                 
                         }
@@ -83,7 +83,7 @@ class UserController extends Controller
                     $model->attributes = $_POST['User'];
                     
                     if($model->save()){
-                        Yii::app()->user->setFlash('success', "Referral Updated.");
+                        Yii::app()->user->setFlash('success', "Partner Updated.");
                         $this->redirect(Yii::app()->baseUrl . '/admin/user');
                     }
                     else{

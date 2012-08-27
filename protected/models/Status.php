@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $referral_user
  * @property string $status
+ * @property integer $remind_days
  *
  * The followings are the available model relations:
  * @property Entry[] $entries
@@ -40,12 +41,12 @@ class Status extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referral_user, status', 'required'),
-			array('referral_user', 'numerical', 'integerOnly'=>true),
+			array('referral_user, status, remind_days', 'required'),
+			array('referral_user, remind_days', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referral_user, status', 'safe', 'on'=>'search'),
+			array('id, referral_user, status, remind_days', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +72,7 @@ class Status extends CActiveRecord
 			'id' => 'ID',
 			'referral_user' => 'Referral User',
 			'status' => 'Status',
+			'remind_days' => 'Remind Days',
 		);
 	}
 
@@ -88,6 +90,7 @@ class Status extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('referral_user',$this->referral_user);
 		$criteria->compare('status',$this->status,true);
+		$criteria->compare('remind_days',$this->remind_days);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

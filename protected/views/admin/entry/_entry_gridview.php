@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/grid.css" type="text/css" media="all">
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" type="text/css" media="all">
 <?php
+$total=0;
+if (isset($dataProvider)) {
+    foreach($dataProvider->data as $item){
+        $total+=$item->referral_commission_amount;
+    }
+}
+
 $this->widget('zii.widgets.grid.CGridView', array(
 'dataProvider'=>$dataProvider,
 'ajaxUpdate'=>true,
@@ -9,16 +16,27 @@ $this->widget('zii.widgets.grid.CGridView', array(
         'id',
         'first_name',
         'last_name',
-        'state',
         'country',
         array(
+            'name'=>'Last Updated',
+            'value'=>'Yii::app()->dateFormatter->format("yyyy-MM-dd", strtotime($data->entry_last_updated_date))'
+        ),
+        array(
             'name'=>'status',
-            'value'=>'$data->status0->status'
+            'value'=>'$data->status0->status',
+            'type'=>'html',
+            'footer'=>$dataProvider->itemCount===0 ? '' : '<div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b>Total Commission :</b></div>'
+        ),
+        array(
+            'name'=>'Commission',
+            'value'=>'$data->referral_commission_amount',
+            'type'=>'html',
+            'footer'=>$dataProvider->itemCount===0 ? '' : '<div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b>' . $total . '</b></div>'
         ),
         array
         (
             'class'=>'CButtonColumn',
-            'deleteConfirmation'=>"js:'Are you sure you want to delete this Entry Record ?'",
+            'deleteConfirmation'=>"js:'Are you sure you want to delete this Referral ?'",
             'template'=>'{delete}{update}',
             'buttons'=>array(
                 'delete' => array

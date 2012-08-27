@@ -10,6 +10,7 @@
     'enablePagination' => true,
     'columns'=>array(
             'status',
+            'remind_days',
             array
             (
                 'class'=>'CButtonColumn',

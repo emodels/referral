@@ -28,7 +28,7 @@ class EntryController extends Controller
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
-                        $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
+                        $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'company'=>$model->referrelUser->company,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
                         
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
@@ -42,7 +42,7 @@ class EntryController extends Controller
                         $mailer->AddCC(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Dwellings Group Referral Management System - New Entry Added';
+                        $mailer->Subject = 'Dwellings Group Referral Management System - New Referral Added';
                         $mailer->IsHTML();
                         $mailer->Body = $message;
                         
@@ -54,7 +54,7 @@ class EntryController extends Controller
                         }
                         //----------------------------------------------------------
                         
-                        Yii::app()->user->setFlash('success','Entry Record Added');
+                        Yii::app()->user->setFlash('success','Referral Added');
                         $this->redirect(array('admin/user'));
                     }
                 }
@@ -107,7 +107,7 @@ class EntryController extends Controller
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
-                        $message = $this->renderPartial('//email/template/update_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
+                        $message = $this->renderPartial('//email/template/update_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
                         
                         $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                         $mailer->Host = Yii::app()->params['SMTP_Host'];
@@ -121,7 +121,7 @@ class EntryController extends Controller
                         $mailer->AddCC(Yii::app()->params['adminEmail']);
                         $mailer->FromName = 'Dwellings Group';
                         $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Dwellings Group Referral Management System - Entry Updated';
+                        $mailer->Subject = 'Dwellings Group Referral Management System - Referral Updated';
                         $mailer->IsHTML();
                         $mailer->Body = $message;
                         
@@ -133,7 +133,7 @@ class EntryController extends Controller
                         }
                         //----------------------------------------------------------
                         
-                        Yii::app()->user->setFlash('success','Entry Record Updated');
+                        Yii::app()->user->setFlash('success','Referral Updated');
                         $this->redirect(array('admin/user'));
                     }
                 }

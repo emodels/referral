@@ -73,7 +73,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by © Dwellings group | IT Department.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by © SNT3 – IT Division of Dwellings Group<br/>
 	</div><!-- footer -->
 
 </div><!-- page -->
