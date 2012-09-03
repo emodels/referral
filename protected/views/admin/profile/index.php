@@ -17,11 +17,11 @@
 </div>  
 <div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-    <h2 class="icon_search" style="padding-top: 12px">Update Partner<span></span></h2>
+    <h2 class="icon_search" style="padding-top: 12px">Edit Admin Profile<span></span></h2>
     <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'admin-user-update',
+        'id' => 'admin-user-profile',
         'htmlOptions' => array('autocomplete' => 'off'),
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -60,12 +60,8 @@
             <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
         </div>
         <div class="row">
-            <div class="column">Allow add Referrals</div>
-            <div><?php echo $form->dropDownList($model, 'allow_add_referral', array('0'=>'No','1'=>'Yes')); ?><?php echo $form->error($model, 'allow_add_referral'); ?></div>
-        </div>
-        <div class="row">
             <div class="column">&nbsp;</div>
-            <div><?php echo CHtml::submitButton('Update Partner', array('class' => 'button')); ?></div>
+            <div><?php echo CHtml::submitButton('Change Password', array('class' => 'button')); ?></div>
         </div>
     </div>
     <?php $this->endWidget(); ?>    

@@ -2,6 +2,8 @@
 
 class MainController extends Controller
 {
+        public $allow_add_referral = false;
+    
         public function init(){
             if (Yii::app()->user->isGuest){
                 $this->redirect(Yii::app()->createUrl('site/login'));
@@ -9,6 +11,14 @@ class MainController extends Controller
             else{
                 if (Yii::app()->user->user_type != '1') {
                     $this->redirect(Yii::app()->baseUrl . '/mission');
+                }
+            }
+            
+            if (!Yii::app()->user->isGuest) {
+                $user = User::model()->findByPk(Yii::app()->user->id);
+                
+                if (isset($user)) {
+                    $this->allow_add_referral = $user->allow_add_referral;
                 }
             }
         }
@@ -83,4 +93,54 @@ class MainController extends Controller
             
             $this->render('update', array('model'=>$model,'status'=>$status));
 	}
+        
+        public function actionAddReferral(){
+            $model = new Entry();
+
+            $model->referrel_user = Yii::app()->user->id;
+            $model->entry_added_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+            $model->entry_last_updated_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+            $model->referral_commission_amount = 0;
+            
+            if (isset($_POST['Entry'])) {
+                $model->attributes = $_POST['Entry'];
+                
+                if($model->validate()){
+                    if ($model->save()) {
+                        
+                        //--------Send Email notification to Referral---------------
+                        $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'company'=>$model->referrelUser->company,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
+                        
+                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                        $mailer->Host = Yii::app()->params['SMTP_Host'];
+                        $mailer->IsSMTP();
+                        $mailer->SMTPAuth = true;
+                        $mailer->Username = Yii::app()->params['SMTP_Username'];
+                        $mailer->Password = Yii::app()->params['SMTP_password'];
+                        $mailer->From = Yii::app()->params['SMTP_Username'];
+                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                        $mailer->AddAddress($model->referrelUser->email);
+                        $mailer->AddCC(Yii::app()->params['adminEmail']);
+                        $mailer->FromName = 'Dwellings Group';
+                        $mailer->CharSet = 'UTF-8';
+                        $mailer->Subject = 'Dwellings Group Referral Management System - New Referral Added by Partner : ' . $model->referrelUser->company;
+                        $mailer->IsHTML();
+                        $mailer->Body = $message;
+                        
+                        try{     
+                            $mailer->Send();
+                        }
+                        catch (Exception $ex){
+                            echo $ex->getMessage();
+                        }
+                        //----------------------------------------------------------
+                        
+                        Yii::app()->user->setFlash('success','Referral Added');
+                        $this->redirect(array('referral/main'));
+                    }
+                }
+            }
+            
+            $this->render('add', array('model'=>$model));
+        }
 }

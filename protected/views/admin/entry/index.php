@@ -22,5 +22,15 @@
     </div>
     <div class="row"><hr style="padding-top: 2px"/></div>
     <?php echo CHtml::endForm();  ?>
-    <div id="divGrid"></div>
+    <div id="divGrid">
+    <?php
+    if ($ShowAll == TRUE) {
+        $partners = User::model()->findAll('user_type = :user_type', array(':user_type'=>'1'));
+        foreach ($partners as $partner) {
+            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC')));
+            $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company),false,true);
+        }
+    }
+    ?>
+    </div>
 </div>

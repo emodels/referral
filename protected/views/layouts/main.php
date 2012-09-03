@@ -55,8 +55,8 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>Yii::app()->request->baseUrl),
-                                array('label'=>'Mission', 'url'=>Yii::app()->request->baseUrl . '/mission'),
+				//array('label'=>'Home', 'url'=>Yii::app()->request->baseUrl),
+                                //array('label'=>'Mission', 'url'=>Yii::app()->request->baseUrl . '/mission'),
 				array('label'=>'Login', 'url'=>Yii::app()->request->baseUrl . '/site/login', 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>Yii::app()->request->baseUrl . '/site/logout', 'visible'=>!Yii::app()->user->isGuest)
 			),
@@ -73,7 +73,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by © SNT3 – IT Division of Dwellings Group<br/>
+            Copyright &copy; <?php echo date('Y'); ?> by © <a href="http://www.snt3.com/" target="_blank" style="color: white">SNT3</a> – IT Division of Dwellings Group<br/>
 	</div><!-- footer -->
 
 </div><!-- page -->

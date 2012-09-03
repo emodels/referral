@@ -13,6 +13,7 @@
  * @property string $username
  * @property string $password
  * @property string $confirm_password
+ * @property integer $allow_add_referral
  *
  * The followings are the available model relations:
  * @property Entry[] $entries
@@ -46,14 +47,14 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('first_name, last_name, email, company, user_type, username, password, confirm_password', 'required'),
-			array('user_type', 'numerical', 'integerOnly'=>true),
+			array('first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral', 'required'),
+			array('user_type, allow_add_referral', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, email, username, password, confirm_password', 'length', 'max'=>50),
 			array('company', 'length', 'max'=>100),
                         array('password', 'compare', 'compareAttribute'=>'confirm_password'),
-			// The following rule is used by search().
+                        // The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -85,6 +86,7 @@ class User extends CActiveRecord
 			'username' => 'Username',
 			'password' => 'Password',
 			'confirm_password' => 'Confirm Password',
+			'allow_add_referral' => 'Allow Add Referral',
 		);
 	}
 
@@ -108,6 +110,7 @@ class User extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('confirm_password',$this->confirm_password,true);
+		$criteria->compare('allow_add_referral',$this->allow_add_referral);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,3 +1,10 @@
+<?php if ($this->allow_add_referral){ ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#mainmenu ul').append('<li><a href="<?php echo Yii::app()->baseUrl; ?>/referral/main/AddReferral">Add new Referral</a></li>');
+    });
+</script>
+<?php } ?>
 <div style="float: left; width: 100%">
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">

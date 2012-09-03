@@ -60,6 +60,10 @@
             <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Allow add Referrals</div>
+            <div><?php echo $form->dropDownList($model, 'allow_add_referral', array('0'=>'No','1'=>'Yes')); ?><?php echo $form->error($model, 'allow_add_referral'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">&nbsp;</div>
             <div><?php echo CHtml::submitButton('Add Partner', array('class' => 'button')); ?></div>
         </div>

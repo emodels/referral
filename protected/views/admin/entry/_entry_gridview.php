@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/grid.css" type="text/css" media="all">
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" type="text/css" media="all">
+<?php if(isset($grid_title)){ ?>
+<div style="float: left; padding-bottom: 5px"><font style="font-size: 14px"><b><?php echo $grid_title; ?></b></font></div>
+<?php } ?>
 <?php
 $total=0;
 if (isset($dataProvider)) {

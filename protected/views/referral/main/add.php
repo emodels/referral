@@ -12,7 +12,7 @@
 </style>    
 <div style="float: left; width: 100%">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-    <h2 class="icon_search" style="padding-top: 12px">Update Referral - <span> ID : <?php echo $model->id; ?></span></h2>
+    <h2 class="icon_search" style="padding-top: 12px">Add New Referral<span></span></h2>
     <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -26,9 +26,11 @@
     ));
     ?>
     <div>
-        <div class="row">
-            <div class="column"><b>Partner company</b></div>
-            <div><h4><?php echo Yii::app()->user->company; ?></h4></div>
+        <div class="row" style="padding-bottom: 10px">
+            <div class="column">Partner Company</div>
+            <div>
+                <b><?php echo $model->referrelUser->company; ?></b>
+           </div>
         </div>
         <div class="row">
             <div class="column">First name</div>
@@ -64,11 +66,7 @@
         </div>
         <div class="row">
             <div class="column">Status</div>
-            <div><?php echo $form->dropDownList($model, 'status', $status, array('style'=>'width:135px','empty'=>'Select Status')); ?></div>
-        </div>
-        <div class="row">
-            <div class="column">Commission amount</div>
-            <div><?php echo $form->textField($model, 'referral_commission_amount', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'referral_commission_amount'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'status', CHtml::listData(Status::model()->findAll('referral_user = :user', array(':user'=>$model->referrel_user)), 'id', 'status'), array('style'=>'width:135px','empty'=>'Select Status')); ?></div>
         </div>
         <div class="row">
             <div class="column">Description</div>
@@ -77,7 +75,7 @@
         <div class="row">
             <?php 
             $this->widget('ext.ckeditor.CKEditorWidget',array(
-            "model"=>$model, "attribute"=>"description","defaultValue"=>$model->description,
+            "model"=>$model, "attribute"=>'description', "defaultValue"=>"",
             "config" => array(
                 "height"=>"200px",
                 "width"=>"100%",
@@ -88,7 +86,7 @@
         </div>
         <div class="row">
             <div class="column">&nbsp;</div>
-            <div><?php echo CHtml::submitButton('Update Referral', array('class' => 'button')); ?></div>
+            <div><?php echo CHtml::submitButton('Add Referral', array('class' => 'button')); ?></div>
         </div>
     </div>
     <?php $this->endWidget(); ?>    
