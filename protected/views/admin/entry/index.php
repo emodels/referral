@@ -1,6 +1,6 @@
 <script type="text/javascript">
     function LoadGrid(){
-        $('#yt0').click();
+        //$('#yt0').click();
     }
 </script>
 <div style="float: left">
