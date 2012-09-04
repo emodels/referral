@@ -8,6 +8,7 @@
         <div class="column"><?php echo CHtml::dropDownList('Entry[referrel_user]', '', CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company'), array('empty'=>'Select Partner',
                                        'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),
                                        'beforeSend' => 'function(){
+                                            $(".ajax-loading").hide();
                                             $("#divProgress").show();
                                        }',
                                        'success'=>'js:function(data) {
@@ -18,6 +19,7 @@
         <div class="column"><?php echo CHtml::dropDownList('Entry[status]', '', array(), array('empty'=>'Select Status')); ?></div>
         <div class="column" style="padding-left: 40px"><?php echo CHtml::ajaxButton('List','', array('type'=>'POST',
                                        'beforeSend' => 'function(){
+                                            $(".ajax-loading").hide();
                                             $("#divProgress").show();
                                        }',
                                        'success'=>'js:function(data) {
