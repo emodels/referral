@@ -59,8 +59,8 @@
             <div><?php echo $form->textField($model, 'telephone', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'telephone'); ?></div>
         </div>
         <div class="row">
-            <div class="column">Mobile</div>
-            <div><?php echo $form->textField($model, 'mobile', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'mobile'); ?></div>
+            <div class="column">Email</div>
+            <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
         </div>
         <div class="row">
             <div class="column">Status</div>

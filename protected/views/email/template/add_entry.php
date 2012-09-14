@@ -10,7 +10,7 @@
         <b><u>Customer Details:</u></b><br/><br/>
         Name : <?php echo $customer->first_name . ' ' . $customer->last_name; ?><br/><br/>
         Telephone : <?php echo $customer->telephone; ?><br/><br/>
-        Mobile : <?php echo $customer->mobile; ?><br/><br/>
+        Email : <?php echo $customer->email; ?><br/><br/>
         Status : <?php echo $customer->status0->status; ?><br/><br/>
         Description : <br/><br/>
         <div style="padding: 10px; border: solid 1px silver; background-color: white">

@@ -13,7 +13,7 @@
  * @property string $zip
  * @property string $country
  * @property string $telephone
- * @property string $mobile
+ * @property string $email
  * @property string $description
  * @property string $entry_added_date
  * @property string $entry_last_updated_date
@@ -52,16 +52,17 @@ class Entry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referrel_user, first_name, last_name, address, state, zip, country, telephone, mobile, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'required'),
+			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'required'),
 			array('referrel_user, status', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
-			array('first_name, last_name, state, telephone, mobile', 'length', 'max'=>50),
-			array('address', 'length', 'max'=>200),
+			array('first_name, last_name, state, email', 'length', 'max'=>50),
+			array('address, telephone', 'length', 'max'=>200),
 			array('zip', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
+			array('description', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, mobile, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -93,7 +94,7 @@ class Entry extends CActiveRecord
 			'zip' => 'Zip',
 			'country' => 'Country',
 			'telephone' => 'Telephone',
-			'mobile' => 'Mobile',
+			'email' => 'Email',
 			'description' => 'Description',
 			'entry_added_date' => 'Entry Added Date',
 			'entry_last_updated_date' => 'Entry Last Updated Date',
@@ -122,7 +123,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('zip',$this->zip,true);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('telephone',$this->telephone,true);
-		$criteria->compare('mobile',$this->mobile,true);
+		$criteria->compare('email',$this->email,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('entry_added_date',$this->entry_added_date,true);
 		$criteria->compare('entry_last_updated_date',$this->entry_last_updated_date,true);
