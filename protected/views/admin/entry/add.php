@@ -64,7 +64,11 @@
         </div>
         <div class="row">
             <div class="column">Status</div>
-            <div><?php echo $form->dropDownList($model, 'status', array(), array('style'=>'width:135px','empty'=>'Select Status')); ?></div>
+            <div><?php echo $form->dropDownList($model, 'status', array(), array('style'=>'width:135px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
+        </div>
+        <div class="row">
+            <div class="column">Priority</div>
+            <div><?php echo $form->dropDownList($model, 'priority', array('0'=>'Low','1'=>'Medium','2'=>'High'), array('style'=>'width:135px','empty'=>'Select Priority')); ?><?php echo $form->error($model, 'priority'); ?></div>
         </div>
         <div class="row">
             <div class="column">Description</div>
