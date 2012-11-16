@@ -19,6 +19,7 @@
  * @property string $entry_last_updated_date
  * @property double $referral_commission_amount
  * @property integer $status
+ * @property integer $priority
  *
  * The followings are the available model relations:
  * @property User $referrelUser
@@ -52,8 +53,8 @@ class Entry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'required'),
-			array('referrel_user, status', 'numerical', 'integerOnly'=>true),
+			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority', 'required'),
+			array('referrel_user, status, priority', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
@@ -62,7 +63,7 @@ class Entry extends CActiveRecord
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -100,6 +101,7 @@ class Entry extends CActiveRecord
 			'entry_last_updated_date' => 'Entry Last Updated Date',
 			'referral_commission_amount' => 'Referral Commission Amount',
 			'status' => 'Status',
+			'priority' => 'Priority',
 		);
 	}
 
@@ -129,6 +131,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('entry_last_updated_date',$this->entry_last_updated_date,true);
 		$criteria->compare('referral_commission_amount',$this->referral_commission_amount);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('priority',$this->priority);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
