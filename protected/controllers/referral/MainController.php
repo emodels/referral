@@ -25,24 +25,38 @@ class MainController extends Controller
     
 	public function actionIndex()
 	{
-            if (isset($_POST['Entry'])) {
+            if (isset($_POST['Entry']) || Yii::app()->request->isAjaxRequest) {
                 
-                if ($_POST['Entry']['status'] == ''){
-                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));
+                if (isset($_POST['Entry'])) {
+                    if ($_POST['Entry']['status'] == ''){
+                        unset(Yii::app()->session['status']);
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));
+                    }
+                    else if ($_POST['Entry']['status'] != '') {
+                        Yii::app()->session['status'] = $_POST['Entry']['status'];
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id . ' AND status = ' . $_POST['Entry']['status'], 'order'=>'id DESC')));
+                    }
                 }
-                else if ($_POST['Entry']['status'] != '') {
-                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id . ' AND status = ' . $_POST['Entry']['status'], 'order'=>'id DESC')));
+                
+                if (Yii::app()->request->isAjaxRequest) {
+                    if (isset(Yii::app()->session['status'])) {
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id . ' AND status = ' . Yii::app()->session['status'], 'order'=>'id DESC')));
+                    }
+                    else{
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));            
+                    }
                 }
                 
                 if (isset($dataProvider)) {
-                    $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),false,true);
+                    echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),true,false);
                 }
+                
                 Yii::app()->end();
             }
             
             $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->user->id, 'order'=>'id DESC')));            
             if (isset($dataProvider)) {
-                $grid = $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),true,true);
+                $grid = $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider),true,false);
             }
             $this->render('index', array('grid'=>$grid));
 	}
