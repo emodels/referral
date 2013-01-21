@@ -127,27 +127,29 @@ class SiteController extends Controller
                 //--------Send Email notification to Referral---------------
                 $message = $this->renderPartial('//email/template/notify_reminder', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
 
-                $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
-                $mailer->Host = Yii::app()->params['SMTP_Host'];
-                $mailer->IsSMTP();
-                $mailer->SMTPAuth = true;
-                $mailer->Username = Yii::app()->params['SMTP_Username'];
-                $mailer->Password = Yii::app()->params['SMTP_password'];
-                $mailer->From = Yii::app()->params['SMTP_Username'];
-                $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                $mailer->AddAddress($model->referrelUser->email);
-                $mailer->AddCC(Yii::app()->params['adminEmail']);
-                $mailer->FromName = 'Dwellings Group';
-                $mailer->CharSet = 'UTF-8';
-                $mailer->Subject = 'Dwellings Group Referral Management System - Reminder for Referral ID : ' . $model->id;
-                $mailer->IsHTML();
-                $mailer->Body = $message;
+                if (isset($message) && $message != "") {
+                    $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                    $mailer->Host = Yii::app()->params['SMTP_Host'];
+                    $mailer->IsSMTP();
+                    $mailer->SMTPAuth = true;
+                    $mailer->Username = Yii::app()->params['SMTP_Username'];
+                    $mailer->Password = Yii::app()->params['SMTP_password'];
+                    $mailer->From = Yii::app()->params['SMTP_Username'];
+                    $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                    $mailer->AddAddress($model->referrelUser->email);
+                    $mailer->AddCC(Yii::app()->params['adminEmail']);
+                    $mailer->FromName = 'Dwellings Group';
+                    $mailer->CharSet = 'UTF-8';
+                    $mailer->Subject = 'Dwellings Group Referral Management System - Reminder for Referral ID : ' . $model->id;
+                    $mailer->IsHTML();
+                    $mailer->Body = $message;
 
-                try{     
-                    $mailer->Send();
-                }
-                catch (Exception $ex){
-                    echo $ex->getMessage();
+                    try{     
+                        $mailer->Send();
+                    }
+                    catch (Exception $ex){
+                        echo $ex->getMessage();
+                    }
                 }
                 //----------------------------------------------------------
             }

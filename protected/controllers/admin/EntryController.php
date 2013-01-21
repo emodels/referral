@@ -30,27 +30,29 @@ class EntryController extends Controller
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'company'=>$model->referrelUser->company,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
                         
-                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
-                        $mailer->Host = Yii::app()->params['SMTP_Host'];
-                        $mailer->IsSMTP();
-                        $mailer->SMTPAuth = true;
-                        $mailer->Username = Yii::app()->params['SMTP_Username'];
-                        $mailer->Password = Yii::app()->params['SMTP_password'];
-                        $mailer->From = Yii::app()->params['SMTP_Username'];
-                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                        $mailer->AddAddress($model->referrelUser->email);
-                        $mailer->AddCC(Yii::app()->params['adminEmail']);
-                        $mailer->FromName = 'Dwellings Group';
-                        $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Dwellings Group Referral Management System - New Referral Added';
-                        $mailer->IsHTML();
-                        $mailer->Body = $message;
-                        
-                        try{     
-                            $mailer->Send();
-                        }
-                        catch (Exception $ex){
-                            echo $ex->getMessage();
+                        if (isset($message) && $message != "") {
+                            $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                            $mailer->Host = Yii::app()->params['SMTP_Host'];
+                            $mailer->IsSMTP();
+                            $mailer->SMTPAuth = true;
+                            $mailer->Username = Yii::app()->params['SMTP_Username'];
+                            $mailer->Password = Yii::app()->params['SMTP_password'];
+                            $mailer->From = Yii::app()->params['SMTP_Username'];
+                            $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                            $mailer->AddAddress($model->referrelUser->email);
+                            $mailer->AddCC(Yii::app()->params['adminEmail']);
+                            $mailer->FromName = 'Dwellings Group';
+                            $mailer->CharSet = 'UTF-8';
+                            $mailer->Subject = 'Dwellings Group Referral Management System - New Referral Added';
+                            $mailer->IsHTML();
+                            $mailer->Body = $message;
+
+                            try{     
+                                $mailer->Send();
+                            }
+                            catch (Exception $ex){
+                                echo $ex->getMessage();
+                            }
                         }
                         //----------------------------------------------------------
                         
@@ -136,27 +138,29 @@ class EntryController extends Controller
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/update_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
                         
-                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
-                        $mailer->Host = Yii::app()->params['SMTP_Host'];
-                        $mailer->IsSMTP();
-                        $mailer->SMTPAuth = true;
-                        $mailer->Username = Yii::app()->params['SMTP_Username'];
-                        $mailer->Password = Yii::app()->params['SMTP_password'];
-                        $mailer->From = Yii::app()->params['SMTP_Username'];
-                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                        $mailer->AddAddress($model->referrelUser->email);
-                        $mailer->AddCC(Yii::app()->params['adminEmail']);
-                        $mailer->FromName = 'Dwellings Group';
-                        $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Dwellings Group Referral Management System - Referral Updated';
-                        $mailer->IsHTML();
-                        $mailer->Body = $message;
-                        
-                        try{     
-                            $mailer->Send();
-                        }
-                        catch (Exception $ex){
-                            echo $ex->getMessage();
+                        if (isset($message) && $message != "") {
+                            $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                            $mailer->Host = Yii::app()->params['SMTP_Host'];
+                            $mailer->IsSMTP();
+                            $mailer->SMTPAuth = true;
+                            $mailer->Username = Yii::app()->params['SMTP_Username'];
+                            $mailer->Password = Yii::app()->params['SMTP_password'];
+                            $mailer->From = Yii::app()->params['SMTP_Username'];
+                            $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                            $mailer->AddAddress($model->referrelUser->email);
+                            $mailer->AddCC(Yii::app()->params['adminEmail']);
+                            $mailer->FromName = 'Dwellings Group';
+                            $mailer->CharSet = 'UTF-8';
+                            $mailer->Subject = 'Dwellings Group Referral Management System - Referral Updated';
+                            $mailer->IsHTML();
+                            $mailer->Body = $message;
+
+                            try{     
+                                $mailer->Send();
+                            }
+                            catch (Exception $ex){
+                                echo $ex->getMessage();
+                            }
                         }
                         //----------------------------------------------------------
                         
