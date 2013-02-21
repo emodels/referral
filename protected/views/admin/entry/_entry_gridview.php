@@ -48,7 +48,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
                 'delete' => array
                 (
                     'options'=>array('style'=>'padding-right:25px'),
-                ))
+                ),
+                'update' => array(
+                    'options'=>array('target'=>'_blank'),
+                )
+            )
         )                 
 )));        
 ?>

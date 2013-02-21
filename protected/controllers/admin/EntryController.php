@@ -81,6 +81,10 @@ class EntryController extends Controller
             if (isset($_POST['Entry']) || Yii::app()->request->isAjaxRequest) {
                 
                 if (isset($_POST['Entry'])) {
+                    
+                    $first_name = $_POST['Entry']['first_name'];
+                    $last_name = $_POST['Entry']['last_name'];
+                    
                     if ($_POST['Entry']['referrel_user'] == '' && $_POST['Entry']['status'] == ''){
                         unset(Yii::app()->session['referrel_user']);
                         unset(Yii::app()->session['status']);
@@ -105,6 +109,20 @@ class EntryController extends Controller
                         $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'] . ' AND status = ' . Yii::app()->session['status'], 'order'=>'id DESC')));
                     }
                 }
+                
+                /**
+                 * Filter records by First name and Last name
+                 */
+                if ($first_name != '' && $last_name == '') {
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%"', 'order'=>'id DESC')));
+                }
+                else if ($first_name == '' && $last_name != ''){
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC')));
+                }
+                else if ($first_name != '' && $last_name != ''){
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%" OR last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC')));
+                }
+
                 
                 if (isset($dataProvider)) {
                     echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider), true, false);

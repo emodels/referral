@@ -3,7 +3,8 @@
 </div>  
 <div style="float: left; width: 670px; padding-left: 10px">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'dataProvider'=>$dataProvider,
+    'dataProvider'=>$dataProvider->search(),
+    'filter'=>$dataProvider,
     'ajaxUpdate'=>true,
     'enablePagination' => true,
     'columns'=>array(
