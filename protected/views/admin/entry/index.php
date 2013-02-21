@@ -5,7 +5,7 @@
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">
         <div class="column" style="padding-top: 2px">Partner Company :</div>
-        <div class="column"><?php echo CHtml::dropDownList('Entry[referrel_user]', '', CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company'), array('empty'=>'Select Partner',
+        <div class="column"><?php echo CHtml::dropDownList('Entry[referrel_user]', '', CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company'), array('empty'=>'Select Partner','style' => 'width:153px',
                                        'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),
                                        'beforeSend' => 'function(){
                                             $(".ajax-loading").hide();
