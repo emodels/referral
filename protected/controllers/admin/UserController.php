@@ -108,11 +108,13 @@ class UserController extends Controller
 	}
         
         public function actionExportCSV(){
-            $users = User::model()->findAll('user_type = :type', array(':type' => '1'));
+            $users = Entry::model()->findAll();
             
             $user_array = array();
             foreach ($users as $user){
-                $user_array[] = array('company'=>$user->company, 'first_name'=>$user->first_name, 'last_name'=>$user->last_name, 'email'=>$user->email);
+                if (strpos($user->email, '@') !== false){
+                    $user_array[] = array('first_name'=>$user->first_name, 'last_name'=>$user->last_name, 'email'=>$user->email);
+                }
             }
             
             $this->download_send_headers("emails_data_export_" . date("Y-m-d") . ".csv");
