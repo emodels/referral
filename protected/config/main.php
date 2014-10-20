@@ -48,10 +48,10 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=sntthrco_referral',
+			'connectionString' => 'mysql:host=localhost;dbname=referral',
 			'emulatePrepare' => true,
-			'username' => 'sntthrco_user',
-			'password' => 'emt123',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -79,9 +79,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-                'SMTP_Host'=>'smtpout.asia.secureserver.net:25',
-                'SMTP_Username'=>'dwellings@dwellingsgroup.com.au',
-                'SMTP_password'=>'dwg@123'
+		'adminEmail'=>'info@emodelslanka.com',
+                'SMTP_Host'=>'173.254.28.110',
+                'SMTP_Username'=>'dwellingsgroup@referral.snt3.com',
+                'SMTP_password'=>'X#:jkko75/6Zz7'
 	),
 );

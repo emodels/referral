@@ -31,7 +31,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'footer'=>$dataProvider->itemCount===0 ? '' : '<div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b>Total Commission :</b></div>'
         ),
         array( 'name'=> 'priority',
-                'value'=> '($data->priority == "0") ? Low : (($data->priority == "1") ? Medium : High)'
+                'value'=> '($data->priority == "0") ? "Low" : (($data->priority == "1") ? "Medium" : "High")'
             ),
         array(
             'name'=>'Commission',
