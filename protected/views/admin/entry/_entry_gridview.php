@@ -43,6 +43,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         (
             'class'=>'CButtonColumn',
             'deleteConfirmation'=>"js:'Are you sure you want to delete this Referral ?'",
+            'afterDelete'=>'function(link,success,data){ if(success) alert("Referral deleted successfully"); window.document.location.reload(); }',
             'template'=>'{delete}{update}',
             'buttons'=>array(
                 'delete' => array

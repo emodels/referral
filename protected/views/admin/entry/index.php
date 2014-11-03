@@ -56,7 +56,7 @@
     if ($ShowAll == TRUE) {
         $partners = User::model()->findAll('user_type = :user_type', array(':user_type'=>'1'));
         foreach ($partners as $partner) {
-            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC')));
+            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
             echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company),true,false);
         }
     }
