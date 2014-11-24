@@ -16,7 +16,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value'=>'$data->status0->status'
         ),
         array( 'name'=> 'priority',
-                'value'=> '($data->priority == "0") ? Low : (($data->priority == "1") ? Medium : High)'
+                'value'=> '($data->priority == "0") ? "Low" : (($data->priority == "1") ? "Medium" : "High")'
             ),
         array
         (
