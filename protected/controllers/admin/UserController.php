@@ -113,7 +113,20 @@ class UserController extends Controller
             $user_array = array();
             foreach ($users as $user){
                 if (strpos($user->email, '@') !== false){
-                    $user_array[] = array('first_name'=>$user->first_name, 'last_name'=>$user->last_name, 'email'=>$user->email);
+                    $user_array[] = array(
+                        'first_name'=>$user->first_name,
+                        'last_name'=>$user->last_name,
+                        'status'=>$user->status0->status,
+                        'priority'=>($user->priority == "0") ? "Low" : (($user->priority == "1") ? "Medium" : "High"),
+                        'email'=>$user->email,
+                        'address'=>$user->address,
+                        'state'=>$user->state,
+                        'zip'=>$user->zip,
+                        'country'=>$user->country,
+                        'telephone'=>$user->telephone,
+                        'entry_added_date'=>$user->entry_added_date,
+                        'entry_last_updated_date'=>$user->entry_last_updated_date
+                    );
                 }
             }
             
