@@ -67,9 +67,19 @@ class MainController extends Controller
             $status = CHtml::listData(Status::model()->findAll('referral_user=:referral_user', array(':referral_user' => $model->referrel_user)), 'id', 'status');
             
             if (isset($_POST['Entry'])) {
+
                 $model->attributes = $_POST['Entry'];
                 $model->entry_last_updated_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
-                
+
+                if (isset($model->remind_date) && $model->remind_date !== '') {
+
+                    $model->remind_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->remind_date);
+
+                } else {
+
+                    $model->remind_date = null;
+                }
+
                 if($model->validate()){
                     if ($model->save()) {
                         
@@ -119,8 +129,18 @@ class MainController extends Controller
             $model->referral_commission_amount = 0;
             
             if (isset($_POST['Entry'])) {
+
                 $model->attributes = $_POST['Entry'];
-                
+
+                if (isset($model->remind_date) && $model->remind_date !== '') {
+
+                    $model->remind_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->remind_date);
+
+                } else {
+
+                    $model->remind_date = null;
+                }
+
                 if($model->validate()){
                     if ($model->save()) {
                         

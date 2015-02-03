@@ -20,6 +20,9 @@
  * @property double $referral_commission_amount
  * @property integer $status
  * @property integer $priority
+ * @property integer $remind
+ * @property string $remind_date
+ * @property string $remarks
  *
  * The followings are the available model relations:
  * @property User $referrelUser
@@ -53,17 +56,18 @@ class Entry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority', 'required'),
-			array('referrel_user, status, priority', 'numerical', 'integerOnly'=>true),
+			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind', 'required'),
+			array('referrel_user, status, priority, remind', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
 			array('zip', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
-			array('description', 'safe'),
+			array('remarks', 'length', 'max'=>500),
+			array('description, remind_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -102,6 +106,9 @@ class Entry extends CActiveRecord
 			'referral_commission_amount' => 'Referral Commission Amount',
 			'status' => 'Status',
 			'priority' => 'Priority',
+			'remind' => 'Remind',
+			'remind_date' => 'Remind Date',
+			'remarks' => 'Remarks',
 		);
 	}
 
@@ -132,6 +139,9 @@ class Entry extends CActiveRecord
 		$criteria->compare('referral_commission_amount',$this->referral_commission_amount);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('priority',$this->priority);
+		$criteria->compare('remind',$this->remind);
+		$criteria->compare('remind_date',$this->remind_date,true);
+		$criteria->compare('remarks',$this->remarks,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

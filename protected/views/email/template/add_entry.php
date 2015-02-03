@@ -6,6 +6,10 @@
 <div style="border: solid 1px silver; width: 100%; padding: 10px; background-color: #f7f7f7; font-family: arial">
     <p><b>Hi <?php echo $client_name; ?>,</b></p>
     <p>Dwellings Group have added <b>NEW</b> Referral to <b><?php echo $company; ?></b> with ID : <?php echo $entry_id; ?> For your reference <a href="<?php echo $link; ?>">Click here</a> to view details.</p>
+    <p style="color: red; font-size: 14px; font-weight: bold">
+        Reminder Date : <?php echo $customer->remind_date; ?><br/><br/>
+        Remarks : <?php echo $customer->remarks; ?><br/><br/>
+    </p>
     <p>
         <b><u>Customer Details:</u></b><br/><br/>
         Name : <?php echo $customer->first_name . ' ' . $customer->last_name; ?><br/><br/>

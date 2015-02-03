@@ -2,7 +2,34 @@
     .column{
         width: 200px;
     }
-</style>    
+</style>
+<script type="application/javascript">
+    function validateForm(form, data, hasError){
+
+        if ($('#Entry_remind').is(':checked')) {
+
+            if ($('#Entry_remind_date').val().trim() == '') {
+
+                $('#Entry_remind_date_em_').html('Reminding Date cannot be blank').show();
+                $('#Entry_remind_date_em_').parent().removeClass('success').addClass('error');
+                hasError = true;
+            }
+
+        } else {
+
+            $('#Entry_remind_date').val('');
+            $('#Entry_remind_date_em_').html('').hide();
+            $('#Entry_remind_date_em_').parent().removeClass('error').addClass('success');
+            hasError = false;
+        }
+
+        if (!hasError) {
+            return true;
+        }
+
+        return false;
+    }
+</script>
 <div style="float: left">
     <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
 </div>  
@@ -18,6 +45,7 @@
         'clientOptions' => array(
             'validateOnSubmit' => true,
             'validateOnChange'=>true,
+            'afterValidate'=>'js:validateForm'
         ),
     ));
     ?>
@@ -69,6 +97,35 @@
         <div class="row">
             <div class="column">Priority</div>
             <div><?php echo $form->dropDownList($model, 'priority', array('0'=>'Low','1'=>'Medium','2'=>'High'), array('style'=>'width:135px','empty'=>'Select Priority')); ?><?php echo $form->error($model, 'priority'); ?></div>
+        </div>
+        <div class="row">
+            <div class="column">Send Reminder</div>
+            <div><?php echo $form->checkbox($model, 'remind', array('onClick'=>'js:validateForm()')); ?></div>
+        </div>
+        <div class="row">
+            <div class="column" style="padding-top: 5px">Reminding Date</div>
+            <div>
+                <?php
+                $this->widget('zii.widgets.jui.CJuiDatePicker',
+                    array(
+                        'model'=>$model,
+                        'attribute'=>'remind_date',
+                        'options'=>array(
+                                'showAnim'=>'fold',
+                                'dateFormat'=>'yy-mm-dd',
+                                'changeMonth' => 'true',
+                                'changeYear' => 'true',
+                                'constrainInput' => 'false'
+                            ),
+                        'htmlOptions'=>array('style'=>'width:200px'),
+                    ));
+                ?>
+                <?php echo $form->error($model, 'remind_date'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" style="margin-top: 5px">Remarks</div>
+            <div><?php echo $form->textField($model, 'remarks', array('style' => 'width:200px')); ?></div>
         </div>
         <div class="row">
             <div class="column">Description</div>

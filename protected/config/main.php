@@ -79,7 +79,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'info@emodelslanka.com',
+		'adminEmail'=>'emodels@gmail.com',
                 'SMTP_Host'=>'173.254.28.110',
                 'SMTP_Username'=>'dwellingsgroup@referral.snt3.com',
                 'SMTP_password'=>'X#:jkko75/6Zz7'
