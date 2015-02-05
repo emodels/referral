@@ -142,7 +142,7 @@ class SiteController extends Controller
                     $mailer->AddCC(Yii::app()->params['adminEmail']);
                     $mailer->FromName = 'Dwellings Group';
                     $mailer->CharSet = 'UTF-8';
-                    $mailer->Subject = 'Dwellings Group Referral Management System - Reminder for Referral ID : ' . $model->id;
+                    $mailer->Subject = 'Pending Action : Reminder for Referral ID : ' . $model->id;
                     $mailer->IsHTML();
                     $mailer->Body = $message;
 
@@ -182,7 +182,7 @@ class SiteController extends Controller
                     $mailer->AddCC(Yii::app()->params['adminEmail']);
                     $mailer->FromName = 'Dwellings Group';
                     $mailer->CharSet = 'UTF-8';
-                    $mailer->Subject = 'Dwellings Group Referral Management System - Reminder for Referral ID : ' . $model->id;
+                    $mailer->Subject = 'Pending Action : Reminder for Referral ID : ' . $model->id;
                     $mailer->IsHTML();
                     $mailer->Body = $message;
 
