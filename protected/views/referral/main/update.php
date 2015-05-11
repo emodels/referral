@@ -125,6 +125,27 @@
             </div>
         </div>
         <div class="row">
+            <div class="column" style="padding-top: 5px">Date of Birth</div>
+            <div>
+                <?php
+                $this->widget('zii.widgets.jui.CJuiDatePicker',
+                    array(
+                        'model'=>$model,
+                        'attribute'=>'date_of_birth',
+                        'options'=>array(
+                            'showAnim'=>'fold',
+                            'dateFormat'=>'yy-mm-dd',
+                            'changeMonth' => 'true',
+                            'changeYear' => 'true',
+                            'constrainInput' => 'false'
+                        ),
+                        'htmlOptions'=>array('style'=>'width:200px'),
+                    ));
+                ?>
+                <?php echo $form->error($model, 'date_of_birth'); ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="column" style="margin-top: 5px">Remarks</div>
             <div><?php echo $form->textField($model, 'remarks', array('style' => 'width:200px')); ?></div>
         </div>

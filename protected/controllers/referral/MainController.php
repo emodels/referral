@@ -80,13 +80,24 @@ class MainController extends Controller
                     $model->remind_date = null;
                 }
 
+                if (isset($model->date_of_birth) && $model->date_of_birth !== '') {
+
+                    $model->date_of_birth = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->date_of_birth);
+
+                } else {
+
+                    $model->date_of_birth = null;
+                }
+
                 if($model->validate()){
+
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/referral_changed_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'client_company'=>$model->referrelUser->company,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/admin/entry/update/id/' . $id), true);
                         
                         if (isset($message) && $message != "") {
+
                             $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                             $mailer->Host = Yii::app()->params['SMTP_Host'];
                             $mailer->IsSMTP();
@@ -112,6 +123,7 @@ class MainController extends Controller
                         //----------------------------------------------------------
                         
                         Yii::app()->user->setFlash('success','Referral Updated');
+
                         $this->redirect(array('referral/main'));
                     }
                 }
@@ -121,6 +133,7 @@ class MainController extends Controller
 	}
         
         public function actionAddReferral(){
+
             $model = new Entry();
 
             $model->referrel_user = Yii::app()->user->id;
@@ -141,13 +154,24 @@ class MainController extends Controller
                     $model->remind_date = null;
                 }
 
+                if (isset($model->date_of_birth) && $model->date_of_birth !== '') {
+
+                    $model->date_of_birth = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->date_of_birth);
+
+                } else {
+
+                    $model->date_of_birth = null;
+                }
+
                 if($model->validate()){
+
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'company'=>$model->referrelUser->company,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
                         
                         if (isset($message) && $message != "") {
+
                             $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                             $mailer->Host = Yii::app()->params['SMTP_Host'];
                             $mailer->IsSMTP();
@@ -174,6 +198,7 @@ class MainController extends Controller
                         //----------------------------------------------------------
                         
                         Yii::app()->user->setFlash('success','Referral Added');
+
                         $this->redirect(array('referral/main'));
                     }
                 }

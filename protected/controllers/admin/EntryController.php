@@ -34,13 +34,24 @@ class EntryController extends Controller
                     $model->remind_date = null;
                 }
 
+                if (isset($model->date_of_birth) && $model->date_of_birth !== '') {
+
+                    $model->date_of_birth = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->date_of_birth);
+
+                } else {
+
+                    $model->date_of_birth = null;
+                }
+
                 if($model->validate()){
+
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/add_entry', array('entry_id'=>$model->id,'company'=>$model->referrelUser->company,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
                         
                         if (isset($message) && $message != "") {
+
                             $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                             $mailer->Host = Yii::app()->params['SMTP_Host'];
                             $mailer->IsSMTP();
@@ -57,16 +68,19 @@ class EntryController extends Controller
                             $mailer->IsHTML();
                             $mailer->Body = $message;
 
-                            try{     
+                            try{
+
                                 $mailer->Send();
                             }
                             catch (Exception $ex){
+
                                 echo $ex->getMessage();
                             }
                         }
                         //----------------------------------------------------------
                         
                         Yii::app()->user->setFlash('success','Referral Added');
+
                         $this->redirect(array('admin/user'));
                     }
                 }
@@ -75,16 +89,18 @@ class EntryController extends Controller
             $this->render('add', array('model'=>$model));
 	}
 
-        public function actionListStatus(){
-            $data = Status::model()->findAll('referral_user=:id',array(':id'=>$_POST['Entry']['referrel_user']));
-            $data=CHtml::listData($data,'id','status');
+    public function actionListStatus(){
 
-            echo CHtml::tag('option',array('value'=>''),'Select Status',true);
-            foreach($data as $value=>$name)
-            {
-                echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
-            }
+        $data = Status::model()->findAll('referral_user=:id',array(':id'=>$_POST['Entry']['referrel_user']));
+        $data=CHtml::listData($data,'id','status');
+
+        echo CHtml::tag('option',array('value'=>''),'Select Status',true);
+
+        foreach($data as $value=>$name)
+        {
+            echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
         }
+    }
         
 	public function actionIndex()
 	{
@@ -99,15 +115,18 @@ class EntryController extends Controller
                     $last_name = $_POST['Entry']['last_name'];
                     
                     if ($_POST['Entry']['referrel_user'] == '' && $_POST['Entry']['status'] == ''){
+
                         unset(Yii::app()->session['referrel_user']);
                         unset(Yii::app()->session['status']);
                     }
                     else if ($_POST['Entry']['referrel_user'] != '' && $_POST['Entry']['status'] == ''){
+
                         Yii::app()->session['referrel_user'] = $_POST['Entry']['referrel_user'];
                         unset(Yii::app()->session['status']);
                         $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'], 'order'=>'id DESC'), 'pagination' => false));
                     }
                     else if ($_POST['Entry']['referrel_user'] != '' && $_POST['Entry']['status'] != '') {
+
                         Yii::app()->session['referrel_user'] = $_POST['Entry']['referrel_user'];
                         Yii::app()->session['status'] = $_POST['Entry']['status'];
                         $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'] . ' AND status = ' . $_POST['Entry']['status'], 'order'=>'id DESC'), 'pagination' => false));
@@ -115,10 +134,14 @@ class EntryController extends Controller
                 }
                 
                 if (Yii::app()->request->isAjaxRequest) {
+
                     if (isset(Yii::app()->session['referrel_user']) && !isset(Yii::app()->session['status'])) {
+
                         $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'], 'order'=>'id DESC'), 'pagination' => false));
                     }
+
                     if (isset(Yii::app()->session['referrel_user']) && isset(Yii::app()->session['status'])) {
+
                         $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'] . ' AND status = ' . Yii::app()->session['status'], 'order'=>'id DESC'), 'pagination' => false));
                     }
                 }
@@ -127,22 +150,28 @@ class EntryController extends Controller
                  * Filter records by First name and Last name
                  */
                 if ($first_name != '' && $last_name == '') {
+
                     $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
                 }
                 else if ($first_name == '' && $last_name != ''){
+
                     $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
                 }
                 else if ($first_name != '' && $last_name != ''){
+
                     $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%" OR last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
                 }
 
-                
                 if (isset($dataProvider)) {
+
                     echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider), true, false);
                 }
                 else{
+
                     $partners = User::model()->findAll('user_type = :user_type', array(':user_type'=>'1'));
+
                     foreach ($partners as $partner) {
+
                         $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
                         echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company), true, false);
                     }
@@ -173,13 +202,24 @@ class EntryController extends Controller
                     $model->remind_date = null;
                 }
 
+                if (isset($model->date_of_birth) && $model->date_of_birth !== '') {
+
+                    $model->date_of_birth = Yii::app()->dateFormatter->format('yyyy-MM-dd', $model->date_of_birth);
+
+                } else {
+
+                    $model->date_of_birth = null;
+                }
+
                 if($model->validate()){
+
                     if ($model->save()) {
                         
                         //--------Send Email notification to Referral---------------
                         $message = $this->renderPartial('//email/template/update_entry', array('entry_id'=>$id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $id), true);
                         
                         if (isset($message) && $message != "") {
+
                             $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                             $mailer->Host = Yii::app()->params['SMTP_Host'];
                             $mailer->IsSMTP();
@@ -206,6 +246,7 @@ class EntryController extends Controller
                         //----------------------------------------------------------
                         
                         Yii::app()->user->setFlash('success','Referral Updated');
+
                         $this->redirect(array('admin/user'));
                     }
                 }
@@ -214,19 +255,27 @@ class EntryController extends Controller
             $this->render('update', array('model'=>$model,'status'=>$status));
 	}
         
-        public function actionDelete($id){
-            if(Yii::app()->request->isPostRequest)
-            {
-                $entry = Entry::model()->findByPk($id);
-                if(isset($entry)){
-                    if($entry->delete()){
-                            echo 'Deleted';
-                    }else{
-                            echo 'Error while Deleting';
-                    }
+    public function actionDelete($id){
+
+        if(Yii::app()->request->isPostRequest)
+        {
+            $entry = Entry::model()->findByPk($id);
+
+            if(isset($entry)){
+
+                if($entry->delete()){
+
+                    echo 'Deleted';
+
+                }else{
+
+                    echo 'Error while Deleting';
                 }
-            }else{
-                throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
             }
+
+        } else {
+
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
         }
+    }
 }

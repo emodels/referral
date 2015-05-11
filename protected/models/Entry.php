@@ -23,6 +23,7 @@
  * @property integer $remind
  * @property string $remind_date
  * @property string $remarks
+ * @property string $date_of_birth
  *
  * The followings are the available model relations:
  * @property User $referrelUser
@@ -64,10 +65,10 @@ class Entry extends CActiveRecord
 			array('zip', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
 			array('remarks', 'length', 'max'=>500),
-			array('description, remind_date', 'safe'),
+			array('description, remind_date, date_of_birth', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -109,6 +110,7 @@ class Entry extends CActiveRecord
 			'remind' => 'Remind',
 			'remind_date' => 'Remind Date',
 			'remarks' => 'Remarks',
+			'date_of_birth' => 'Date Of Birth',
 		);
 	}
 
@@ -142,6 +144,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('remind',$this->remind);
 		$criteria->compare('remind_date',$this->remind_date,true);
 		$criteria->compare('remarks',$this->remarks,true);
+		$criteria->compare('date_of_birth',$this->date_of_birth,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

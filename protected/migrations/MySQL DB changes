@@ -1,0 +1,2 @@
+/*---( Pending migrations )---*/
+ALTER TABLE `entry` ADD `date_of_birth` DATE NULL ;
