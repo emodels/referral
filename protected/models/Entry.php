@@ -14,6 +14,7 @@
  * @property string $country
  * @property string $telephone
  * @property string $email
+ * @property string $additional_email
  * @property string $description
  * @property string $entry_added_date
  * @property string $entry_last_updated_date
@@ -24,6 +25,7 @@
  * @property string $remind_date
  * @property string $remarks
  * @property string $date_of_birth
+ * @property string $property_holder
  *
  * The followings are the available model relations:
  * @property User $referrelUser
@@ -57,18 +59,18 @@ class Entry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind', 'required'),
+			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, property_holder', 'required'),
 			array('referrel_user, status, priority, remind', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
-			array('first_name, last_name, state, email', 'length', 'max'=>50),
+			array('first_name, last_name, state, email, additional_email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
-			array('zip', 'length', 'max'=>10),
+			array('zip, property_holder', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
 			array('remarks', 'length', 'max'=>500),
 			array('description, remind_date, date_of_birth', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, additional_email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth, property_holder', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -101,6 +103,7 @@ class Entry extends CActiveRecord
 			'country' => 'Country',
 			'telephone' => 'Telephone',
 			'email' => 'Email',
+			'additional_email' => 'Additional Email',
 			'description' => 'Description',
 			'entry_added_date' => 'Entry Added Date',
 			'entry_last_updated_date' => 'Entry Last Updated Date',
@@ -111,6 +114,7 @@ class Entry extends CActiveRecord
 			'remind_date' => 'Remind Date',
 			'remarks' => 'Remarks',
 			'date_of_birth' => 'Date Of Birth',
+			'property_holder' => 'Property Holder',
 		);
 	}
 
@@ -135,6 +139,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('telephone',$this->telephone,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('additional_email',$this->additional_email,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('entry_added_date',$this->entry_added_date,true);
 		$criteria->compare('entry_last_updated_date',$this->entry_last_updated_date,true);
@@ -145,6 +150,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('remind_date',$this->remind_date,true);
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('date_of_birth',$this->date_of_birth,true);
+		$criteria->compare('property_holder',$this->property_holder,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

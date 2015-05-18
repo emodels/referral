@@ -5,7 +5,10 @@
     });
 </script>
 <?php } ?>
-<div style="float: left; width: 100%">
+<div style="float: left">
+    <?php require_once Yii::getPathOfAlias('webroot.protected.views.referral') . '/referral_header_include.php'; ?>
+</div>
+<div style="float: left; width: 670px; padding-left: 10px">
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">
         <div class="column" style="padding-top: 2px"><b>Partner Company : </b><?php echo Yii::app()->user->company; ?></div>

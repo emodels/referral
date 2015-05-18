@@ -1,10 +1,6 @@
-
 <div class="link_box">
     <ul>
-        <li><a href="">link 1</a></li>
-        <li><a href="">link 2</a></li>
-        <li><a href="">link 3</a></li>
-        <li><a href="">link 4</a></li>
+        <li><a href="<?php echo Yii::app()->baseUrl; ?>/referral/main/AddReferral">Add New Referral</a></li>
+        <li><a href="<?php echo Yii::app()->baseUrl; ?>/referral/main">View Referrals</a></li>
     </ul>
-    
 </div>  

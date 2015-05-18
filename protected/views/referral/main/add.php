@@ -33,8 +33,11 @@
     .column{
         width: 200px;
     }
-</style>    
-<div style="float: left; width: 100%">
+</style>
+<div style="float: left">
+    <?php require_once Yii::getPathOfAlias('webroot.protected.views.referral') . '/referral_header_include.php'; ?>
+</div>
+<div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
     <h2 class="icon_search" style="padding-top: 12px">Add New Referral<span></span></h2>
     <div class="form">
@@ -90,12 +93,20 @@
             <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Additional Email</div>
+            <div><?php echo $form->textField($model, 'additional_email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'additional_email'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">Status</div>
             <div><?php echo $form->dropDownList($model, 'status', CHtml::listData(Status::model()->findAll('referral_user = :user', array(':user'=>$model->referrel_user)), 'id', 'status'), array('style'=>'width:135px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
         </div>
         <div class="row">
             <div class="column">Priority</div>
             <div><?php echo $form->dropDownList($model, 'priority', array('0'=>'Low','1'=>'Medium','2'=>'High'), array('style'=>'width:135px','empty'=>'Select Priority')); ?><?php echo $form->error($model, 'priority'); ?></div>
+        </div>
+        <div class="row">
+            <div class="column">Property Holder</div>
+            <div><?php echo $form->dropDownList($model, 'property_holder', array('Owner'=>'Owner','Tenant'=>'Tenant'), array('style'=>'width:135px','empty'=>'Select Property Holder')); ?><?php echo $form->error($model, 'property_holder'); ?></div>
         </div>
         <div class="row">
             <div class="column">Send Reminder</div>

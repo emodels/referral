@@ -44,14 +44,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'class'=>'CButtonColumn',
             'deleteConfirmation'=>"js:'Are you sure you want to delete this Referral ?'",
             'afterDelete'=>'function(link,success,data){ if(success) alert("Referral deleted successfully"); window.document.location.reload(); }',
-            'template'=>'{delete}{update}',
+            'template'=>'{delete}{update}{manage_client_portal}',
             'buttons'=>array(
                 'delete' => array
                 (
-                    'options'=>array('style'=>'padding-right:25px'),
+                    'options' => array('style'=>'padding-right:5px'),
                 ),
                 'update' => array(
-                    'options'=>array('target'=>'_blank'),
+                    'options' => array('target'=>'_blank', 'style'=>'padding-right:5px'),
+                ),
+                'manage_client_portal' => array(
+
+                    'label' => 'Manage Client Portal',
+                    'url' => 'CController::createUrl("/client/manageclientportal", array("id"=>$data->primaryKey))',
+                    'imageUrl' => '../images/add.png'
                 )
             )
         )                 

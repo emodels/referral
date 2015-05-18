@@ -21,12 +21,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array
         (
             'class'=>'CButtonColumn',
-            'template'=>'{update}',
+            'template'=>'{update}{manage_client_portal}',
             'buttons'=>array(
                 'delete' => array
                 (
                     'options'=>array('style'=>'padding-right:25px'),
-                ))
+                ),
+                'manage_client_portal' => array(
+
+                    'label' => 'Manage Client Portal',
+                    'url' => 'CController::createUrl("/client/manageclientportal", array("id"=>$data->primaryKey))',
+                    'imageUrl' => '../images/add.png',
+                    'options'=>array('style'=>'padding-left:15px'),
+                )
+            )
         )                 
 )));        
 ?>
