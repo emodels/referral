@@ -26,10 +26,12 @@
  * @property string $remarks
  * @property string $date_of_birth
  * @property string $property_holder
+ * @property integer $client_portal_status
  *
  * The followings are the available model relations:
  * @property User $referrelUser
  * @property Status $status0
+ * @property Property[] $properties
  */
 class Entry extends CActiveRecord
 {
@@ -59,8 +61,8 @@ class Entry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, property_holder', 'required'),
-			array('referrel_user, status, priority, remind', 'numerical', 'integerOnly'=>true),
+			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, property_holder, client_portal_status', 'required'),
+			array('referrel_user, status, priority, remind, client_portal_status', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, email, additional_email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
@@ -70,7 +72,7 @@ class Entry extends CActiveRecord
 			array('description, remind_date, date_of_birth', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, additional_email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth, property_holder', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, additional_email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth, property_holder, client_portal_status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,6 +86,7 @@ class Entry extends CActiveRecord
 		return array(
 			'referrelUser' => array(self::BELONGS_TO, 'User', 'referrel_user'),
 			'status0' => array(self::BELONGS_TO, 'Status', 'status'),
+			'properties' => array(self::HAS_MANY, 'Property', 'entry'),
 		);
 	}
 
@@ -115,6 +118,7 @@ class Entry extends CActiveRecord
 			'remarks' => 'Remarks',
 			'date_of_birth' => 'Date Of Birth',
 			'property_holder' => 'Property Holder',
+			'client_portal_status' => 'Client Portal Status',
 		);
 	}
 
@@ -151,6 +155,7 @@ class Entry extends CActiveRecord
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('date_of_birth',$this->date_of_birth,true);
 		$criteria->compare('property_holder',$this->property_holder,true);
+		$criteria->compare('client_portal_status',$this->client_portal_status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

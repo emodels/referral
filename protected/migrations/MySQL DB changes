@@ -5,3 +5,43 @@ ALTER TABLE `entry` ADD `property_holder` VARCHAR(10) NOT NULL ;
 ALTER TABLE `entry` ADD `client_portal_status` TINYINT NOT NULL ;
 
 ALTER TABLE `user` ADD `entry` INT NOT NULL ;
+
+CREATE TABLE IF NOT EXISTS `document_category` (
+`id` int(11) NOT NULL,
+  `name` VARCHAR(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `document_category`
+ ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `document_category`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE IF NOT EXISTS `property` (
+  `id` int(11) NOT NULL,
+  `entry` int(11) NOT NULL,
+  `builder` varchar(200) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `owner` int(11) NOT NULL,
+  `initial_deposit` tinyint(4) NOT NULL,
+  `contracts_signed` tinyint(4) NOT NULL,
+  `five_ten_deposit` tinyint(4) NOT NULL,
+  `firb_approval` tinyint(4) NOT NULL,
+  `finance_approval` tinyint(4) NOT NULL,
+  `property_completion` tinyint(4) NOT NULL,
+  `rented_out` tinyint(4) NOT NULL,
+  `insurance_in_place` tinyint(4) NOT NULL,
+  `first_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `property`
+ADD PRIMARY KEY (`id`), ADD KEY `owner` (`owner`), ADD KEY `entry` (`entry`);
+
+ALTER TABLE `property`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+
+ALTER TABLE `property`
+ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`entry`) REFERENCES `entry` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `property_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `user` (`id`) ON DELETE CASCADE;

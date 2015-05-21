@@ -6078,3 +6078,459 @@ Stack trace:
 REQUEST_URI=/referral/css/style.css
 HTTP_REFERER=http://localhost/referral/admin/entry
 ---
+2015/05/21 07:26:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:26:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:31:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:31:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:32:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:33:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:33:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:33:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:33:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:40:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:40:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:44:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:44:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:46:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:46:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:46:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:46:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:47:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:47:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:47:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:47:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:50:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/grid.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/grid.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/grid.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 07:50:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/05/21 08:50:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/add.php".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('admin/add.php')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/admin/add.php
+HTTP_REFERER=http://localhost/referral/admin/category
+---
+2015/05/21 08:51:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/add".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('admin/add')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/admin/add
+HTTP_REFERER=http://localhost/referral/admin/category
+---
+2015/05/21 08:52:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/categoty/add".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('admin/categoty/...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/admin/categoty/add
+HTTP_REFERER=http://localhost/referral/admin/category
+---
+2015/05/21 10:22:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/bg.gif".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/bg.gif')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/css/bg.gif
+HTTP_REFERER=http://localhost/referral/index.php/site/login
+---
+2015/05/21 11:13:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "client/addproperty".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/addprope...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/client/addproperty
+HTTP_REFERER=http://localhost/referral/client/manageclientportal/2
+---
+2015/05/21 11:21:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "client/addproperty".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/addprope...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/client/addproperty
+HTTP_REFERER=http://localhost/referral/client/manageclientportal/2
+---
+2015/05/21 11:24:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/client/property/add/2
+HTTP_REFERER=http://localhost/referral/client/manageclientportal/2
+---
+2015/05/21 11:24:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/client/property
+---
+2015/05/21 11:24:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "addd".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('addd')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('addd')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/client/property/addd
+---
+2015/05/21 11:25:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/client/property/add
+---
+2015/05/21 11:25:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "addd".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('addd')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('addd')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/client/property/addd
+---
+2015/05/21 11:25:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/client/property
+---
+2015/05/21 11:25:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/client/property/add/2
+HTTP_REFERER=http://localhost/referral/client/manageclientportal/2
+---
