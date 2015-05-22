@@ -15,7 +15,20 @@ class PropertyController extends Controller
 
     public function actionAdd($id){
 
-        $model = array();
+        $model = new Property();
+
+        $model->entry = $id;
+
+        if (isset($_POST['Property'])) {
+
+            $model->attributes = $_POST['Property'];
+
+            if ($model->save(false)) {
+
+                Yii::app()->user->setFlash('success', "Client Property information saved");
+                $this->redirect(Yii::app()->baseUrl . (Yii::app()->user->user_type == 0 ? '/admin/entry' : '/referral/main'));
+            }
+        }
 
         $this->render('/client/add_property',array('model' => $model));
     }

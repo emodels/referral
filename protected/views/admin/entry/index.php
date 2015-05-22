@@ -1,7 +1,34 @@
 <div style="float: left">
     <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
 </div>  
-<div style="float: left; width: 670px; padding: 12px 0 0 10px">
+<div id="divListing" style="float: left; width: 670px; padding: 0 0 0 10px">
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            ToggleMenu();
+        });
+
+        function ToggleMenu() {
+
+            $('.link_box').toggle();
+
+            if ($('#lnkMenuToggle h5').html().indexOf('Hide') > -1) {
+
+                $('#lnkMenuToggle h5').html('Show Menu >>');
+                $('#divListing').css('width', '100%').css('padding-left', '0px');
+
+            } else {
+
+                $('#lnkMenuToggle h5').html('<< Hide Menu');
+                $('#divListing').css('width', '670px').css('padding-left', '10px');
+            }
+        }
+    </script>
+
+    <div style="width: 100px"><a id="lnkMenuToggle" href="javascript:ToggleMenu();"><h5><< Hide Menu</h5></a></div>
+
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">
         <div class="column" style="padding-top: 2px">Partner Company :</div>

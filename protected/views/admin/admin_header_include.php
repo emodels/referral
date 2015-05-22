@@ -1,4 +1,3 @@
-
 <div class="link_box">
     <ul>
         <li><a href="<?php echo Yii::app()->baseUrl; ?>/admin/user">View Partners</a></li>
