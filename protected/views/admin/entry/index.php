@@ -1,7 +1,7 @@
-<div style="float: left">
+<div style="float: left; width: 17%">
     <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
 </div>  
-<div id="divListing" style="float: left; width: 670px; padding: 0 0 0 10px">
+<div id="divListing" style="float: left; width: 82%; padding: 0 0 0 10px">
 
     <script type="text/javascript">
 
@@ -22,7 +22,7 @@
             } else {
 
                 $('#lnkMenuToggle h5').html('<< Hide Menu');
-                $('#divListing').css('width', '670px').css('padding-left', '10px');
+                $('#divListing').css('width', '82%').css('padding-left', '10px');
             }
         }
     </script>

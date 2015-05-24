@@ -30,10 +30,10 @@
         return false;
     }
 </script>
-<div style="float: left">
+<div style="float: left; width: 17%">
     <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
 </div>  
-<div style="float: left; width: 670px; padding-left: 10px">
+<div style="float: left; width: 82%; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
     <h2 class="icon_search" style="padding-top: 12px">Add New Referral<span></span></h2>
     <div class="form">

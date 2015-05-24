@@ -1,7 +1,7 @@
-<div style="float: left">
+<div style="float: left; width: 17%">
     <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
 </div>  
-<div style="float: left; width: 670px; padding-left: 10px">
+<div style="float: left; width: 82%; padding-left: 10px">
 <div style="float: right">
     <a href="<?php echo Yii::app()->baseUrl; ?>/admin/category/add" class="button" style="text-decoration: none">Add New Category</a>
 </div>

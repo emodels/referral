@@ -30,7 +30,7 @@
         </script>
 </head>
 <body>
-<div class="container" id="page">
+<div class="container" id="page" style="width: 99%">
 <?php
     $flashMessages = Yii::app()->user->getFlashes();
     if ($flashMessages) {
