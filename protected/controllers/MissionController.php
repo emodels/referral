@@ -15,6 +15,9 @@ class MissionController extends Controller
                     case '1':
                         $this->redirect('referral/main');
                         break;
+                    case '2':
+                        $this->redirect('client/mission');
+                        break;
                 }
                 
             }

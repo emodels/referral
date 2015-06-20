@@ -31,6 +31,7 @@
  * The followings are the available model relations:
  * @property User $referrelUser
  * @property Status $status0
+ * @property EntryDocumentCategory[] $entryDocumentCategories
  * @property Property[] $properties
  */
 class Entry extends CActiveRecord
@@ -86,6 +87,7 @@ class Entry extends CActiveRecord
 		return array(
 			'referrelUser' => array(self::BELONGS_TO, 'User', 'referrel_user'),
 			'status0' => array(self::BELONGS_TO, 'Status', 'status'),
+			'entryDocumentCategories' => array(self::HAS_MANY, 'EntryDocumentCategory', 'entry'),
 			'properties' => array(self::HAS_MANY, 'Property', 'entry'),
 		);
 	}

@@ -24,6 +24,7 @@
  * The followings are the available model relations:
  * @property Entry $entry0
  * @property User $owner0
+ * @property PropertyDocument[] $propertyDocuments
  */
 class Property extends CActiveRecord
 {
@@ -75,6 +76,7 @@ class Property extends CActiveRecord
 		return array(
 			'entry0' => array(self::BELONGS_TO, 'Entry', 'entry'),
 			'owner0' => array(self::BELONGS_TO, 'User', 'owner'),
+            'propertyDocuments' => array(self::HAS_MANY, 'PropertyDocument', 'property'),
 		);
 	}
 

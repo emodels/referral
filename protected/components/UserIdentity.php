@@ -34,6 +34,7 @@ class UserIdentity extends CUserIdentity
                     $this->setState('user_type', $user->user_type);
                     $this->setState('company', $user->company);
                     $this->setState('email', $user->email);
+                    $this->setState('entry', $user->entry);
                     $this->errorCode=self::ERROR_NONE;
                 }
                 

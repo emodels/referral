@@ -6,6 +6,10 @@
  * The followings are the available columns in table 'document_category':
  * @property integer $id
  * @property string $name
+ *
+ * The followings are the available model relations:
+ * @property EntryDocumentCategory[] $entryDocumentCategories
+ * @property PropertyDocument[] $propertyDocuments
  */
 class DocumentCategory extends CActiveRecord
 {
@@ -51,6 +55,8 @@ class DocumentCategory extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'entryDocumentCategories' => array(self::HAS_MANY, 'EntryDocumentCategory', 'category'),
+			'propertyDocuments' => array(self::HAS_MANY, 'PropertyDocument', 'category'),
 		);
 	}
 

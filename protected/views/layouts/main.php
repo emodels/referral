@@ -48,7 +48,7 @@
 ?>
 	<div id="header">
 		<div id="logo"></div>
-                <div id="logo_name">Dwellings Group Referral Management System</div>
+                <div id="logo_name"><?php echo isset($this->header_title) ? $this->header_title : 'Dwellings group - Customer collaboration portal'; ?></div>
                 <div style="clear: both; height: 0px;"></div>
 	</div><!-- header -->
         
@@ -58,7 +58,8 @@
 				//array('label'=>'Home', 'url'=>Yii::app()->request->baseUrl),
                                 //array('label'=>'Mission', 'url'=>Yii::app()->request->baseUrl . '/mission'),
 				array('label'=>'Login', 'url'=>Yii::app()->request->baseUrl . '/site/login', 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>Yii::app()->request->baseUrl . '/site/logout', 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>Yii::app()->request->baseUrl . '/site/logout', 'visible'=>!Yii::app()->user->isGuest),
+                $this->menu
 			),
 		)); ?>
 	</div><!-- mainmenu -->

@@ -23,6 +23,9 @@ class PropertyController extends Controller
 
             $model->attributes = $_POST['Property'];
 
+            $model->first_created_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+            $model->last_update_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+
             if ($model->save(false)) {
 
                 Yii::app()->user->setFlash('success', "Client Property information saved");

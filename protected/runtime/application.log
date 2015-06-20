@@ -6648,3 +6648,1052 @@ Stack trace:
 #23 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
 #24 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
 REQUEST_URI=/referral/admin/entry
+2015/06/19 08:44:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/style.css".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('css/style.css')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/css/style.css
+HTTP_REFERER=http://localhost/referral/referral/main
+---
+2015/06/19 08:52:19 [error] [exception.CException] exception 'CException' with message 'MissionController cannot find the requested view "_entry_gridview".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('_entry_gridview', Array, true, false)
+#1 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#6 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#7 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 08:53:19 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status =  ORDER BY id DESC' at line 1. The SQL statement executed was: SELECT * FROM `entry` `t` WHERE referrel_user =  AND status =  ORDER BY id DESC.
+2015/06/19 08:53:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND status =  ORDER BY id DESC' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CActiveDataProvider.php(150): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\referral\protected\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(112): CDataProvider->getData()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(11): CComponent->__get('data')
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 08:54:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id DESC' at line 1. The SQL statement executed was: SELECT * FROM `entry` `t` WHERE referrel_user =  ORDER BY id DESC.
+2015/06/19 08:54:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id DESC' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CActiveDataProvider.php(150): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\referral\protected\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(112): CDataProvider->getData()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(11): CComponent->__get('data')
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 08:54:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id DESC' at line 1. The SQL statement executed was: SELECT * FROM `entry` `t` WHERE referrel_user =  ORDER BY id DESC.
+2015/06/19 08:54:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id DESC' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CActiveDataProvider.php(150): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\referral\protected\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(112): CDataProvider->getData()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(11): CComponent->__get('data')
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 08:55:09 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry` `t` WHERE referrel_user = .
+2015/06/19 08:55:09 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CActiveDataProvider.php(150): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\referral\protected\framework\web\CDataProvider.php(137): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(112): CDataProvider->getData()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(11): CComponent->__get('data')
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 09:03:19 [error] [exception.CException] exception 'CException' with message 'MissionController cannot find the requested view "_entry_listview".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CListView.php(242): CController->renderPartial('_entry_listview', Array)
+#1 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CListView->renderItems()
+#2 [internal function]: CBaseListView->renderSection(Array)
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(44): CBaseController->widget('zii.widgets.CLi...', Array)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 09:04:51 [error] [exception.CException] exception 'CException' with message 'MissionController cannot find the requested view "_entry_listview".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CListView.php(242): CController->renderPartial('_entry_listview', Array)
+#1 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CListView->renderItems()
+#2 [internal function]: CBaseListView->renderSection(Array)
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(44): CBaseController->widget('zii.widgets.CLi...', Array)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 09:04:53 [error] [exception.CException] exception 'CException' with message 'MissionController cannot find the requested view "_entry_listview".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CListView.php(242): CController->renderPartial('_entry_listview', Array)
+#1 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CListView->renderItems()
+#2 [internal function]: CBaseListView->renderSection(Array)
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(44): CBaseController->widget('zii.widgets.CLi...', Array)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 09:04:53 [error] [exception.CException] exception 'CException' with message 'MissionController cannot find the requested view "_entry_listview".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CListView.php(242): CController->renderPartial('_entry_listview', Array)
+#1 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CListView->renderItems()
+#2 [internal function]: CBaseListView->renderSection(Array)
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#6 C:\xampp\htdocs\referral\protected\views\client\_entry_gridview.php(44): CBaseController->widget('zii.widgets.CLi...', Array)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\referral\protected\controllers\client\MissionController.php(19): CController->renderPartial('/client/_entry_...', Array, true, false)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): MissionController->actionIndex()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/mission')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/client/mission
+HTTP_REFERER=http://localhost/referral/site/login
+---
+2015/06/19 09:47:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "documents".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/documents
+---
+2015/06/19 09:49:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "documents".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('documents')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('documents')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/docum...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/documents/documents
+---
+2015/06/19 11:17:24 [error] [exception.CException] exception 'CException' with message 'DocumentsController cannot find the requested view "_newpage".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(9): CController->renderPartial('_newpage', Array, true)
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', NULL, true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', NULL, true)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', NULL, true)
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(12): CController->render('/documents/inde...')
+#6 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#11 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents')
+#12 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/referral/documents
+---
+2015/06/19 11:38:25 [error] [exception.CException] exception 'CException' with message 'Property "DocumentsController." is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\layouts\main.php(62): CComponent->__get('')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\referral\protected\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\referral\protected\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('<div id="conten...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('<div id="conten...')
+#6 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(207): COutputProcessor->run()
+#7 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
+#8 C:\xampp\htdocs\referral\protected\views\layouts\column1.php(5): CBaseController->endContent()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(785): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#12 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(14): CController->render('/documents/inde...')
+#13 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): DocumentsController->actionIndex()
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#18 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents')
+#19 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/referral/documents
+---
+2015/06/19 11:44:00 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/documents
+---
+2015/06/19 11:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "id".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('id')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('id')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/category...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/client/category/id/2
+HTTP_REFERER=http://localhost/referral/client/manageclientportal/2
+---
+2015/06/19 13:05:08 [error] [php] Object of class DocumentCategory could not be converted to string (C:\xampp\htdocs\referral\protected\views\documents\index.php:5)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#2 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(14): DocumentsController->render()
+#3 unknown(0): DocumentsController->actionIndex()
+#4 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#8 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#11 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/19 13:06:23 [error] [php] Object of class DocumentCategory could not be converted to string (C:\xampp\htdocs\referral\protected\views\documents\index.php:5)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#2 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(14): DocumentsController->render()
+#3 unknown(0): DocumentsController->actionIndex()
+#4 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#8 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#11 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 06:34:32 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:34:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:36:26 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:36:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('3')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/3
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:36:42 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:36:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:36:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:36:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('3')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/3
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:02 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('3')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/3
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('3')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/3
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('3')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/3
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 06:37:21 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `entry_document_category` `t` WHERE entry = .
+2015/06/20 06:37:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(2): CActiveRecord->findAll('entry = ')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 07:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('view')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('view')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/view/...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/index.php/documents/view/id/1
+HTTP_REFERER=http://localhost/referral/documents/index/id/2
+---
+2015/06/20 07:11:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "listing/doctoryogacommon/UrlProcessing/url/www.dropdox.lk".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('listing/doctory...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/listing/doctoryogacommon/UrlProcessing/url/www.dropdox.lk
+HTTP_REFERER=http://localhost/referral/documents/index/id/2
+---
+2015/06/20 07:12:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "listing/doctoryogacommon/UrlProcessing/url/www.dropdox.lk".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('listing/doctory...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/listing/doctoryogacommon/UrlProcessing/url/www.dropdox.lk
+HTTP_REFERER=http://localhost/referral/documents/index/id/2
+---
+2015/06/20 07:13:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "url/www.dropdox.lk".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('url/www.dropdox...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/url/www.dropdox.lk
+HTTP_REFERER=http://localhost/referral/documents/index/id/2
+---
+2015/06/20 07:18:12 [error] [php] trim() expects parameter 1 to be string, array given (C:\xampp\htdocs\referral\protected\framework\web\CUrlManager.php:294)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(607) : eval()'d code(1): CWebApplication->createUrl()
+#1 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(607): eval()
+#2 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CDataColumn.php(139): CDataColumn->evaluateExpression()
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridColumn.php(138): CDataColumn->renderDataCellContent()
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(517): CDataColumn->renderDataCell()
+#5 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(490): CGridView->renderTableRow()
+#6 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(400): CGridView->renderTableBody()
+#7 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CGridView->renderItems()
+#8 unknown(0): CGridView->renderSection()
+#9 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback()
+#10 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CGridView->renderContent()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CGridView->run()
+#12 C:\xampp\htdocs\referral\protected\views\documents\_tab_view.php(12): DocumentsController->widget()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#14 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#15 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#16 C:\xampp\htdocs\referral\protected\views\documents\index.php(23): DocumentsController->renderPartial()
+#17 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#18 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#19 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#20 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#21 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): DocumentsController->render()
+#22 unknown(0): DocumentsController->actionIndex()
+#23 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#24 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#25 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#26 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#27 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#28 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#29 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#30 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 07:27:25 [error] [exception.CException] exception 'CException' with message 'Property "PropertyDocument.lead_id" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('lead_id')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(607) : eval()'d code(1): CActiveRecord->__get('lead_id')
+#2 C:\xampp\htdocs\referral\protected\framework\base\CComponent.php(607): eval()
+#3 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CDataColumn.php(139): CComponent->evaluateExpression('CHtml::link(CHt...', Array)
+#4 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridColumn.php(138): CDataColumn->renderDataCellContent(0, Object(PropertyDocument))
+#5 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(517): CGridColumn->renderDataCell(0)
+#6 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(490): CGridView->renderTableRow(0)
+#7 C:\xampp\htdocs\referral\protected\framework\zii\widgets\grid\CGridView.php(400): CGridView->renderTableBody()
+#8 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CGridView->renderItems()
+#9 [internal function]: CBaseListView->renderSection(Array)
+#10 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#11 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#13 C:\xampp\htdocs\referral\protected\views\documents\_tab_view.php(18): CBaseController->widget('zii.widgets.gri...', Array)
+#14 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#15 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#16 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#17 C:\xampp\htdocs\referral\protected\views\documents\index.php(23): CController->renderPartial('_tab_view', Array, true)
+#18 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#19 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#20 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#21 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#22 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CController->render('/documents/inde...', Array)
+#23 [internal function]: DocumentsController->actionIndex('2')
+#24 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#25 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#26 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#27 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#28 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#29 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#30 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#31 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#32 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#33 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/documents/index/id/2
+---
+2015/06/20 09:15:16 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\auth\CWebUser.php(141): CComponent->__get('type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(16): CWebUser->__get('type')
+#2 [internal function]: DocumentsController->actionIndex('2')
+#3 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#9 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#10 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 09:15:28 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\auth\CWebUser.php(141): CComponent->__get('type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(16): CWebUser->__get('type')
+#2 [internal function]: DocumentsController->actionIndex('2')
+#3 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#9 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#10 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 09:15:32 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\auth\CWebUser.php(141): CComponent->__get('type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(16): CWebUser->__get('type')
+#2 [internal function]: DocumentsController->actionIndex('2')
+#3 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#9 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#10 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/06/20 09:35:42 [error] [exception.CException] exception 'CException' with message 'Property "EntryDocumentCategory.category0->name" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('category0->name')
+#1 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('category0->name')
+#2 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(EntryDocumentCategory), 'category0->name')
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CHtml::listData(Array, 'category', 'category0->name')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/06/20 09:36:38 [error] [php] Object of class DocumentCategory could not be converted to string (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1865)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CActiveForm->dropDownList()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:36:46 [error] [exception.CException] exception 'CException' with message 'Property "EntryDocumentCategory.category0->name" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('category0->name')
+#1 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('category0->name')
+#2 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(EntryDocumentCategory), 'category0->name')
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CHtml::listData(Array, 'category', 'category0->name')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/06/20 09:38:40 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:38:55 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:38:57 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:38:57 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:38:58 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:40:25 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:40:43 [error] [exception.CException] exception 'CException' with message 'Property "EntryDocumentCategory.function($cat){ return $cat->id; }" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('function($cat){...')
+#1 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('function($cat){...')
+#2 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(EntryDocumentCategory), 'function($cat){...')
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CHtml::listData(Array, 'category', 'function($cat){...')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/06/20 09:40:53 [error] [php] explode() expects parameter 2 to be string, object given (C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php:1693)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): listData()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): DocumentsController->renderInternal()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): DocumentsController->renderFile()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): DocumentsController->renderPartial()
+#5 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): DocumentsController->render()
+#6 unknown(0): DocumentsController->actionIndex()
+#7 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): DocumentsController->runAction()
+#11 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): DocumentsController->runActionWithFilters()
+#12 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): DocumentsController->run()
+#13 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#14 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/documents/index/id/2
+2015/06/20 09:55:44 [error] [exception.CException] exception 'CException' with message 'Property "EntryDocumentCategory.name" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name')
+#1 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(EntryDocumentCategory), 'name')
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CHtml::listData(Array, 'id', 'name')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/admin/entry
+---
+2015/06/20 09:55:45 [error] [exception.CException] exception 'CException' with message 'Property "EntryDocumentCategory.name" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\db\ar\CActiveRecord.php(144): CComponent->__get('name')
+#1 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1696): CActiveRecord->__get('name')
+#2 C:\xampp\htdocs\referral\protected\framework\web\helpers\CHtml.php(1660): CHtml::value(Object(EntryDocumentCategory), 'name')
+#3 C:\xampp\htdocs\referral\protected\views\documents\index.php(46): CHtml::listData(Array, 'id', 'name')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('/documents/inde...', Array, true)
+#8 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(28): CController->render('/documents/inde...', Array)
+#9 [internal function]: DocumentsController->actionIndex('2')
+#10 C:\xampp\htdocs\referral\protected\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(DocumentsController), Array)
+#11 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(DocumentsController), Object(ReflectionMethod), Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#13 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#17 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/referral/documents/index/id/2
+HTTP_REFERER=http://localhost/referral/admin/entry
+---

@@ -27,7 +27,10 @@
 <div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
         <?php if ($model->id > 0) { ?>
-        <div style="float: right"><a href="<?php echo Yii::app()->baseUrl; ?>/client/property/add/id/<?php echo $model->entry; ?>" class="button" style="text-decoration: none">Add Property</a></div>
+        <div style="float: right">
+            <a href="<?php echo Yii::app()->baseUrl; ?>/client/property/add/id/<?php echo $model->entry; ?>" class="button" style="text-decoration: none">Add Property</a>
+            <a href="<?php echo Yii::app()->baseUrl; ?>/client/category/index/id/<?php echo $model->entry; ?>" class="button" style="text-decoration: none">Assign Categories</a>
+        </div>
         <?php } ?>
         <h2 class="icon_search"><?php echo $model->id > 0 ? 'Manage' : 'Enable' ?> Client Portal<span></span></h2>
         <hr style="border-top: solid 2px navy"/>

@@ -45,3 +45,40 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 ALTER TABLE `property`
 ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`entry`) REFERENCES `entry` (`id`) ON DELETE CASCADE,
 ADD CONSTRAINT `property_ibfk_2` FOREIGN KEY (`owner`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `entry_document_category` (
+  `id` int(11) NOT NULL,
+  `entry` int(11) NOT NULL,
+  `category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `entry_document_category`
+ADD PRIMARY KEY (`id`), ADD KEY `entry` (`entry`,`category`);
+
+ALTER TABLE `entry_document_category`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `entry_document_category`
+ADD CONSTRAINT `entry_document_category_ibfk_1` FOREIGN KEY (`entry`) REFERENCES `entry` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `entry_document_category_ibfk_2` FOREIGN KEY (`category`) REFERENCES `document_category` (`id`) ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `property_document` (
+  `id` int(11) NOT NULL,
+  `property` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `caption` varchar(200) NOT NULL,
+  `document` text NOT NULL,
+  `entry_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `property_document`
+ADD PRIMARY KEY (`id`), ADD KEY `property` (`property`,`category`), ADD KEY `category` (`category`);
+
+ALTER TABLE `property_document`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `property_document`
+ADD CONSTRAINT `property_document_ibfk_1` FOREIGN KEY (`property`) REFERENCES `property` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `property_document_ibfk_2` FOREIGN KEY (`category`) REFERENCES `document_category` (`id`) ON DELETE CASCADE;
+
+
