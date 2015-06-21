@@ -1,5 +1,32 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/grid.css" type="text/css" media="all">
 
+<script type="text/javascript">
+
+    function deleteReferral(id) {
+
+        var confirm = window.confirm('Do you want to delete this record ?');
+
+        if (confirm) {
+
+            $.ajax({
+                method: "POST",
+                url: "entry/delete/id/" + id
+
+            }).done(function( msg ) {
+
+                if (msg == 'Deleted') {
+
+                    window.document.location.reload();
+
+                } else {
+
+                    alert(msg);
+                }
+            });
+        }
+    }
+</script>
+
 <?php if(isset($grid_title)){ ?>
 <div style="float: left; padding-bottom: 5px"><font style="font-size: 14px"><b><?php echo $grid_title; ?></b></font></div>
 <?php } ?>

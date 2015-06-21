@@ -35,7 +35,7 @@ class ManageclientportalController extends Controller
 
             $model->attributes = $_POST['User'];
 
-            if (User::model()->findByAttributes(array('username'=>$model->username))) {
+            if (empty($model->id) && User::model()->findByAttributes(array('username'=>$model->username))) {
 
                 $model->addError('user_name', 'User name already used, try else');
                 Yii::app()->user->setFlash('notice', "User name already used, try else");

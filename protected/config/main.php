@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Referral Management System',
+    'defaultController' => 'mission',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

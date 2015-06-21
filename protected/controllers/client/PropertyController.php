@@ -29,10 +29,29 @@ class PropertyController extends Controller
             if ($model->save(false)) {
 
                 Yii::app()->user->setFlash('success', "Client Property information saved");
-                $this->redirect(Yii::app()->baseUrl . (Yii::app()->user->user_type == 0 ? '/admin/entry' : '/referral/main'));
+                $this->redirect(Yii::app()->baseUrl . '/mission');
             }
         }
 
         $this->render('/client/add_property',array('model' => $model));
+    }
+
+    public function actionUpdate($id){
+
+        $model = Property::model()->findByPk($id);
+
+        if (isset($_POST['Property'])) {
+
+            $model->attributes = $_POST['Property'];
+            $model->last_update_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+
+            if ($model->save(false)) {
+
+                Yii::app()->user->setFlash('success', "Client Property information saved");
+                $this->redirect(Yii::app()->baseUrl . '/mission');
+            }
+        }
+
+        $this->render('/client/update_property',array('model' => $model));
     }
 }

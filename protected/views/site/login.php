@@ -3,7 +3,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 ?>
 <div align="center">
 <div id="login">
-    <div style="border-bottom: solid 1px silver; padding: 10px 0 0 10px; background: url(../css/bg.gif) repeat-x;"><h1 style="color: white">Login</h1></div>
+    <div style="border-bottom: solid 1px silver; padding: 10px 0 0 10px; background: url(<?php echo Yii::app()->baseUrl; ?>/css/bg.gif) repeat-x;"><h1 style="color: white">Login</h1></div>
     <div style="padding:10px;">
         <p>Please fill out the following form with your login credentials:</p>
         <div class="form">

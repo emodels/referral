@@ -8,14 +8,14 @@
     <td><?php echo ($data->priority == "0") ? "Low" : (($data->priority == "1") ? "Medium" : "High"); ?></td>
     <td><?php echo $data->referral_commission_amount; ?></td>
     <td class="button-column">
-        <a style="text-decoration: none" class="delete" title="Delete" href="../admin/entry/delete/id/<?php echo $data->id ?>">
-            <img src="../images/delete.png" alt="Delete">
+        <a style="text-decoration: none" class="delete" title="Delete" href="javascript:deleteReferral('<?php echo $data->id ?>');">
+            <img src="images/delete.png" alt="Delete">
         </a>
-        <a target="_blank" style="text-decoration: none" title="Update" href="../admin/entry/update/id/<?php echo $data->id ?>">
-            <img src="../images/update.png" alt="Update">
+        <a style="text-decoration: none" title="Update" href="entry/update/id/<?php echo $data->id ?>">
+            <img src="images/update.png" alt="Update">
         </a>
-        <a title="<?php echo $data->client_portal_status == 0 ? 'Enable Client Portal' : 'Manage Client Portal'; ?>" href="../client/manageclientportal/<?php echo $data->id ?>">
-            <img src="../images/<?php echo $data->client_portal_status == 0 ? 'add' : 'cog'; ?>.png" alt="Manage Client Portal">
+        <a title="<?php echo $data->client_portal_status == 0 ? 'Enable Client Portal' : 'Manage Client Portal'; ?>" href="client/manageclientportal/<?php echo $data->id ?>">
+            <img src="images/<?php echo $data->client_portal_status == 0 ? 'add' : 'cog'; ?>.png" alt="Manage Client Portal">
         </a>
     </td>
 </tr>
@@ -44,7 +44,7 @@
             <?php foreach ($data->properties as $property) { ?>
                 <tr>
                     <td><?php echo $property->builder; ?></td>
-                    <td><?php echo $property->address; ?></td>
+                    <td><a href="<?php echo Yii::app()->baseUrl . '/client/property/update/id/' . $property->id ?>" title="Update Property Information"><?php echo $property->address; ?></a></td>
                     <td style="<?php echo $property->status == 'Open' ? 'background-color: #FFF733; color: black' : 'background-color: #006600; color: white'; ?>"><?php echo $property->status; ?></td>
                     <td><?php echo $property->owner0->first_name; ?></td>
                     <td style="background-color: <?php echo $property->initial_deposit == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->initial_deposit == 1 ? 'Yes' : 'No'; ?></td>
@@ -55,7 +55,7 @@
                     <td style="background-color: <?php echo $property->property_completion == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->property_completion == 1 ? 'Yes' : 'No'; ?></td>
                     <td style="background-color: <?php echo $property->rented_out == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->rented_out == 1 ? 'Yes' : 'No'; ?></td>
                     <td style="background-color: <?php echo $property->insurance_in_place == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->insurance_in_place == 1 ? 'Yes' : 'No'; ?></td>
-                    <td style="text-align: center"><a style="text-decoration: none" title="Documents" href="../documents/index/id/<?php echo $property->id ?>"><img src="../images/document.png" alt="Documents"></a></td>
+                    <td style="text-align: center"><a style="text-decoration: none" title="Documents" href="documents/index/id/<?php echo $property->id ?>"><img src="images/document.png" alt="Documents"></a></td>
                 </tr>
             <?php } ?>
             </tbody>

@@ -10,10 +10,10 @@ class MissionController extends Controller
             else{
                 switch (Yii::app()->user->user_type){
                     case '0':
-                        $this->redirect('admin/user');
+                        $this->redirect('entry');
                         break;
                     case '1':
-                        $this->redirect('referral/main');
+                        $this->redirect('entry');
                         break;
                     case '2':
                         $this->redirect('client/mission');

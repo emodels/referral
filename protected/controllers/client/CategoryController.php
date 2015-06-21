@@ -34,7 +34,7 @@ class CategoryController extends Controller
             }
 
             Yii::app()->user->setFlash('success', "Client Category information saved");
-            $this->redirect(Yii::app()->baseUrl . (Yii::app()->user->user_type == 0 ? '/admin/entry' : '/referral/main'));
+            $this->redirect(Yii::app()->baseUrl . '/mission');
         }
 
         $this->render('/client/category', array('model' => $model));

@@ -1,5 +1,14 @@
 <div style="float: left; width: 17%">
-    <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
+    <?php
+    if (Yii::app()->user->user_type == '0') {
+
+        require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php';
+
+    } else {
+
+        require_once Yii::getPathOfAlias('webroot.protected.views.referral') . '/referral_header_include.php';
+    }
+    ?>
 </div>  
 <div id="divListing" style="float: left; width: 82%; padding: 0 0 0 10px">
 
@@ -28,6 +37,8 @@
     </script>
 
     <div style="width: 100px"><a id="lnkMenuToggle" href="javascript:ToggleMenu();"><h5><< Hide Menu</h5></a></div>
+
+    <?php if (Yii::app()->user->user_type == '0') { ?>
 
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">
@@ -74,18 +85,30 @@
     </div>
     <div class="row"><hr style="padding-top: 2px"/></div>
     <?php echo CHtml::endForm();  ?>
+
     <div id="divProgress" style="display: none; padding-bottom: 10px">
         <span><img src="<?php echo Yii::app()->baseUrl; ?>/images/ajax-loader2.gif" style="width: 40px; vertical-align: middle"/></span>
         <span style="font-size: 16px; color: green"><b>Loading results . . .</b></span>
     </div>
+
+    <?php } ?>
+
     <div id="divGrid">
     <?php
-    if ($ShowAll == TRUE) {
+
+    if (Yii::app()->user->user_type == '0') {
+
         $partners = User::model()->findAll('user_type = :user_type', array(':user_type'=>'1'));
-        foreach ($partners as $partner) {
-            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
-            echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company),true,false);
-        }
+
+    } else {
+
+        $partners = User::model()->findAll('id = :id', array(':id'=>Yii::app()->user->id));
+    }
+
+    foreach ($partners as $partner) {
+
+        $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
+        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company),true,false);
     }
     ?>
     </div>

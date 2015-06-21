@@ -18,25 +18,31 @@ class UserController extends Controller
                 $model = new User;
                
                 if(Yii::app()->getRequest()->getIsAjaxRequest()) {
+
                     echo CActiveForm::validate( array( $model)); 
                     Yii::app()->end(); 
                 }
                 
                 if (isset($_POST['User'])) {
+
                     $model->attributes = $_POST['User'];
                     $model->user_type = 1;
-                    
+                    $model->entry = 0;
+
                     if (User::model()->findByAttributes(array('username'=>$model->username))) {
+
                         $model->addError('user_name', 'User name already used, try else');
                         Yii::app()->user->setFlash('notice', "User name already used, try else");
                     }
                     else{
+
                         if($model->save()){
                             Yii::app()->user->setFlash('success', "New Partner Added.");
                             $this->refresh();
                         }
                         else{
-                            Yii::app()->user->setFlash('notice', 'Error saving record');
+
+                            print_r($model->getErrors());
                         }
                     }
                 }

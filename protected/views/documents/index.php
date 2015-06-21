@@ -3,14 +3,6 @@
         width: 200px;
     }
 </style>
-<script type="text/javascript">
-    function openDialog(url) {
-        alert(url);
-        $('#iframe_dialog').src = url;
-        $("#mydialog").dialog("open");
-        return false;
-    }
-</script>
 <div style="float: left">
     <h3>Documents for Property : <?php echo $property->address; ?></h3>
 </div>
@@ -64,6 +56,8 @@
 <?php
 $tabsList = EntryDocumentCategory::model()->findAll('entry = ' . $property->entry);
 
+$tabsArray = array();
+
 foreach ($tabsList as $tab) {
 
     $dataProvider = new CActiveDataProvider('PropertyDocument', array('criteria'=>array('condition'=> 'property = ' . $property->id . ' AND category = ' . $tab->category, 'order'=>'id DESC'), 'pagination' => false));
@@ -78,16 +72,4 @@ $this->widget('zii.widgets.jui.CJuiTabs',array(
     ),
     'id'=>'MyTab-Menu1'
 ));
-
-$this->beginWidget('zii.widgets.jui.CJuiDialog',array(
-    'id'=>'mydialog',
-    'options'=>array(
-        'title'=>'Document Viewer',
-        'autoOpen'=>false,
-    ),
-));
-?>
-<iframe id="iframe_dialog" src="" border="1" width="100%"></iframe>
-<?php
-$this->endWidget('zii.widgets.jui.CJuiDialog');
 ?>

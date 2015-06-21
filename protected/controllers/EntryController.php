@@ -7,7 +7,7 @@ class EntryController extends Controller
                 $this->redirect(Yii::app()->createUrl('site/login'));
             }
             else{
-                if (Yii::app()->user->user_type != '0') {
+                if (Yii::app()->user->user_type == '2') {
                     $this->redirect(Yii::app()->baseUrl . '/mission');
                 }
             }
@@ -16,11 +16,19 @@ class EntryController extends Controller
 	public function actionAdd()
 	{
             $model = new Entry();
+            $status = array();
 
             $model->entry_added_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
             $model->entry_last_updated_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
             $model->referral_commission_amount = 0;
-            
+            $model->client_portal_status = 0;
+
+            if (Yii::app()->user->user_type !== '0') {
+
+                $model->referrel_user = Yii::app()->user->id;
+                $status = CHtml::listData(Status::model()->findAll('referral_user=:referral_user', array(':referral_user' => $model->referrel_user)), 'id', 'status');
+            }
+
             if (isset($_POST['Entry'])) {
 
                 $model->attributes = $_POST['Entry'];
@@ -81,12 +89,17 @@ class EntryController extends Controller
                         
                         Yii::app()->user->setFlash('success','Referral Added');
 
-                        $this->redirect(array('admin/user'));
+                        $this->redirect(Yii::app()->baseUrl . '/entry');
                     }
+
+                } else {
+
+                    print_r($model->getErrors()); exit();
                 }
+
             }
             
-            $this->render('add', array('model'=>$model));
+            $this->render('add', array('model'=>$model, 'status'=>$status));
 	}
 
     public function actionListStatus(){
@@ -180,7 +193,7 @@ class EntryController extends Controller
                 Yii::app()->end();
             }
             
-            $this->render('index', array('ShowAll'=>TRUE));
+            $this->render('index');
 	}
 
 	public function actionUpdate($id)
@@ -247,7 +260,7 @@ class EntryController extends Controller
                         
                         Yii::app()->user->setFlash('success','Referral Updated');
 
-                        $this->redirect(array('admin/user'));
+                        $this->redirect(Yii::app()->baseUrl . '/entry');
                     }
                 }
             }
@@ -257,8 +270,8 @@ class EntryController extends Controller
         
     public function actionDelete($id){
 
-        if(Yii::app()->request->isPostRequest)
-        {
+        if (Yii::app()->request->isAjaxRequest) {
+
             $entry = Entry::model()->findByPk($id);
 
             if(isset($entry)){

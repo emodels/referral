@@ -41,4 +41,9 @@ class DocumentsController extends Controller
             $this->render('/documents/index', array('property' => $property, 'model' => $model));
         }
     }
+
+    public function actionDelete($id) {
+
+        PropertyDocument::model()->deleteByPk($id);
+    }
 }

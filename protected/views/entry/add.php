@@ -31,7 +31,16 @@
     }
 </script>
 <div style="float: left; width: 17%">
-    <?php require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php'; ?>
+    <?php
+    if (Yii::app()->user->user_type == '0') {
+
+        require_once Yii::getPathOfAlias('webroot.protected.views.admin') . '/admin_header_include.php';
+
+    } else {
+
+        require_once Yii::getPathOfAlias('webroot.protected.views.referral') . '/referral_header_include.php';
+    }
+    ?>
 </div>  
 <div style="float: left; width: 82%; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
@@ -55,7 +64,7 @@
             <div>
                 <?php echo $form->dropDownList($model, 'referrel_user', 
                       CHtml::listData(User::model()->findAll('user_type=:user_type', array(':user_type'=>'1')), 'id', 'company'), 
-                      array('style'=>'width:135px','empty'=>'Select Partner', 'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),'update'=>'#Entry_status'))); ?>
+                      array('style'=>'width:135px','empty'=>'Select Partner', 'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),'update'=>'#Entry_status'), 'disabled'=> Yii::app()->user->user_type !== '0' ?'disabled' : '')); ?>
            </div>
         </div>
         <div class="row">
@@ -96,7 +105,7 @@
         </div>
         <div class="row">
             <div class="column">Status</div>
-            <div><?php echo $form->dropDownList($model, 'status', array(), array('style'=>'width:135px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'status', $status, array('style'=>'width:135px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
         </div>
         <div class="row">
             <div class="column">Priority</div>
