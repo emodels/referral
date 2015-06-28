@@ -1,7 +1,7 @@
 /*---( Pending migrations )---*/
 ALTER TABLE `entry` ADD `date_of_birth` DATE NULL ;
 ALTER TABLE `entry` ADD `additional_email` VARCHAR(50) NULL AFTER `email`;
-ALTER TABLE `entry` ADD `property_holder` VARCHAR(10) NOT NULL ;
+ALTER TABLE `entry` ADD `property_holder` VARCHAR(20) NOT NULL ;
 ALTER TABLE `entry` ADD `client_portal_status` TINYINT NOT NULL ;
 
 ALTER TABLE `user` ADD `entry` INT NOT NULL ;

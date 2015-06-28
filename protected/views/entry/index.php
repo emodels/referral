@@ -34,6 +34,20 @@
                 $('#divListing').css('width', '82%').css('padding-left', '10px');
             }
         }
+
+        function ValidatePortalClients(obj) {
+
+            if ($(obj).attr('id') == 'Entry_isPortalClientsOnly') {
+
+                $('#Entry_isNonPortalClientsOnly').removeAttr('checked');
+
+            } else {
+
+                $('#Entry_isPortalClientsOnly').removeAttr('checked');
+            }
+
+            $('#yt0').click();
+        }
     </script>
 
     <div style="width: 100px"><a id="lnkMenuToggle" href="javascript:ToggleMenu();"><h5><< Hide Menu</h5></a></div>
@@ -65,6 +79,7 @@
                                             $("#divGrid").html(data);
                                        }'), array('class'=>'button','style'=>'padding:2px 10px 2px 10px')); ?>
         </div>
+        <div class="column right"><?php echo CHtml::checkBox('Entry[isPortalClientsOnly]', false, array('style' => 'width:20px', 'onclick' => 'js:ValidatePortalClients(this);')); ?> Show Portal Clients Only</div>
     </div>
     <div class="clearfix" style="padding-bottom: 5px"></div>
     <div class="row" style="border-top: solid 1px silver; padding-top: 5px">
@@ -82,6 +97,7 @@
                                             $("#divGrid").html(data);
                                        }'), array('class'=>'button','style'=>'padding:2px 10px 2px 10px')); ?>
         </div>
+        <div class="column right"><?php echo CHtml::checkBox('Entry[isNonPortalClientsOnly]', false, array('style' => 'width:20px', 'onclick' => 'js:ValidatePortalClients(this);')); ?> Show Non-Portal Clients Only</div>
     </div>
     <div class="row"><hr style="padding-top: 2px"/></div>
     <?php echo CHtml::endForm();  ?>

@@ -67,9 +67,10 @@ class Entry extends CActiveRecord
 			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, email, additional_email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
-			array('zip, property_holder', 'length', 'max'=>10),
+			array('zip', 'length', 'max'=>10),
 			array('country', 'length', 'max'=>100),
 			array('remarks', 'length', 'max'=>500),
+			array('property_holder', 'length', 'max'=>20),
 			array('description, remind_date, date_of_birth', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

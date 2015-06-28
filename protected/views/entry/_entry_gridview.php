@@ -1,5 +1,11 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/grid.css" type="text/css" media="all">
 
+<style type="text/css">
+    .hover_highlight:hover {
+        border: solid 2px #000000 !important;
+    }
+</style>
+
 <script type="text/javascript">
 
     function deleteReferral(id) {
@@ -21,6 +27,26 @@
                 } else {
 
                     alert(msg);
+                }
+            });
+        }
+    }
+
+    function ChangePropValue(id, field, value) {
+
+        if (confirm('Are you sure you want to change status of this field ?')) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'client/property/updatefieldvalue',
+                dataType: 'json',
+                data: {'id': id, 'field': field, 'value': value},
+                complete: function (data) {
+
+                    if (data.responseText == 'done'){
+
+                        window.document.location.reload();
+                    }
                 }
             });
         }
@@ -49,6 +75,7 @@ if (isset($dataProvider)) {
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Type</th>
                 <th>Country</th>
                 <th>Last  Updated</th>
                 <th>Status</th>
@@ -59,7 +86,7 @@ if (isset($dataProvider)) {
         </thead>
         <tfoot>
             <tr>
-                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b>Total Commission :</b></div></td><td>&nbsp;</td><td><div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b><?php echo $total; ?></b></div></td><td class="button-column">&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b>Total Commission :</b></div></td><td>&nbsp;</td><td><div style="border-top: solid 1px silver;border-bottom: double 4px silver; padding: 5px 0 5px 0"><b><?php echo $total; ?></b></div></td><td class="button-column">&nbsp;</td>
             </tr>
         </tfoot>
         <tbody>

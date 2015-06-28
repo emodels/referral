@@ -119,14 +119,25 @@ class EntryController extends Controller
 	{
         $first_name = '';
         $last_name = '';
+        $isPortalClientsOnly = '';
 
             if (isset($_POST['Entry']) || Yii::app()->request->isAjaxRequest) {
-                
+
                 if (isset($_POST['Entry'])) {
-                    
+
                     $first_name = $_POST['Entry']['first_name'];
                     $last_name = $_POST['Entry']['last_name'];
-                    
+
+                    if (isset($_POST['Entry']['isPortalClientsOnly'])) {
+
+                        $isPortalClientsOnly = ' AND client_portal_status = 1';
+                    }
+
+                    if (isset($_POST['Entry']['isNonPortalClientsOnly'])) {
+
+                        $isPortalClientsOnly = ' AND client_portal_status = 0';
+                    }
+
                     if ($_POST['Entry']['referrel_user'] == '' && $_POST['Entry']['status'] == ''){
 
                         unset(Yii::app()->session['referrel_user']);
@@ -136,43 +147,43 @@ class EntryController extends Controller
 
                         Yii::app()->session['referrel_user'] = $_POST['Entry']['referrel_user'];
                         unset(Yii::app()->session['status']);
-                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'], 'order'=>'id DESC'), 'pagination' => false));
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'] . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                     }
                     else if ($_POST['Entry']['referrel_user'] != '' && $_POST['Entry']['status'] != '') {
 
                         Yii::app()->session['referrel_user'] = $_POST['Entry']['referrel_user'];
                         Yii::app()->session['status'] = $_POST['Entry']['status'];
-                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'] . ' AND status = ' . $_POST['Entry']['status'], 'order'=>'id DESC'), 'pagination' => false));
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $_POST['Entry']['referrel_user'] . ' AND status = ' . $_POST['Entry']['status'] . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                     }
                 }
-                
+
                 if (Yii::app()->request->isAjaxRequest) {
 
                     if (isset(Yii::app()->session['referrel_user']) && !isset(Yii::app()->session['status'])) {
 
-                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'], 'order'=>'id DESC'), 'pagination' => false));
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'] . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                     }
 
                     if (isset(Yii::app()->session['referrel_user']) && isset(Yii::app()->session['status'])) {
 
-                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'] . ' AND status = ' . Yii::app()->session['status'], 'order'=>'id DESC'), 'pagination' => false));
+                        $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . Yii::app()->session['referrel_user'] . ' AND status = ' . Yii::app()->session['status']. $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                     }
                 }
-                
+
                 /**
                  * Filter records by First name and Last name
                  */
                 if ($first_name != '' && $last_name == '') {
 
-                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%"' . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                 }
                 else if ($first_name == '' && $last_name != ''){
 
-                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'last_name LIKE "' . $last_name . '%"' . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                 }
                 else if ($first_name != '' && $last_name != ''){
 
-                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%" OR last_name LIKE "' . $last_name . '%"', 'order'=>'id DESC'), 'pagination' => false));
+                    $dataProvider=new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'first_name LIKE "' . $first_name . '%" OR last_name LIKE "' . $last_name . '%"' . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                 }
 
                 if (isset($dataProvider)) {
@@ -185,14 +196,14 @@ class EntryController extends Controller
 
                     foreach ($partners as $partner) {
 
-                        $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
+                        $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
                         echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company), true, false);
                     }
                 }
 
                 Yii::app()->end();
             }
-            
+
             $this->render('index');
 	}
 

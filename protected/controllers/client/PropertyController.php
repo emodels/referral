@@ -54,4 +54,28 @@ class PropertyController extends Controller
 
         $this->render('/client/update_property',array('model' => $model));
     }
+
+    public function actionUpdateFieldValue(){
+
+        if (Yii::app()->request->isAjaxRequest && Yii::app()->request->isPostRequest) {
+
+            if (isset($_POST['id']) && isset($_POST['field']) && isset($_POST['value'])) {
+
+                $property = Property::model()->findByPk($_POST['id']);
+
+                if (isset($property)) {
+
+                    $property->{$_POST['field']} = $_POST['value'];
+
+                    if ($property->save()) {
+
+                        echo 'done';
+                    }
+                }
+            }
+        } else {
+
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+        }
+    }
 }

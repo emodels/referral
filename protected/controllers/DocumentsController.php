@@ -21,7 +21,7 @@ class DocumentsController extends Controller
 
             } else {
 
-                $this->menu = array('label'=>'Back to View Referrals', 'url'=>'javascript:window.history.back();', 'visible'=>!Yii::app()->user->isGuest);
+                $this->menu = array('label'=>'Back to View Referrals', 'url'=>Yii::app()->request->baseUrl . '/entry', 'visible'=>!Yii::app()->user->isGuest);
             }
 
             if (isset($_POST['PropertyDocument'])) {
@@ -32,6 +32,38 @@ class DocumentsController extends Controller
                 $model->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
 
                 if ($model->save()) {
+
+                    //--------Send Email notification to Client ---------------
+                    $message = $this->renderPartial('//email/template/notify_document_added', array('document'=>$model), true);
+
+                    if (isset($message) && $message != "") {
+
+                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                        $mailer->Host = Yii::app()->params['SMTP_Host'];
+                        $mailer->IsSMTP();
+                        $mailer->SMTPAuth = true;
+                        $mailer->Username = Yii::app()->params['SMTP_Username'];
+                        $mailer->Password = Yii::app()->params['SMTP_password'];
+                        $mailer->From = Yii::app()->params['SMTP_Username'];
+                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                        $mailer->AddAddress($model->property0->entry0->email);
+                        $mailer->AddCC(Yii::app()->params['adminEmail']);
+                        $mailer->FromName = 'Dwellings Group';
+                        $mailer->CharSet = 'UTF-8';
+                        $mailer->Subject = 'Dwellings Group Referral Management System - New Document Added';
+                        $mailer->IsHTML();
+                        $mailer->Body = $message;
+
+                        try{
+
+                            $mailer->Send();
+                        }
+                        catch (Exception $ex){
+
+                            echo $ex->getMessage();
+                        }
+                    }
+                    //----------------------------------------------------------
 
                     Yii::app()->user->setFlash('success', 'Document Added');
                     $this->refresh();

@@ -8907,3 +8907,91 @@ Stack trace:
 REQUEST_URI=/referral/referral/main
 HTTP_REFERER=http://localhost/referral/client/category/index/id/8
 ---
+2015/06/28 12:13:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "property/updatefieldvalue".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('property/update...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/property/updatefieldvalue
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:13:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "property/updatefieldvalue".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('property/update...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/property/updatefieldvalue
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:14:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\referral\protected\controllers\client\PropertyController.php:78
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): PropertyController->actionUpdateFieldValue()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('updatefieldvalu...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/referral/client/property/updatefieldvalue
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:17:52 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\referral\protected\controllers\client\PropertyController.php:78
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): PropertyController->actionUpdateFieldValue()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('updatefieldvalu...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/referral/client/property/updatefieldvalue?id=2&field=status&value=Closed
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:21:31 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\referral\protected\controllers\client\PropertyController.php:78
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): PropertyController->actionUpdateFieldValue()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('updatefieldvalu...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/referral/client/property/updatefieldvalue?id=2&field=status&value=Closed
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:24:07 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\referral\protected\controllers\client\PropertyController.php:78
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): PropertyController->actionUpdateFieldValue()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('updatefieldvalu...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/referral/client/property/updatefieldvalue?id=2&field=status&value=Closed
+HTTP_REFERER=http://localhost/referral/entry
+---
+2015/06/28 12:25:17 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\referral\protected\controllers\client\PropertyController.php:78
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): PropertyController->actionUpdateFieldValue()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('updatefieldvalu...')
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/property...')
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/referral/client/property/updatefieldvalue?id=2&field=status&value=Closed
+HTTP_REFERER=http://localhost/referral/entry
+---
