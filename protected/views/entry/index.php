@@ -69,6 +69,8 @@
                                         }'))); ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Status :</div>
         <div class="column"><?php echo CHtml::dropDownList('Entry[status]', '', array(), array('empty'=>'Select Status', 'style' => 'width:153px')); ?></div>
+        <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Property Holder :</div>
+        <div class="column"><?php echo CHtml::dropDownList('Entry[property_holder]', '', array('Owner'=>'Owner','Tenant'=>'Tenant','Rental_Client'=>'Rental_Client'), array('empty'=>'Select Property Holder', 'style' => 'width:160px')); ?></div>
         <div class="column" style="padding-left: 40px"><?php echo CHtml::ajaxButton('List','', array('type'=>'POST',
                                        'beforeSend' => 'function(){
                                             $(".ajax-loading").hide();

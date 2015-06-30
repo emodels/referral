@@ -64,6 +64,10 @@
             <div><?php echo $form->dropDownList($model, 'allow_add_referral', array('0'=>'No','1'=>'Yes')); ?><?php echo $form->error($model, 'allow_add_referral'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Allow Portal Management</div>
+            <div><?php echo $form->dropDownList($model, 'allow_portal_management', array('0'=>'No','1'=>'Yes')); ?><?php echo $form->error($model, 'allow_portal_management'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">&nbsp;</div>
             <div><?php echo CHtml::submitButton('Add Partner', array('class' => 'button')); ?></div>
         </div>

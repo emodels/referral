@@ -35,6 +35,8 @@ class UserIdentity extends CUserIdentity
                     $this->setState('company', $user->company);
                     $this->setState('email', $user->email);
                     $this->setState('entry', $user->entry);
+                    $this->setState('allow_add_referral', $user->allow_add_referral);
+                    $this->setState('allow_portal_management', $user->allow_portal_management);
                     $this->errorCode=self::ERROR_NONE;
                 }
                 

@@ -42,7 +42,7 @@
                     <th style="background: #cecece; color: #000000; text-align: left">Property Completion ?</th>
                     <th style="background: #cecece; color: #000000; text-align: left">Rented Out ?</th>
                     <th style="background: #cecece; color: #000000; text-align: left">Insurance in Place ?</th>
-                    <th style="background: #cecece; color: #000000; text-align: left">Documents</th>
+                    <th style="background: #cecece; color: #000000; text-align: left; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'block' )?>;">Documents</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +60,7 @@
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'property_completion', '<?php echo $property->property_completion == 1 ? '0' : '1'; ?>');" style="cursor: pointer; background-color: <?php echo $property->property_completion == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->property_completion == 1 ? 'Yes' : 'No'; ?></td>
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'rented_out', '<?php echo $property->rented_out == 1 ? '0' : '1'; ?>');" style="cursor: pointer; background-color: <?php echo $property->rented_out == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->rented_out == 1 ? 'Yes' : 'No'; ?></td>
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'insurance_in_place', '<?php echo $property->insurance_in_place == 1 ? '0' : '1'; ?>');" style="cursor: pointer; background-color: <?php echo $property->insurance_in_place == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->insurance_in_place == 1 ? 'Yes' : 'No'; ?></td>
-                    <td style="text-align: center"><a style="text-decoration: none" title="Documents" href="documents/index/id/<?php echo $property->id ?>"><img src="images/document.png" alt="Documents"></a></td>
+                    <td style="text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'block' )?>;"><a style="text-decoration: none" title="Documents" href="documents/index/id/<?php echo $property->id ?>"><img src="images/document.png" alt="Documents"></a></td>
                 </tr>
             <?php } ?>
             </tbody>

@@ -15,6 +15,7 @@
  * @property string $confirm_password
  * @property integer $allow_add_referral
  * @property integer $entry
+ * @property integer $allow_portal_management
  *
  * The followings are the available model relations:
  * @property Entry[] $entries
@@ -49,13 +50,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry', 'required'),
-			array('user_type, allow_add_referral, entry', 'numerical', 'integerOnly'=>true),
+			array('first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management', 'required'),
+			array('user_type, allow_add_referral, entry, allow_portal_management', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, email, username, password, confirm_password', 'length', 'max'=>50),
 			array('company', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,6 +91,7 @@ class User extends CActiveRecord
 			'confirm_password' => 'Confirm Password',
 			'allow_add_referral' => 'Allow Add Referral',
 			'entry' => 'Entry',
+			'allow_portal_management' => 'Allow Portal Management',
 		);
 	}
 
@@ -115,6 +117,7 @@ class User extends CActiveRecord
 		$criteria->compare('confirm_password',$this->confirm_password,true);
 		$criteria->compare('allow_add_referral',$this->allow_add_referral);
 		$criteria->compare('entry',$this->entry);
+		$criteria->compare('allow_portal_management',$this->allow_portal_management);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

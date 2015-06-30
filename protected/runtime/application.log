@@ -9077,3 +9077,38 @@ Stack trace:
 #7 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
 #8 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
 REQUEST_URI=/referral/client/manageclientportal/10
+2015/06/30 12:25:03 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.allow_portal_management" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\auth\CWebUser.php(141): CComponent->__get('allow_portal_ma...')
+#1 C:\xampp\htdocs\referral\protected\views\entry\_entry_listview.php(45): CWebUser->__get('allow_portal_ma...')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CListView.php(242): CController->renderPartial('_entry_listview', Array)
+#6 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(158): CListView->renderItems()
+#7 [internal function]: CBaseListView->renderSection(Array)
+#8 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(141): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#9 C:\xampp\htdocs\referral\protected\framework\zii\widgets\CBaseListView.php(126): CBaseListView->renderContent()
+#10 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(174): CBaseListView->run()
+#11 C:\xampp\htdocs\referral\protected\views\entry\_entry_gridview.php(98): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\referral\protected\views\entry\index.php(127): CController->renderPartial('_entry_gridview', Array, true, false)
+#16 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(127): require('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\referral\protected\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\\xampp\\htdocs...', NULL, true)
+#18 C:\xampp\htdocs\referral\protected\framework\web\CController.php(870): CBaseController->renderFile('C:\\xampp\\htdocs...', NULL, true)
+#19 C:\xampp\htdocs\referral\protected\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#20 C:\xampp\htdocs\referral\protected\controllers\EntryController.php(207): CController->render('index')
+#21 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): EntryController->actionIndex()
+#22 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#23 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#24 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('')
+#26 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('entry')
+#27 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/referral/entry
+HTTP_REFERER=http://localhost/referral/index.php/admin/user/update/id/45
+---

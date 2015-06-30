@@ -115,8 +115,8 @@ class EntryController extends Controller
         }
     }
         
-	public function actionIndex()
-	{
+	public function actionIndex() {
+
         $first_name = '';
         $last_name = '';
         $isPortalClientsOnly = '';
@@ -136,6 +136,11 @@ class EntryController extends Controller
                     if (isset($_POST['Entry']['isNonPortalClientsOnly'])) {
 
                         $isPortalClientsOnly = ' AND client_portal_status = 0';
+                    }
+
+                    if (isset($_POST['Entry']['property_holder']) && $_POST['Entry']['property_holder'] != '') {
+
+                        $isPortalClientsOnly .= " AND property_holder = '" . $_POST['Entry']['property_holder'] . "'";
                     }
 
                     if ($_POST['Entry']['referrel_user'] == '' && $_POST['Entry']['status'] == ''){
