@@ -78,7 +78,7 @@
                         <div class="column">
                             <?php echo $form->fileField($entry, 'logo'); ?><?php echo $form->error($entry, 'logo'); ?>
                             <?php if ($entry->logo != null) { ?>
-                            <img src="data:image/jpeg;base64, <?php echo $entry->logo; ?>"/>
+                            <img src="data:image/jpeg;base64, <?php echo $entry->logo; ?>" style="width: 200px; height: 80px"/>
                             <?php } ?>
                         </div>
                         <div class="clearfix"></div>
