@@ -81,4 +81,5 @@ ALTER TABLE `property_document`
 ADD CONSTRAINT `property_document_ibfk_1` FOREIGN KEY (`property`) REFERENCES `property` (`id`) ON DELETE CASCADE,
 ADD CONSTRAINT `property_document_ibfk_2` FOREIGN KEY (`category`) REFERENCES `document_category` (`id`) ON DELETE CASCADE;
 
-
+ALTER TABLE `entry` ADD `logo` longblob NULL;
+ALTER TABLE `entry` ADD `header_title` TEXT NULL;

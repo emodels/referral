@@ -47,9 +47,13 @@
     }
 ?>
 	<div id="header">
-		<div id="logo"></div>
-                <div id="logo_name"><?php echo isset($this->header_title) ? $this->header_title : 'Dwellings group - Customer collaboration portal'; ?></div>
-                <div style="clear: both; height: 0px;"></div>
+        <?php if (isset($this->header_logo)) { ?>
+            <img id="logo" src="data:image/jpeg;base64, <?php echo $this->header_logo ?>"/>
+        <?php } else { ?>
+            <img id="logo" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.jpg"/>
+        <?php } ?>
+        <div id="logo_name"><?php echo isset($this->header_title) ? $this->header_title : 'Dwellings group - Customer collaboration portal'; ?></div>
+        <div style="clear: both; height: 0px;"></div>
 	</div><!-- header -->
         
 	<div id="mainmenu">
