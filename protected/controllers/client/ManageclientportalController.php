@@ -29,6 +29,7 @@ class ManageclientportalController extends Controller
             $model->user_type = 2;
             $model->allow_add_referral = 0;
             $model->entry = $id;
+            $model->allow_portal_management = 0;
         }
 
         if (isset($_POST['User'])) {
