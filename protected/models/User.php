@@ -16,6 +16,8 @@
  * @property integer $allow_add_referral
  * @property integer $entry
  * @property integer $allow_portal_management
+ * @property string $logo
+ * @property string $header_title
  *
  * The followings are the available model relations:
  * @property Entry[] $entries
@@ -54,9 +56,10 @@ class User extends CActiveRecord
 			array('user_type, allow_add_referral, entry, allow_portal_management', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, email, username, password, confirm_password', 'length', 'max'=>50),
 			array('company', 'length', 'max'=>100),
+			array('logo, header_title', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management, logo, header_title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -92,6 +95,8 @@ class User extends CActiveRecord
 			'allow_add_referral' => 'Allow Add Referral',
 			'entry' => 'Entry',
 			'allow_portal_management' => 'Allow Portal Management',
+			'logo' => 'Logo',
+			'header_title' => 'Header Title',
 		);
 	}
 
@@ -118,6 +123,8 @@ class User extends CActiveRecord
 		$criteria->compare('allow_add_referral',$this->allow_add_referral);
 		$criteria->compare('entry',$this->entry);
 		$criteria->compare('allow_portal_management',$this->allow_portal_management);
+		$criteria->compare('logo',$this->logo,true);
+		$criteria->compare('header_title',$this->header_title,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

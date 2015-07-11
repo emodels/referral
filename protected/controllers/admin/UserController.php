@@ -28,6 +28,14 @@ class UserController extends Controller
                     $model->attributes = $_POST['User'];
                     $model->user_type = 1;
                     $model->entry = 0;
+                    $model->logo = CUploadedFile::getInstance($model, 'logo');
+
+                    if (isset($model->logo)){
+
+                        $tmpfile_contents = file_get_contents($model->logo->tempName);
+
+                        $model->logo = base64_encode($tmpfile_contents);
+                    }
 
                     if (User::model()->findByAttributes(array('username'=>$model->username))) {
 
@@ -97,10 +105,26 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
                 $model = User::model()->findByPk($id);
-                
+
+                $logo_existing = $model->logo;
+
                 if (isset($_POST['User'])) {
+
                     $model->attributes = $_POST['User'];
-                    
+
+                    $logo = CUploadedFile::getInstance($model, 'logo');
+
+                    if (isset($logo)){
+
+                        $tmpfile_contents = file_get_contents($logo->tempName);
+
+                        $model->logo = base64_encode($tmpfile_contents);
+
+                    } else {
+
+                        $model->logo = $logo_existing;
+                    }
+
                     if($model->save()){
                         Yii::app()->user->setFlash('success', "Partner Updated.");
                         $this->redirect(Yii::app()->baseUrl . '/admin/user');

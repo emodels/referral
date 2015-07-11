@@ -3,6 +3,7 @@
 class ManageclientportalController extends Controller
 {
     public function init(){
+
         if (Yii::app()->user->isGuest){
             $this->redirect(Yii::app()->createUrl('site/login'));
         }
@@ -43,24 +44,6 @@ class ManageclientportalController extends Controller
             }
             else{
 
-                if (isset($_POST['Entry'])) {
-
-                    $entry_temp = new Entry();
-                    $entry_temp->attributes = $_POST['Entry'];
-
-                    $entry_temp->logo = CUploadedFile::getInstance($entry_temp, 'logo');
-
-                    if (isset($entry_temp->logo)){
-
-                        $tmpfile_contents = file_get_contents($entry_temp->logo->tempName);
-
-                        $entry->logo = base64_encode($tmpfile_contents);
-                    }
-
-                    $entry->header_title = $entry_temp->header_title;
-                    $entry->save();
-                }
-
                 if($model->save()){
 
                     $entry->client_portal_status = 1;
@@ -79,6 +62,6 @@ class ManageclientportalController extends Controller
             }
         }
 
-        $this->render('/client/manage_client_portal',array('model' => $model, 'entry' => $entry));
+        $this->render('/client/manage_client_portal',array('model' => $model));
     }
 }

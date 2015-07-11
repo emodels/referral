@@ -9112,3 +9112,12 @@ Stack trace:
 REQUEST_URI=/referral/entry
 HTTP_REFERER=http://localhost/referral/index.php/admin/user/update/id/45
 ---
+2015/07/11 17:32:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "client/images/document.png".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('client/images/d...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/client/images/document.png
+HTTP_REFERER=http://localhost/referral/client/mission
+---

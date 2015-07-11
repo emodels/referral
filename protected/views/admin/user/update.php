@@ -22,7 +22,7 @@
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'admin-user-update',
-        'htmlOptions' => array('autocomplete' => 'off'),
+        'htmlOptions' => array('autocomplete' => 'off', 'enctype' => 'multipart/form-data'),
         'enableClientValidation' => true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
@@ -66,6 +66,21 @@
         <div class="row">
             <div class="column">Allow Portal Management</div>
             <div><?php echo $form->dropDownList($model, 'allow_portal_management', array('0'=>'No','1'=>'Yes')); ?><?php echo $form->error($model, 'allow_portal_management'); ?></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Header Logo <br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column">
+                <?php echo $form->fileField($model, 'logo'); ?><?php echo $form->error($model, 'logo'); ?>
+                <?php if ($model->logo != null) { ?>
+                    <img src="data:image/jpeg;base64, <?php echo $model->logo; ?>" style="width: 200px; height: 80px"/>
+                <?php } ?>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Header Title <br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column"><?php echo $form->textField($model, 'header_title', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'header_title'); ?></div>
+            <div class="clearfix"></div>
         </div>
         <div class="row">
             <div class="column">&nbsp;</div>

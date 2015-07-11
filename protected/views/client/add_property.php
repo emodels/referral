@@ -17,7 +17,7 @@
 </div>
 <div style="float: left; width: 670px; padding-left: 10px">
     <div class="box" style="border-radius: 5px; border: solid 1px silver">
-        <h2 class="icon_search">Add Property for Client : <span style="margin-left: 20px"><b><?php echo ucfirst($model->entry0->first_name) . ' ' . ucfirst($model->entry0->last_name); ?></b></span></h2>
+        <h2 class="icon_search">Add Property for Client : <span style="margin-left: 20px"><b><?php echo ucfirst($model->entry0->first_name) . ' ' . ucfirst($model->entry0->last_name) . ' - (' . $model->entry0->property_holder . ')'; ?></b></span></h2>
         <hr style="border-top: solid 2px navy"/>
         <div class="form">
             <?php
@@ -52,6 +52,7 @@
                     <div class="column"><?php echo $form->dropDownList($model, 'owner', CHtml::listData(User::model()->findAll(array('condition'=>'user_type = 1','order' => 'first_name')),'id','first_name'),array('style' => 'width:200px', 'empty'=>'Select Owner')); ?><?php echo $form->error($model, 'owner'); ?></div>
                     <div class="clearfix"></div>
                 </div>
+                <?php if ($model->entry0->property_holder !== 'Tenant') { ?>
                 <div class="row">
                     <div class="column">Initial Deposit</div>
                     <div class="column"><?php echo $form->checkBox($model, 'initial_deposit', array('value'=>1,'uncheckValue'=>0), array('style' => 'width:200px')); ?></div>
@@ -92,6 +93,7 @@
                     <div class="column"><?php echo $form->checkBox($model, 'insurance_in_place', array('value'=>1,'uncheckValue'=>0), array('style' => 'width:200px')); ?></div>
                     <div class="clearfix"></div>
                 </div>
+                <?php } ?>
                 <div class="row">
                     <div class="column">&nbsp;</div>
                     <div><?php echo CHtml::submitButton('Add Property', array('class' => 'button')); ?></div>

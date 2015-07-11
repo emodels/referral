@@ -116,7 +116,7 @@
         </div>
         <div class="row">
             <div class="column">Property Holder</div>
-            <div><?php echo $form->dropDownList($model, 'property_holder', array('Owner'=>'Owner','Tenant'=>'Tenant','Rental_Client'=>'Rental_Client'), array('style'=>'width:135px','empty'=>'Select Property Holder')); ?><?php echo $form->error($model, 'property_holder'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'property_holder', array('Owner'=>'Owner','Tenant'=>'Tenant','Landlord'=>'Landlord'), array('style'=>'width:135px','empty'=>'Select Property Holder')); ?><?php echo $form->error($model, 'property_holder'); ?></div>
         </div>
         <div class="row">
             <div class="column">Send Reminder</div>

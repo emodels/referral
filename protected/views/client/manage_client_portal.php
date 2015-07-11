@@ -72,23 +72,6 @@
                     <div class="column"><?php echo $form->passwordField($model, 'confirm_password', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'confirm_password'); ?></div>
                     <div class="clearfix"></div>
                 </div>
-                <?php if ($entry->property_holder == 'Rental_Client') { ?>
-                    <div class="row" style="margin-top: 15px">
-                        <div class="column">Header Logo</div>
-                        <div class="column">
-                            <?php echo $form->fileField($entry, 'logo'); ?><?php echo $form->error($entry, 'logo'); ?>
-                            <?php if ($entry->logo != null) { ?>
-                            <img src="data:image/jpeg;base64, <?php echo $entry->logo; ?>" style="width: 200px; height: 80px"/>
-                            <?php } ?>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="row" style="margin-top: 15px">
-                        <div class="column">Header Title</div>
-                        <div class="column"><?php echo $form->textField($entry, 'header_title', array('style' => 'width:200px')); ?><?php echo $form->error($entry, 'header_title'); ?></div>
-                        <div class="clearfix"></div>
-                    </div>
-                <?php } ?>
                 <div class="row">
                     <div class="column">&nbsp;</div>
                     <div><?php echo CHtml::submitButton((($model->id > 0) ? 'Update' : 'Enable') . ' Client Portal', array('class' => 'button')); ?></div>

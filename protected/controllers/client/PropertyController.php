@@ -40,7 +40,7 @@ class PropertyController extends Controller
 
         $model = Property::model()->findByPk($id);
 
-        if (isset($_POST['Property'])) {
+        if (isset($_POST['btnUpdate'])) {
 
             $model->attributes = $_POST['Property'];
             $model->last_update_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
@@ -48,6 +48,15 @@ class PropertyController extends Controller
             if ($model->save(false)) {
 
                 Yii::app()->user->setFlash('success', "Client Property information saved");
+                $this->redirect(Yii::app()->baseUrl . '/mission');
+            }
+        }
+
+        if (isset($_POST['btnDelete'])) {
+
+            if ($model->delete()) {
+
+                Yii::app()->user->setFlash('success', "Client Property information Deleted");
                 $this->redirect(Yii::app()->baseUrl . '/mission');
             }
         }
