@@ -19,7 +19,7 @@
         <a style="text-decoration: none" title="Update" href="entry/update/id/<?php echo $data->id ?>">
             <img src="images/update.png" alt="Update">
         </a>
-        <a title="<?php echo $data->client_portal_status == 0 ? 'Enable Client Portal' : 'Manage Client Portal'; ?>" href="client/manageclientportal/<?php echo $data->id ?>">
+        <a style="display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'inline-block' )?>;" title="<?php echo $data->client_portal_status == 0 ? 'Enable Client Portal' : 'Manage Client Portal'; ?>" href="client/manageclientportal/<?php echo $data->id ?>">
             <img src="images/<?php echo $data->client_portal_status == 0 ? 'add' : 'cog'; ?>.png" alt="Manage Client Portal">
         </a>
     </td>
@@ -44,7 +44,8 @@
                     <th style="background: #cecece; color: #000000; text-align: left">Rented Out ?</th>
                     <th style="background: #cecece; color: #000000; text-align: left">Insurance in Place ?</th>
                     <?php } ?>
-                    <th style="background: #cecece; color: #000000; text-align: left; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'block' )?>;">Documents</th>
+                    <th style="background: #cecece; color: #000000; text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'table-cell')?>;">Documents</th>
+                    <th style="background: #cecece; color: #000000; text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'table-cell')?>;">Receipts</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,7 +65,8 @@
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'rented_out', '<?php echo $property->rented_out == 1 ? '0' : '1'; ?>');" style="cursor: pointer; background-color: <?php echo $property->rented_out == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->rented_out == 1 ? 'Yes' : 'No'; ?></td>
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'insurance_in_place', '<?php echo $property->insurance_in_place == 1 ? '0' : '1'; ?>');" style="cursor: pointer; background-color: <?php echo $property->insurance_in_place == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->insurance_in_place == 1 ? 'Yes' : 'No'; ?></td>
                     <?php } ?>
-                    <td style="text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'block' )?>;"><a style="text-decoration: none" title="Documents" href="documents/index/id/<?php echo $property->id ?>"><img src="images/document.png" alt="Documents"></a></td>
+                    <td style="text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'table-cell')?>;"><a style="text-decoration: none" title="Documents" href="documents/index/id/<?php echo $property->id ?>"><img src="images/document.png" alt="Documents"></a></td>
+                    <td style="text-align: center; display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'table-cell')?>;"><a style="text-decoration: none" title="Receipts" href="receipts/index/id/<?php echo $property->id ?>"><img src="images/receipt.png" alt="Receipts"></a></td>
                 </tr>
             <?php } ?>
             </tbody>

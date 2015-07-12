@@ -25,6 +25,7 @@
  * @property Entry $entry0
  * @property User $owner0
  * @property PropertyDocument[] $propertyDocuments
+ * @property Receipt[] $receipts
  */
 class Property extends CActiveRecord
 {
@@ -54,12 +55,11 @@ class Property extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place', 'required'),
+			array('entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, first_created_date, last_update_date', 'required'),
 			array('entry, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place', 'numerical', 'integerOnly'=>true),
 			array('builder', 'length', 'max'=>200),
 			array('address', 'length', 'max'=>500),
 			array('status', 'length', 'max'=>50),
-			array('first_created_date, last_update_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, first_created_date, last_update_date', 'safe', 'on'=>'search'),
@@ -76,7 +76,8 @@ class Property extends CActiveRecord
 		return array(
 			'entry0' => array(self::BELONGS_TO, 'Entry', 'entry'),
 			'owner0' => array(self::BELONGS_TO, 'User', 'owner'),
-            'propertyDocuments' => array(self::HAS_MANY, 'PropertyDocument', 'property'),
+			'propertyDocuments' => array(self::HAS_MANY, 'PropertyDocument', 'property'),
+			'receipts' => array(self::HAS_MANY, 'Receipt', 'property_id'),
 		);
 	}
 
