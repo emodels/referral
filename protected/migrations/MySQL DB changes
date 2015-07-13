@@ -84,3 +84,4 @@ ADD CONSTRAINT `property_document_ibfk_2` FOREIGN KEY (`category`) REFERENCES `d
 ALTER TABLE `user` ADD `allow_portal_management` INT NOT NULL ;
 ALTER TABLE `user` ADD `logo` longblob NULL;
 ALTER TABLE `user` ADD `header_title` TEXT NULL;
+ALTER TABLE `receipt` ADD `status` INT NOT NULL ;

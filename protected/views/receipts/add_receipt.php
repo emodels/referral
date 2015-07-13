@@ -2,6 +2,9 @@
     .border-less {
         border: none;
     }
+    div.form label {
+        display: inline-block;
+    }
 </style>
 <script type="application/javascript">
     $(document).ready(function () {
@@ -14,21 +17,68 @@
             $('#Receipt_paid').val($('#Receipt_rent').val());
             calculateDisbursements();
         });
+
+        $('#Receipt_partner_name').keyup(function () {
+            $('#partner_name_bottom').html($('#Receipt_partner_name').val());
+        });
+
+        $('#Receipt_company_logo').change(function(){
+
+            readImage(this, 'company_logo');
+        });
+
+        $('#Receipt_signature').change(function(){
+
+            readImage(this, 'signature');
+        });
+
+        calculateDisbursements();
     });
+
+    function validatePublish() {
+
+        if ($('input:checked').length == 0) {
+
+            alert('Please select at least single Category to Publish this Receipt');
+            return false;
+
+        } else {
+
+            return true;
+        }
+    }
+
+    function readImage(input, image) {
+
+        if ( input.files && input.files[0] ) {
+
+            var FR= new FileReader();
+            FR.onload = function(e) {
+                $('#' + image).attr( "src", e.target.result);
+            };
+            FR.readAsDataURL( input.files[0] );
+        }
+    }
 
     function calculateDisbursements() {
 
-        var rent_received = parseFloat($('#Receipt_paid').val()).toFixed(2);
+        var rent_received = Math.floor(parseFloat($('#Receipt_paid').val()) * 100) / 100;
 
-        $('#rent_received').html('$' + rent_received);
+        $('#rent_received').html('$' + rent_received.toFixed(2));
 
-        var management_fee = parseFloat(parseFloat($('#Receipt_paid').val()) * (4.5 / 100)).toFixed(2);
-        var gst = parseFloat(management_fee * (10/100)).toFixed(2);
-        var your_account = parseFloat(rent_received - parseFloat(management_fee + gst)).toFixed(2);
+        var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (4.5 / 100)) * 100) / 100;
+        var gst = Math.floor(parseFloat(management_fee * (10/100)) * 100) / 100;
+        var your_account = Math.floor((rent_received - (management_fee + gst)) * 100) / 100;
 
+        $('#Receipt_management_fees').val(management_fee);
         $('#management_fees').html('$' + management_fee);
+
+        $('#Receipt_gst').val(gst);
         $('#gst').html('$' + gst);
+
         $('#your_account').html('$' + your_account);
+        $('#total_debit').html('$' + rent_received);
+        $('#total_credit').html('$' + rent_received);
     }
 
     function ToggleMenu() {
@@ -49,7 +99,7 @@
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'receipt-add',
-        'htmlOptions' => array('autocomplete' => 'off'),
+        'htmlOptions' => array('autocomplete' => 'off', 'enctype' => 'multipart/form-data'),
         'enableClientValidation' => true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
@@ -59,12 +109,36 @@
     ?>
     <div class="row">
         <div class="column left"><input type="button" id="lnkMenuToggle" onclick="javascript:ToggleMenu();" class="button" value="Hide Input Field Borders"/></div>
+        <div class="column left"><input type="submit" class="button" value="Save Receipt"/></div>
+        <?php if (isset($model->id)) { ?>
+        <div class="column left">
+            <input type="submit" id="btnPublish" class="button" value="Publish and Email" onclick="javascript:return validatePublish();"/>
+            <?php if($model->status == 1) { ?>
+                <span style="font-size: 15px; color: red; padding-left: 10px"><b>Warning: This receipt was already published and emailed</b></span>
+            <?php } ?>
+            <div>
+            <?php
+            $all_categories = EntryDocumentCategory::model()->findAll('entry = ' . $model->property->entry);
+
+            foreach ($all_categories as $category) {
+
+                $listData[$category->category] = $category->category0->name;
+            }
+
+            echo CHtml::checkBoxList('category_list', array(), $listData, array(
+                'separator'=>'',
+                'template'=>'<div>{input}&nbsp;{label}</div>'
+            ));
+            ?>
+            </div>
+        </div>
+        <?php } ?>
         <div class="column right" style="text-align: right">
             <div style="font-size: 32px"><strong>Trust Account</strong></div>
             <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $form->textField($model, 'receipt_number', array('style' => 'width:120px; font-size: 28px')); ?><?php echo $form->error($model, 'receipt_number', array('style' => 'font-size: 15px')); ?></div>
             <div style="margin-top: 10px">
                 <?php if ($model->company_logo != null) { ?>
-                    <img src="data:image/jpeg;base64, <?php echo $model->company_logo; ?>" style="width: 200px; height: 80px"/>
+                    <img id="company_logo" src="data:image/jpeg;base64, <?php echo $model->company_logo; ?>" style="width: 200px; height: 80px"/>
                 <?php } ?>
                 <div style="margin-top: 10px"><?php echo $form->fileField($model, 'company_logo'); ?></div>
             </div>
@@ -159,21 +233,61 @@
     </div>
     <div class="row" style="font-size: 18px">
         <div class="column" style="width: 61.5%">Management fees</div>
-        <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span></div>
+        <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->hiddenField($model, 'management_fees'); ?></div>
         <div class="column" style="width: 15%">&nbsp;</div>
         <div class="clearfix"></div>
     </div>
     <div class="row" style="font-size: 18px">
         <div class="column" style="width: 61.5%">GST</div>
-        <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span></div>
+        <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->hiddenField($model, 'gst'); ?></div>
         <div class="column" style="width: 15%">&nbsp;</div>
         <div class="clearfix"></div>
     </div>
     <div class="row" style="font-size: 18px">
         <div class="column" style="width: 61.5%">Your account</div>
-        <div class="column" style="width: 20%"><span id="your_account"><?php echo $model->gst; ?></span></div>
+        <div class="column" style="width: 20%"><span id="your_account"></span></div>
         <div class="column" style="width: 15%">&nbsp;</div>
         <div class="clearfix"></div>
     </div>
+    <div class="row" style="font-size: 18px; border-bottom: solid 4px #000000; border-top: solid 4px #000000; padding: 2px 0 2px 0; margin-top: 20px">
+        <div class="column" style="width: 61.5%">Total</div>
+        <div class="column" style="width: 20%"><span id="total_debit"></span></div>
+        <div class="column" style="width: 15%"><span id="total_credit"></span></div>
+        <div class="clearfix"></div>
+    </div>
+    <div style="margin-top: 20px; font-size: 18px">Note: If there any dispute regarding your payment and receipt please contact the undersigned</div>
+    <div class="row" style="margin-top: 15px; font-size: 18px">
+        <div class="column" style="margin-top: 7px">Date:</div>
+        <div class="column">
+            <?php
+            $this->widget('zii.widgets.jui.CJuiDatePicker',
+                array(
+                    'model'=>$model,
+                    'attribute'=>'receipt_date',
+                    'options'=>array(
+                        'showAnim'=>'fold',
+                        'dateFormat'=>'yy-mm-dd',
+                        'changeMonth' => 'true',
+                        'changeYear' => 'true',
+                        'constrainInput' => 'false'
+                    ),
+                    'htmlOptions'=>array('style' => 'width:200px; font-size: 18px'),
+                ));
+            ?>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div style="margin-top: 10px; font-size: 18px"><span id="partner_name_bottom"><?php echo $model->partner_name; ?></span></div>
+    <div style="margin-top: 20px; margin-left: 130px">
+        <?php if ($model->signature != null) { ?>
+            <img id="signature" src="data:image/jpeg;base64, <?php echo $model->signature; ?>" style="width: 339px; height: 49px"/>
+        <?php } ?>
+    </div>
+    <div class="row" style="font-size: 18px">
+        <div class="column">Signature:</div>
+        <div class="column" style="margin-left: 100px; margin-top: 5px">----------------------------------</div>
+        <div class="clearfix"></div>
+    </div>
+    <div style="margin-top: 10px; margin-left: 200px"><?php echo $form->fileField($model, 'signature'); ?></div>
     <?php $this->endWidget(); ?>
 </div>
