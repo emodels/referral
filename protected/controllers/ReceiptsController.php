@@ -3,17 +3,30 @@ class ReceiptsController extends Controller
 {
     public function init(){
 
+        $isDownload = false;
+
         if (Yii::app()->user->isGuest){
-            $this->redirect(Yii::app()->createUrl('site/login'));
+
+            if (strpos(Yii::app()->request->pathInfo, 'download') !== false) {
+
+                $isDownload = true;
+
+            } else {
+
+                $this->redirect(Yii::app()->createUrl('site/login'));
+            }
         }
 
-        if (Yii::app()->user->user_type == '2') {
+        if ($isDownload == false) {
 
-            $this->menu = array('label'=>'Back to Home', 'url'=>Yii::app()->request->baseUrl . '/client/mission', 'visible'=>!Yii::app()->user->isGuest);
+            if (Yii::app()->user->user_type == '2') {
 
-        } else {
+                $this->menu = array('label' => 'Back to Home', 'url' => Yii::app()->request->baseUrl . '/client/mission', 'visible' => !Yii::app()->user->isGuest);
 
-            $this->menu = array('label'=>'Back to View Referrals', 'url'=>Yii::app()->request->baseUrl . '/entry', 'visible'=>!Yii::app()->user->isGuest);
+            } else {
+
+                $this->menu = array('label' => 'Back to View Referrals', 'url' => Yii::app()->request->baseUrl . '/entry', 'visible' => !Yii::app()->user->isGuest);
+            }
         }
     }
 
@@ -92,6 +105,27 @@ class ReceiptsController extends Controller
 
                 if ($receipt->save()) {
 
+                    /*----( Generate PDF )---------------*/
+                    $html_content = $this->renderPartial('/receipts/receipt_view', array('model' => $receipt), true);
+
+                    $url = 'http://freehtmltopdf.com';
+                    $data = array('convert' => '',
+                        'html' => $html_content,
+                        'baseurl' => Yii::app()->request->baseUrl);
+
+                    // use key 'http' even if you send the request to https://...
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($data),
+                        ),
+                    );
+
+                    $context  = stream_context_create($options);
+                    $pdf_result = file_get_contents($url, false, $context);
+                    /*----( //End of Generate PDF )------*/
+
                     /*----( Publish to Categories )-----*/
                     if (isset($_POST['category_list'])) {
 
@@ -102,15 +136,53 @@ class ReceiptsController extends Controller
                             $document->property = $prop_id;
                             $document->category = $category;
                             $document->caption = 'Receipt - ' . $receipt->receipt_number;
-                            $document->document = 'http://www';
+                            $document->document = Yii::app()->request->baseUrl . '/receipts/download/id/' . base64_encode($receipt->id);
                             $document->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
 
                             $document->save();
+
+                            /*-----( Send Email to Client )-------------*/
+                            $message = $this->renderPartial('//email/template/notify_document_added', array('document'=>$document), true);
+
+                            if (isset($message) && $message != "") {
+
+                                $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                                $mailer->Host = Yii::app()->params['SMTP_Host'];
+                                $mailer->IsSMTP();
+                                $mailer->SMTPAuth = true;
+                                $mailer->Username = Yii::app()->params['SMTP_Username'];
+                                $mailer->Password = Yii::app()->params['SMTP_password'];
+                                $mailer->From = Yii::app()->params['SMTP_Username'];
+                                $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                                $mailer->AddAddress($document->property0->entry0->email);
+                                $mailer->AddCC(Yii::app()->params['adminEmail']);
+                                $mailer->FromName = 'Dwellings Group';
+                                $mailer->CharSet = 'UTF-8';
+                                $mailer->Subject = 'Dwellings Group Referral Management System - New Receipt Added';
+                                $mailer->IsHTML();
+                                $mailer->Body = $message;
+
+                                try{
+
+                                    $mailer->Send();
+                                }
+                                catch (Exception $ex){
+
+                                    echo $ex->getMessage();
+                                }
+                            }
+                            /*-----( //End of Send Email to Client )----*/
                         }
+
+                        $receipt->status = 1;
                     }
                     /*----( // End of Publish to Categories )-----*/
 
-                    $receipt->status = 1;
+                    if (isset($pdf_result)) {
+
+                        $receipt->pdf = $pdf_result;
+                    }
+
                     $receipt->save();
 
                     Yii::app()->user->setFlash('success','Receipt information Saved');
@@ -128,6 +200,28 @@ class ReceiptsController extends Controller
         if (Yii::app()->request->isAjaxRequest) {
 
             Receipt::model()->deleteByPk($id);
+        }
+    }
+
+    public function actionView($id) {
+
+        $receipt = Receipt::model()->findByPk($id);
+
+        if (isset($receipt)) {
+
+            echo $this->renderPartial('/receipts/receipt_view', array('model' => $receipt, true));
+        }
+    }
+
+    public function actionDownload($id) {
+
+        $receipt = Receipt::model()->findByPk(base64_decode($id));
+
+        if (isset($receipt)) {
+
+            header('Content-type: application/pdf');
+            header('Content-Disposition: attachment; filename="Receipt_'. $receipt->receipt_number . '.pdf"');
+            var_dump($receipt->pdf);
         }
     }
 }

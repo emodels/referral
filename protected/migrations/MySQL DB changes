@@ -84,4 +84,37 @@ ADD CONSTRAINT `property_document_ibfk_2` FOREIGN KEY (`category`) REFERENCES `d
 ALTER TABLE `user` ADD `allow_portal_management` INT NOT NULL ;
 ALTER TABLE `user` ADD `logo` longblob NULL;
 ALTER TABLE `user` ADD `header_title` TEXT NULL;
-ALTER TABLE `receipt` ADD `status` INT NOT NULL ;
+
+CREATE TABLE IF NOT EXISTS `receipt` (
+  `id` int(11) NOT NULL,
+  `receipt_number` int(11) NOT NULL,
+  `company_logo` longblob NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `company_address` varchar(500) NOT NULL,
+  `partner_name` varchar(100) NOT NULL,
+  `partner_telephone` varchar(50) NOT NULL,
+  `partner_email` varchar(50) NOT NULL,
+  `landlord_name` varchar(100) NOT NULL,
+  `property_id` int(11) NOT NULL,
+  `property_address` varchar(500) NOT NULL,
+  `tenant_name` varchar(100) NOT NULL,
+  `rent` double(10,2) NOT NULL,
+  `paid` double(10,2) NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `management_fees` double(10,2) NOT NULL,
+  `gst` double(10,2) NOT NULL,
+  `receipt_date` date NOT NULL,
+  `signature` longblob NOT NULL,
+  `status` int(11) NOT NULL,
+  `pdf` longblob
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `receipt`
+ADD PRIMARY KEY (`id`), ADD KEY `property_id` (`property_id`);
+
+ALTER TABLE `receipt`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+
+ALTER TABLE `receipt`
+ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `property` (`id`) ON DELETE CASCADE;

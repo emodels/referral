@@ -94,6 +94,15 @@
             $('input, textarea').removeClass('border-less');
         }
     }
+
+    function formSend(form, data, hasError) {
+
+        if (!hasError) {
+
+            $('#progress').show();
+            return true;
+        }
+    }
 </script>
 <div class="form">
     <?php
@@ -104,6 +113,7 @@
         'clientOptions' => array(
             'validateOnSubmit' => true,
             'validateOnChange'=>true,
+            'afterValidate'=>'js:formSend'
         ),
     ));
     ?>
@@ -131,6 +141,7 @@
             ));
             ?>
             </div>
+            <div id="progress" style="font-size: 32px; padding: 10px; border: solid 1px #c0c0c0; border-radius: 5px; display: none"><img src="<?php echo Yii::app()->baseUrl ?>/images/ajax-loader2.gif" style="vertical-align: middle" /> Update in progress. Please wait...</div>
         </div>
         <?php } ?>
         <div class="column right" style="text-align: right">

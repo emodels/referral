@@ -25,6 +25,7 @@
  * @property string $receipt_date
  * @property string $signature
  * @property integer $status
+ * @property string $pdf
  *
  * The followings are the available model relations:
  * @property Property $property
@@ -63,9 +64,10 @@ class Receipt extends CActiveRecord
 			array('company_name, partner_name, landlord_name, tenant_name', 'length', 'max'=>100),
 			array('company_address, property_address', 'length', 'max'=>500),
 			array('partner_telephone, partner_email', 'length', 'max'=>50),
+			array('pdf', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status', 'safe', 'on'=>'search'),
+			array('id, receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -108,6 +110,7 @@ class Receipt extends CActiveRecord
 			'receipt_date' => 'Receipt Date',
 			'signature' => 'Signature',
 			'status' => 'Status',
+			'pdf' => 'Pdf',
 		);
 	}
 
@@ -143,6 +146,7 @@ class Receipt extends CActiveRecord
 		$criteria->compare('receipt_date',$this->receipt_date,true);
 		$criteria->compare('signature',$this->signature,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('pdf',$this->pdf,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
