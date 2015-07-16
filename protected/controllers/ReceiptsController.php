@@ -32,11 +32,54 @@ class ReceiptsController extends Controller
 
     public function actionIndex($id) {
 
+        $date_range = array();
+
+        $date_range['start_date'] = null;
+        $date_range['end_date'] = null;
+
         $property = Property::model()->findByPk($id);
 
         if (isset($property)) {
 
-            $this->render('/receipts/index', array('property' => $property));
+            if (isset($_POST['start_date']) && isset($_POST['end_date'])) {
+
+                $dataProvider = new CActiveDataProvider('Receipt', array('criteria'=>array('condition'=> "property_id = " . $property->id . " AND from_date BETWEEN '" . $_POST['start_date'] . "' AND '" . $_POST['end_date'] . "'", 'order'=>'id DESC'), 'pagination' => false));
+
+                $date_range['start_date'] = $_POST['start_date'];
+                $date_range['end_date'] = $_POST['end_date'];
+
+                if (isset($_POST['btn_pdf'])) {
+
+                    $html_content = $this->renderPartial('/receipts/summary_view', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range), true);
+
+                    $url = 'http://freehtmltopdf.com';
+                    $data = array('convert' => '',
+                        'html' => $html_content,
+                        'orientation' => 'landscape',
+                        'baseurl' => Yii::app()->request->baseUrl);
+
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($data),
+                        ),
+                    );
+
+                    $context  = stream_context_create($options);
+                    $pdf_result = file_get_contents($url, false, $context);
+
+                    header('Content-type: application/pdf');
+                    header('Content-Disposition: attachment; filename="Receipt_Summary.pdf"');
+                    var_dump($pdf_result);
+                }
+
+            } else {
+
+                $dataProvider = new CActiveDataProvider('Receipt', array('criteria'=>array('condition'=> 'property_id = ' . $property->id, 'order'=>'id DESC'), 'pagination' => false));
+            }
+
+            $this->render('/receipts/index', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range));
         }
     }
 

@@ -9627,3 +9627,73 @@ Stack trace:
 #6 {main}
 REQUEST_URI=/referral/receipts/download/id/6
 ---
+2015/07/16 06:59:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('receipts/index')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/index.php/receipts/index
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
+2015/07/16 06:59:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('receipts/index')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/index.php/receipts/index
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
+2015/07/16 07:00:08 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('receipts/index')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/index.php/receipts/index
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
+2015/07/16 07:00:31 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:337
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('index')
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('receipts/index')
+#5 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/referral/index.php/receipts/index
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
+2015/07/16 07:03:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "referral/receipts/index/id/10".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('referral/receip...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/referral/receipts/index/id/10
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
+2015/07/16 07:04:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "referral/receipts/index/id/10".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('referral/receip...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/index.php/referral/receipts/index/id/10
+HTTP_REFERER=http://localhost/referral/receipts/index/id/10
+---
