@@ -18,6 +18,7 @@ class PropertyController extends Controller
         $model = new Property();
 
         $model->entry = $id;
+        $model->management_fee_percentage = 4.5;
 
         if (isset($_POST['Property'])) {
 

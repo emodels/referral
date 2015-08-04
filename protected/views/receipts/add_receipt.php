@@ -66,7 +66,7 @@
 
         $('#rent_received').html('$' + rent_received.toFixed(2));
 
-        var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (4.5 / 100)) * 100) / 100;
+        var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (<?php echo $property->management_fee_percentage;?> / 100)) * 100) / 100;
         var gst = Math.floor(parseFloat(management_fee * (10/100)) * 100) / 100;
         var your_account = Math.floor((rent_received - (management_fee + gst)) * 100) / 100;
 

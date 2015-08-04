@@ -52,6 +52,11 @@
                     <div class="column"><?php echo $form->dropDownList($model, 'owner', CHtml::listData(User::model()->findAll(array('condition'=>'user_type = 1','order' => 'first_name')),'id','first_name'),array('style' => 'width:200px', 'empty'=>'Select Owner')); ?><?php echo $form->error($model, 'owner'); ?></div>
                     <div class="clearfix"></div>
                 </div>
+                <div class="row">
+                    <div class="column">Management fee percentage (%)</div>
+                    <div class="column"><?php echo $form->textField($model, 'management_fee_percentage', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'management_fee_percentage'); ?></div>
+                    <div class="clearfix"></div>
+                </div>
                 <?php if ($model->entry0->property_holder !== 'Tenant') { ?>
                 <div class="row">
                     <div class="column">Initial Deposit</div>

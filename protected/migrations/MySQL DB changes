@@ -118,3 +118,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 
 ALTER TABLE `receipt`
 ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `property` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `property` ADD `management_fee_percentage` DOUBLE(10,2) NOT NULL ;
+
+UPDATE `property` SET `management_fee_percentage`= 4.5
