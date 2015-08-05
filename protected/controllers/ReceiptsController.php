@@ -114,6 +114,11 @@ class ReceiptsController extends Controller
                 $receipt->receipt_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
                 $receipt->signature = base64_encode($default_signature_contents);
                 $receipt->status = 0;
+
+                $receipt_auto_increment = Yii::app()->params['Receipts_auto_increment'];
+                $receipt_count = Receipt::model()->count();
+
+                $receipt->receipt_number = $receipt_count + $receipt_auto_increment;
             }
 
             if (isset($_POST['Receipt'])) {
@@ -160,7 +165,7 @@ class ReceiptsController extends Controller
 
                 } else {
 
-                    $receipt->costs = '';
+                    $receipt->costs = '{}';
                 }
 
                 if ($receipt->save()) {
@@ -248,6 +253,10 @@ class ReceiptsController extends Controller
                     Yii::app()->user->setFlash('success','Receipt information Saved');
 
                     $this->redirect(Yii::app()->baseUrl . '/receipts/index/id/' . $prop_id);
+
+                } else {
+
+                    print_r($receipt->getErrors());
                 }
             }
 

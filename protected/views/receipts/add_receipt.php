@@ -222,7 +222,7 @@
         <?php } ?>
         <div class="column right" style="text-align: right">
             <div style="font-size: 32px"><strong>Trust Account</strong></div>
-            <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $form->textField($model, 'receipt_number', array('style' => 'width:120px; font-size: 28px')); ?><?php echo $form->error($model, 'receipt_number', array('style' => 'font-size: 15px')); ?></div>
+            <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $model->receipt_number; ?></div>
             <div style="margin-top: 10px">
                 <?php if ($model->company_logo != null) { ?>
                     <img id="company_logo" src="data:image/jpeg;base64, <?php echo $model->company_logo; ?>" style="width: 200px; height: 80px"/>
@@ -350,7 +350,7 @@
         <?php } ?>
     </div>
     <div class="row" style="font-size: 18px">
-        <div class="column" style="width: 61.5%">Your account</div>
+        <div class="column" style="width: 61.5%">Transfer to your account</div>
         <div class="column" style="width: 20%"><span id="your_account"></span></div>
         <div class="column" style="width: 15%">&nbsp;</div>
         <div class="clearfix"></div>

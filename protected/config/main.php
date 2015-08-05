@@ -84,6 +84,7 @@ return array(
         'SMTP_Host'=>'173.254.28.110',
         'SMTP_Username'=>'dwellingsgroup@referral.snt3.com',
         'SMTP_password'=>'X#:jkko75/6Zz7',
-        'GST'=>'10'
+        'GST'=>'10',
+        'Receipts_auto_increment'=>'1000'
 	),
 );

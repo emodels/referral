@@ -116,7 +116,7 @@
                 <?php } ?>
             </div>
             <div class="row" style="font-size: 18px">
-                <div class="column" style="float: left; width: 61.5%">Your account</div>
+                <div class="column" style="float: left; width: 61.5%">Transfer to your account</div>
                 <div class="column" style="float: left; width: 20%">$<?php echo number_format($model->paid - ($model->management_fees + $model->gst + $costsTotal), 2, '.', ''); ?></div>
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
