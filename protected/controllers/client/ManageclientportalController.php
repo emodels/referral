@@ -31,6 +31,8 @@ class ManageclientportalController extends Controller
             $model->allow_add_referral = 0;
             $model->entry = $id;
             $model->allow_portal_management = 0;
+
+            $isAddEntryDocumentCategories = true;
         }
 
         if (isset($_POST['User'])) {
@@ -47,6 +49,22 @@ class ManageclientportalController extends Controller
                 if($model->save()){
 
                     $entry->client_portal_status = 1;
+
+                    /*----( Save Entry Document Categories )--------*/
+                    if (isset($isAddEntryDocumentCategories)) {
+
+                        $categories = DocumentCategory::model()->findAll();
+
+                        foreach ($categories as $category) {
+
+                            $entryDocumentCategory = new EntryDocumentCategory();
+
+                            $entryDocumentCategory->entry = $entry->id;
+                            $entryDocumentCategory->category = $category->id;
+
+                            $entryDocumentCategory->save();
+                        }
+                    }
 
                     if ($entry->save()) {
 
