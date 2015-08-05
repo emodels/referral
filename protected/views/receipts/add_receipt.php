@@ -67,8 +67,22 @@
         $('#rent_received').html('$' + rent_received.toFixed(2));
 
         var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (<?php echo $property->management_fee_percentage;?> / 100)) * 100) / 100;
-        var gst = Math.floor(parseFloat(management_fee * (10/100)) * 100) / 100;
-        var your_account = Math.floor((rent_received - (management_fee + gst)) * 100) / 100;
+        var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
+
+        /*----( Calculate Costs )-------*/
+        var costsTotal = 0;
+
+        $('#divCosts input.cost_value').each(function () {
+
+            var cost = $(this).val();
+
+            if (cost !== '' && !isNaN(cost)) {
+
+                costsTotal += parseFloat(cost);
+            }
+        });
+
+        var your_account = Math.floor((rent_received - (management_fee + gst + costsTotal)) * 100) / 100;
 
         $('#Receipt_management_fees').val(management_fee);
         $('#management_fees').html('$' + management_fee);
@@ -79,6 +93,26 @@
         $('#your_account').html('$' + your_account);
         $('#total_debit').html('$' + rent_received);
         $('#total_credit').html('$' + rent_received);
+    }
+
+    function addCostRow() {
+
+        var inputCount = $('#divCosts input.cost_name').length;
+
+        var strContent = '<div id="rowCost_' + inputCount + '" class="row" style="font-size: 18px">' +
+                            '<div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][' + inputCount + ']" style="font-size: 18px"/></div>' +
+                            '<div class="column" style="width: 20%">$<input type="text" class="cost_value" name="Costs[value][' + inputCount + ']" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>' +
+                            '<div class="column" style="width: 15%"><a href="javascript:deleteCostRow(' + inputCount + ');" style="text-decoration: none; font-size: 32px; color: red">-</a></div>' +
+                            '<div class="clearfix"></div>' +
+                        '</div>';
+
+        $('#divCosts').append(strContent);
+    }
+
+    function deleteCostRow(index) {
+
+        $('#rowCost_' + index).remove();
+        calculateDisbursements();
     }
 
     function ToggleMenu() {
@@ -96,6 +130,48 @@
     }
 
     function formSend(form, data, hasError) {
+
+        if ($('#divCosts input').length > 0) {
+
+            var isError = false;
+            var strError = '';
+
+            $('#divCosts input.cost_name').each(function () {
+
+                var name = $(this).val();
+                var value = $(this).parent().next().find('input').val();
+
+                if (name != '' && value == '') {
+
+                    isError = true;
+                    strError = 'Cost "' + name + '" required a value';
+
+                    return false;
+                }
+
+                if (name == '' && value != '') {
+
+                    isError = true;
+                    strError = 'Name of the Cost is required';
+
+                    return false;
+                }
+
+                if (isNaN(value)) {
+
+                    isError = true;
+                    strError = 'Value of the Cost "' + name + '" must be numeric';
+
+                    return false;
+                }
+            });
+
+            if (isError == true) {
+
+                hasError = true;
+                alert(strError);
+            }
+        }
 
         if (!hasError) {
 
@@ -253,6 +329,25 @@
         <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->hiddenField($model, 'gst'); ?></div>
         <div class="column" style="width: 15%">&nbsp;</div>
         <div class="clearfix"></div>
+    </div>
+    <a href="javascript:addCostRow();" style="text-decoration: none; font-size: 32px">+</a>
+    <div id="divCosts">
+        <?php if (isset($model->costs) && $model->costs !== '') {
+
+            $costArray = json_decode($model->costs);
+
+            foreach ($costArray as $cost) { ?>
+
+                <div id="rowCost_<?php echo $cost->index; ?>" class="row" style="font-size: 18px">
+                    <div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][<?php echo $cost->index; ?>]" value="<?php echo $cost->name; ?>" style="font-size: 18px"/></div>
+                    <div class="column" style="width: 20%">$<input type="text" class="cost_value" name="Costs[value][<?php echo $cost->index; ?>]" value="<?php echo $cost->value; ?>" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>
+                    <div class="column" style="width: 15%"><a href="javascript:deleteCostRow(<?php echo $cost->index; ?>);" style="text-decoration: none; font-size: 32px; color: red">-</a></div>
+                    <div class="clearfix"></div>
+                </div>
+
+            <?php } ?>
+
+        <?php } ?>
     </div>
     <div class="row" style="font-size: 18px">
         <div class="column" style="width: 61.5%">Your account</div>

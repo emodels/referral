@@ -146,6 +146,23 @@ class ReceiptsController extends Controller
                 }
                 /*-----( // End of Signature )------*/
 
+                /*----( Save Costs )----------------------*/
+                if (isset($_POST['Costs'])) {
+
+                    $costArray = array();
+
+                    foreach ($_POST['Costs']['name'] as $element) {
+
+                        $costArray[] = array('index' => count($costArray), 'name' => $element, 'value' => $_POST['Costs']['value'][count($costArray)]);
+                    }
+
+                    $receipt->costs = json_encode($costArray);
+
+                } else {
+
+                    $receipt->costs = '';
+                }
+
                 if ($receipt->save()) {
 
                     /*----( Generate PDF )---------------*/

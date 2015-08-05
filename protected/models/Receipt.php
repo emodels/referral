@@ -26,6 +26,7 @@
  * @property string $signature
  * @property integer $status
  * @property string $pdf
+ * @property string $costs
  *
  * The followings are the available model relations:
  * @property Property $property
@@ -58,7 +59,7 @@ class Receipt extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status', 'required'),
+			array('receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status, costs', 'required'),
 			array('receipt_number, property_id, status', 'numerical', 'integerOnly'=>true),
 			array('rent, paid, management_fees, gst', 'numerical'),
 			array('company_name, partner_name, landlord_name, tenant_name', 'length', 'max'=>100),
@@ -67,7 +68,7 @@ class Receipt extends CActiveRecord
 			array('pdf', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status, pdf', 'safe', 'on'=>'search'),
+			array('id, receipt_number, company_logo, company_name, company_address, partner_name, partner_telephone, partner_email, landlord_name, property_id, property_address, tenant_name, rent, paid, from_date, to_date, management_fees, gst, receipt_date, signature, status, pdf, costs', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -111,6 +112,7 @@ class Receipt extends CActiveRecord
 			'signature' => 'Signature',
 			'status' => 'Status',
 			'pdf' => 'Pdf',
+			'costs' => 'Costs',
 		);
 	}
 
@@ -147,6 +149,7 @@ class Receipt extends CActiveRecord
 		$criteria->compare('signature',$this->signature,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pdf',$this->pdf,true);
+		$criteria->compare('costs',$this->costs,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

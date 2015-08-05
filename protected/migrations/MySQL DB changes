@@ -121,4 +121,6 @@ ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `property
 
 ALTER TABLE `property` ADD `management_fee_percentage` DOUBLE(10,2) NOT NULL ;
 
-UPDATE `property` SET `management_fee_percentage`= 4.5
+UPDATE `property` SET `management_fee_percentage`= 4.5;
+
+ALTER TABLE `receipt` ADD `costs` LONGTEXT NOT NULL ;

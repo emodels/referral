@@ -94,9 +94,30 @@
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
+            <div id="divCosts">
+                <?php
+                $costsTotal = 0;
+
+                if (isset($model->costs) && $model->costs !== '') {
+
+                    $costArray = json_decode($model->costs);
+
+                    foreach ($costArray as $cost) { $costsTotal += $cost->value; ?>
+
+                        <div class="row" style="font-size: 18px">
+                            <div class="column" style="float: left; width: 61.5%"><?php echo $cost->name; ?></div>
+                            <div class="column" style="float: left; width: 20%">$<?php echo $cost->value; ?></div>
+                            <div class="column" style="float: left; width: 15%">&nbsp;</div>
+                            <div class="clearfix" style="clear: both"></div>
+                        </div>
+
+                    <?php } ?>
+
+                <?php } ?>
+            </div>
             <div class="row" style="font-size: 18px">
                 <div class="column" style="float: left; width: 61.5%">Your account</div>
-                <div class="column" style="float: left; width: 20%">$<?php echo number_format($model->paid - ($model->management_fees + $model->gst), 2, '.', ''); ?></div>
+                <div class="column" style="float: left; width: 20%">$<?php echo number_format($model->paid - ($model->management_fees + $model->gst + $costsTotal), 2, '.', ''); ?></div>
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
