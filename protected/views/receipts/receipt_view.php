@@ -69,6 +69,7 @@
                 <div class="column" style="float: left; width: 10%"><?php echo $model->to_date; ?></div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
+            <?php if ($model->property->entry0->property_holder !== 'Tenant') { ?>
             <div style="margin-top: 20px; font-size: 18px; border-bottom: solid 4px #000000"><strong>Disbursements</strong></div>
             <div class="row" style="margin-top: 25px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
                 <div class="column" style="float: left; width: 61.5%">Item</div>
@@ -127,6 +128,7 @@
                 <div class="column" style="float: left; width: 15%"><span id="total_credit">$<?php echo $model->paid; ?></span></div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
+            <?php } ?>
             <div style="margin-top: 20px; font-size: 18px">Note: If there any dispute regarding your payment and receipt please contact the undersigned</div>
             <div class="row" style="margin-top: 15px; font-size: 18px">
                 <div class="column" style="float: left">Date:</div>
