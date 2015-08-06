@@ -32,7 +32,9 @@ class PropertyController extends Controller
                 /*----( If this is First Property then Email Client Login details )---------*/
                 if (Property::model()->count('entry = ' . $id) == 1) {
 
-                    $message = $this->renderPartial('//email/template/client_portal_enabled', array('user'=>$model->entry0->referrelUser), true);
+                    $user = User::model()->find('entry = ' . $id);
+
+                    $message = $this->renderPartial('//email/template/client_portal_enabled', array('user'=>$user), true);
 
                     if (isset($message) && $message != "") {
 
