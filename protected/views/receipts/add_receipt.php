@@ -196,30 +196,7 @@
     <div class="row">
         <div class="column left"><input type="button" id="lnkMenuToggle" onclick="javascript:ToggleMenu();" class="button" value="Hide Input Field Borders"/></div>
         <div class="column left"><input type="submit" class="button" value="Save Receipt"/></div>
-        <?php if (isset($model->id)) { ?>
-        <div class="column left">
-            <input type="submit" id="btnPublish" class="button" value="Publish and Email" onclick="javascript:return validatePublish();"/>
-            <?php if($model->status == 1) { ?>
-                <span style="font-size: 15px; color: red; padding-left: 10px"><b>Warning: This receipt was already published and emailed</b></span>
-            <?php } ?>
-            <div>
-            <?php
-            $all_categories = EntryDocumentCategory::model()->findAll('entry = ' . $model->property->entry);
-
-            foreach ($all_categories as $category) {
-
-                $listData[$category->category] = $category->category0->name;
-            }
-
-            echo CHtml::checkBoxList('category_list', array(), $listData, array(
-                'separator'=>'',
-                'template'=>'<div>{input}&nbsp;{label}</div>'
-            ));
-            ?>
-            </div>
-            <div id="progress" style="font-size: 32px; padding: 10px; border: solid 1px #c0c0c0; border-radius: 5px; display: none"><img src="<?php echo Yii::app()->baseUrl ?>/images/ajax-loader2.gif" style="vertical-align: middle" /> Update in progress. Please wait...</div>
-        </div>
-        <?php } ?>
+        <div class="column left"><div id="progress" style="font-size: 32px; padding: 10px; border: solid 1px #c0c0c0; border-radius: 5px; display: none"><img src="<?php echo Yii::app()->baseUrl ?>/images/ajax-loader2.gif" style="vertical-align: middle" /> Update in progress. Please wait...</div></div>
         <div class="column right" style="text-align: right">
             <div style="font-size: 32px"><strong>Trust Account</strong></div>
             <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $model->receipt_number; ?></div>

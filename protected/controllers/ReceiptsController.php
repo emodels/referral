@@ -50,7 +50,15 @@ class ReceiptsController extends Controller
 
                 if (isset($_POST['btn_pdf'])) {
 
-                    $html_content = $this->renderPartial('/receipts/summary_view', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range), true);
+                    if ($dataProvider->getTotalItemCount() == 0) {
+
+                        Yii::app()->user->setFlash('error','No Receipts found for this Date range');
+                        $this->refresh(true);
+                    }
+
+                    $receipt = Receipt::model()->find("property_id = " . $property->id . " AND from_date BETWEEN '" . $_POST['start_date'] . "' AND '" . $_POST['end_date'] . "'");
+
+                    $html_content = $this->renderPartial('/receipts/summary_view', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range, 'model' => $receipt), true);
 
                     $url = 'http://freehtmltopdf.com';
                     $data = array('convert' => '',
@@ -191,53 +199,52 @@ class ReceiptsController extends Controller
                     $pdf_result = file_get_contents($url, false, $context);
                     /*----( //End of Generate PDF )------*/
 
-                    /*----( Publish to Categories )-----*/
-                    if (isset($_POST['category_list'])) {
+                    /*----( Publish to Invoices Category )-----*/
+                    $category = DocumentCategory::model()->find("name = 'Invoices'");
 
-                        foreach($_POST['category_list'] as $category) {
+                    if (isset($category)) {
 
-                            $document = new PropertyDocument();
+                        $document = new PropertyDocument();
 
-                            $document->property = $prop_id;
-                            $document->category = $category;
-                            $document->caption = 'Receipt - ' . $receipt->receipt_number;
-                            $document->document = Yii::app()->request->baseUrl . '/receipts/download/id/' . base64_encode($receipt->id);
-                            $document->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+                        $document->property = $prop_id;
+                        $document->category = $category->id;
+                        $document->caption = 'Receipt - ' . $receipt->receipt_number;
+                        $document->document = Yii::app()->request->baseUrl . '/receipts/download/id/' . base64_encode($receipt->id);
+                        $document->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
 
-                            $document->save();
+                        $document->save();
 
-                            /*-----( Send Email to Client )-------------*/
-                            $message = $this->renderPartial('//email/template/notify_document_added', array('document'=>$document), true);
+                        /*-----( Send Email to Client )-------------*/
+                        $message = $this->renderPartial('//email/template/notify_document_added', array('document'=>$document), true);
 
-                            if (isset($message) && $message != "") {
+                        if (isset($message) && $message != "") {
 
-                                $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
-                                $mailer->Host = Yii::app()->params['SMTP_Host'];
-                                $mailer->IsSMTP();
-                                $mailer->SMTPAuth = true;
-                                $mailer->Username = Yii::app()->params['SMTP_Username'];
-                                $mailer->Password = Yii::app()->params['SMTP_password'];
-                                $mailer->From = Yii::app()->params['SMTP_Username'];
-                                $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
-                                $mailer->AddAddress($document->property0->entry0->email);
-                                $mailer->AddCC(Yii::app()->params['adminEmail']);
-                                $mailer->FromName = 'Dwellings Group';
-                                $mailer->CharSet = 'UTF-8';
-                                $mailer->Subject = 'Dwellings Group Referral Management System - New Receipt Added';
-                                $mailer->IsHTML();
-                                $mailer->Body = $message;
+                            $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                            $mailer->Host = Yii::app()->params['SMTP_Host'];
+                            $mailer->IsSMTP();
+                            $mailer->SMTPAuth = true;
+                            $mailer->Username = Yii::app()->params['SMTP_Username'];
+                            $mailer->Password = Yii::app()->params['SMTP_password'];
+                            $mailer->From = Yii::app()->params['SMTP_Username'];
+                            $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                            $mailer->AddAddress($document->property0->entry0->email);
+                            $mailer->AddCC(Yii::app()->params['adminEmail']);
+                            $mailer->FromName = 'Dwellings Group';
+                            $mailer->CharSet = 'UTF-8';
+                            $mailer->Subject = 'Dwellings Group Referral Management System - New Receipt Added';
+                            $mailer->IsHTML();
+                            $mailer->Body = $message;
 
-                                try{
+                            try{
 
-                                    $mailer->Send();
-                                }
-                                catch (Exception $ex){
-
-                                    echo $ex->getMessage();
-                                }
+                                $mailer->Send();
                             }
-                            /*-----( //End of Send Email to Client )----*/
+                            catch (Exception $ex){
+
+                                echo $ex->getMessage();
+                            }
                         }
+                        /*-----( //End of Send Email to Client )----*/
 
                         $receipt->status = 1;
                     }
