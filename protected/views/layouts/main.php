@@ -48,7 +48,7 @@
 ?>
 	<div id="header">
         <?php if (isset($this->header_logo)) { ?>
-            <img id="logo" src="data:image/jpeg;base64, <?php echo $this->header_logo ?>"/>
+            <img id="logo" src="data:image/jpeg;base64, <?php echo $this->header_logo ?>" style="width: <?php echo isset($this->logo_width) ? $this->logo_width . 'px' : 'auto'; ?>; height: <?php echo isset($this->logo_height) ? $this->logo_height . 'px' : 'auto'; ?>;" />
         <?php } else { ?>
             <img id="logo" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.jpg"/>
         <?php } ?>

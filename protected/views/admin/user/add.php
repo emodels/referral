@@ -73,6 +73,16 @@
             <div class="clearfix"></div>
         </div>
         <div class="row" style="margin-top: 15px">
+            <div class="column">Logo Width<br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column"><?php echo $form->textField($model, 'logo_width', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'logo_width'); ?></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Logo Height<br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column"><?php echo $form->textField($model, 'logo_height', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'logo_height'); ?></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
             <div class="column">Header Title <br/>(<i style="font-size: 11px">Optional</i>)</div>
             <div class="column"><?php echo $form->textField($model, 'header_title', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'header_title'); ?></div>
             <div class="clearfix"></div>

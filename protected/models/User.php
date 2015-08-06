@@ -17,6 +17,8 @@
  * @property integer $entry
  * @property integer $allow_portal_management
  * @property string $logo
+ * @property integer $logo_width
+ * @property integer $logo_height
  * @property string $header_title
  *
  * The followings are the available model relations:
@@ -53,13 +55,13 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management', 'required'),
-			array('user_type, allow_add_referral, entry, allow_portal_management', 'numerical', 'integerOnly'=>true),
+			array('user_type, allow_add_referral, entry, allow_portal_management, logo_width, logo_height', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, email, username, password, confirm_password', 'length', 'max'=>50),
 			array('company', 'length', 'max'=>100),
 			array('logo, header_title', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management, logo, header_title', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management, logo, logo_width, logo_height, header_title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -96,6 +98,8 @@ class User extends CActiveRecord
 			'entry' => 'Entry',
 			'allow_portal_management' => 'Allow Portal Management',
 			'logo' => 'Logo',
+			'logo_width' => 'Logo Width',
+			'logo_height' => 'Logo Height',
 			'header_title' => 'Header Title',
 		);
 	}
@@ -124,6 +128,8 @@ class User extends CActiveRecord
 		$criteria->compare('entry',$this->entry);
 		$criteria->compare('allow_portal_management',$this->allow_portal_management);
 		$criteria->compare('logo',$this->logo,true);
+		$criteria->compare('logo_width',$this->logo_width);
+		$criteria->compare('logo_height',$this->logo_height);
 		$criteria->compare('header_title',$this->header_title,true);
 
 		return new CActiveDataProvider($this, array(

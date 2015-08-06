@@ -15,45 +15,56 @@ class UserController extends Controller
     
 	public function actionAdd()
 	{
-                $model = new User;
-               
-                if(Yii::app()->getRequest()->getIsAjaxRequest()) {
+        $model = new User;
 
-                    echo CActiveForm::validate( array( $model)); 
-                    Yii::app()->end(); 
+        if(Yii::app()->getRequest()->getIsAjaxRequest()) {
+
+            echo CActiveForm::validate( array( $model));
+            Yii::app()->end();
+        }
+
+        if (isset($_POST['User'])) {
+
+            $model->attributes = $_POST['User'];
+            $model->user_type = 1;
+            $model->entry = 0;
+            $model->logo = CUploadedFile::getInstance($model, 'logo');
+
+            if (isset($model->logo)){
+
+                $tmpfile_contents = file_get_contents($model->logo->tempName);
+
+                $model->logo = base64_encode($tmpfile_contents);
+
+                if ($model->logo_width == '') {
+
+                    $model->addError('logo_width', 'Logo Width cannot be blank.');
                 }
-                
-                if (isset($_POST['User'])) {
 
-                    $model->attributes = $_POST['User'];
-                    $model->user_type = 1;
-                    $model->entry = 0;
-                    $model->logo = CUploadedFile::getInstance($model, 'logo');
+                if ($model->logo_height == '') {
 
-                    if (isset($model->logo)){
-
-                        $tmpfile_contents = file_get_contents($model->logo->tempName);
-
-                        $model->logo = base64_encode($tmpfile_contents);
-                    }
-
-                    if (User::model()->findByAttributes(array('username'=>$model->username))) {
-
-                        $model->addError('user_name', 'User name already used, try else');
-                        Yii::app()->user->setFlash('notice', "User name already used, try else");
-                    }
-                    else{
-
-                        if($model->save()){
-                            Yii::app()->user->setFlash('success', "New Partner Added.");
-                            $this->refresh();
-                        }
-                        else{
-
-                            print_r($model->getErrors());
-                        }
-                    }
+                    $model->addError('logo_height', 'Logo Height cannot be blank.');
                 }
+            }
+
+            if (User::model()->findByAttributes(array('username'=>$model->username))) {
+
+                $model->addError('user_name', 'User name already used, try else');
+                Yii::app()->user->setFlash('notice', "User name already used, try else");
+            }
+            else{
+
+                if(!$model->hasErrors() && $model->save()){
+
+                    Yii::app()->user->setFlash('success', "New Partner Added.");
+                    $this->refresh();
+
+                } else{
+
+                    print_r($model->getErrors());
+                }
+            }
+        }
                 
 		$this->render('add',array('model' => $model));
 	}
@@ -104,35 +115,50 @@ class UserController extends Controller
 
 	public function actionUpdate($id)
 	{
-                $model = User::model()->findByPk($id);
+        $model = User::model()->findByPk($id);
 
-                $logo_existing = $model->logo;
+        $logo_existing = $model->logo;
 
-                if (isset($_POST['User'])) {
+        if (isset($_POST['User'])) {
 
-                    $model->attributes = $_POST['User'];
+            $model->attributes = $_POST['User'];
 
-                    $logo = CUploadedFile::getInstance($model, 'logo');
+            $logo = CUploadedFile::getInstance($model, 'logo');
 
-                    if (isset($logo)){
+            if (isset($logo)){
 
-                        $tmpfile_contents = file_get_contents($logo->tempName);
+                $tmpfile_contents = file_get_contents($logo->tempName);
 
-                        $model->logo = base64_encode($tmpfile_contents);
+                $model->logo = base64_encode($tmpfile_contents);
 
-                    } else {
+            } else {
 
-                        $model->logo = $logo_existing;
-                    }
+                $model->logo = $logo_existing;
+            }
 
-                    if($model->save()){
-                        Yii::app()->user->setFlash('success', "Partner Updated.");
-                        $this->redirect(Yii::app()->baseUrl . '/admin/user');
-                    }
-                    else{
-                        Yii::app()->user->setFlash('notice', 'Error saving record');
-                    }
+            if (isset($model->logo)) {
+
+                if ($model->logo_width == '') {
+
+                    $model->addError('logo_width', 'Logo Width cannot be blank.');
                 }
+
+                if ($model->logo_height == '') {
+
+                    $model->addError('logo_height', 'Logo Height cannot be blank.');
+                }
+            }
+
+            if (!$model->hasErrors() && $model->save()) {
+
+                Yii::app()->user->setFlash('success', "Partner Updated.");
+                $this->redirect(Yii::app()->baseUrl . '/admin/user');
+
+            } else{
+
+                Yii::app()->user->setFlash('notice', 'Error saving record');
+            }
+        }
                 
 		$this->render('update',array('model' => $model));
 	}

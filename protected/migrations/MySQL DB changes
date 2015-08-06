@@ -124,3 +124,5 @@ ALTER TABLE `property` ADD `management_fee_percentage` DOUBLE(10,2) NOT NULL ;
 UPDATE `property` SET `management_fee_percentage`= 4.5;
 
 ALTER TABLE `receipt` ADD `costs` LONGTEXT NOT NULL ;
+
+ALTER TABLE `user` ADD `logo_width` INT NULL AFTER `logo`, ADD `logo_height` INT NULL AFTER `logo_width`;
