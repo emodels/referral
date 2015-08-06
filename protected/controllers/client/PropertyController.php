@@ -29,6 +29,40 @@ class PropertyController extends Controller
 
             if ($model->save(false)) {
 
+                /*----( If this is First Property then Email Client Login details )---------*/
+                if (Property::model()->count('entry = ' . $id) == 1) {
+
+                    $message = $this->renderPartial('//email/template/client_portal_enabled', array('user'=>$model->entry0->referrelUser), true);
+
+                    if (isset($message) && $message != "") {
+
+                        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                        $mailer->Host = Yii::app()->params['SMTP_Host'];
+                        $mailer->IsSMTP();
+                        $mailer->SMTPAuth = true;
+                        $mailer->Username = Yii::app()->params['SMTP_Username'];
+                        $mailer->Password = Yii::app()->params['SMTP_password'];
+                        $mailer->From = Yii::app()->params['SMTP_Username'];
+                        $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                        $mailer->AddAddress($model->entry0->email);
+                        $mailer->AddCC(Yii::app()->params['adminEmail']);
+                        $mailer->FromName = 'Dwellings Group';
+                        $mailer->CharSet = 'UTF-8';
+                        $mailer->Subject = 'Dwellings Group Referral Management System - Client portal enabled';
+                        $mailer->IsHTML();
+                        $mailer->Body = $message;
+
+                        try{
+
+                            $mailer->Send();
+                        }
+                        catch (Exception $ex){
+
+                            echo $ex->getMessage();
+                        }
+                    }
+                }
+
                 Yii::app()->user->setFlash('success', "Client Property information saved");
                 $this->redirect(Yii::app()->baseUrl . '/mission');
             }
