@@ -209,7 +209,7 @@ class ReceiptsController extends Controller
                         $document->property = $prop_id;
                         $document->category = $category->id;
                         $document->caption = 'Receipt - ' . $receipt->receipt_number;
-                        $document->document = Yii::app()->request->baseUrl . '/receipts/download/id/' . base64_encode($receipt->id);
+                        $document->document = Yii::app()->getBaseUrl(true) . '/receipts/download/id/' . base64_encode($receipt->id);
                         $document->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
 
                         $document->save();
