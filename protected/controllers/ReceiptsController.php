@@ -112,7 +112,16 @@ class ReceiptsController extends Controller
 
         if (isset($property)) {
 
-            $default_logo_contents = file_get_contents(Yii::getPathOfAlias('webroot.images') . '/dwg_state_agents.jpg');
+            /*----( Check if Partner has Logo Uploaded )-------*/
+            if (isset($property->entry0->referrelUser->logo)) {
+
+                $default_logo_contents = $property->entry0->referrelUser->logo;
+
+            } else {
+
+                $default_logo_contents = base64_encode(file_get_contents(Yii::getPathOfAlias('webroot.images') . '/dwg_state_agents.jpg'));
+            }
+
             $default_signature_contents = file_get_contents(Yii::getPathOfAlias('webroot.images') . '/dwg_signature.png');
 
             if ($receipt_id !== null) {
@@ -125,8 +134,8 @@ class ReceiptsController extends Controller
                 $receipt = new Receipt();
 
                 $receipt->property_id = $prop_id;
-                $receipt->company_logo = base64_encode($default_logo_contents);
-                $receipt->company_name = 'Dwellings Estate Agent PTY LTD';
+                $receipt->company_logo = $default_logo_contents;
+                $receipt->company_name = $property->entry0->referrelUser->header_title ? $property->entry0->referrelUser->header_title : 'Dwellings Estate Agent PTY LTD';
                 $receipt->company_address = 'ACN 605 162 847' . PHP_EOL . 'Suite 9 North, 215 Bell Street,' . PHP_EOL . 'Preston, VIC 3072' . PHP_EOL . 'Tel: 03 9863 6963';
                 $receipt->partner_name = ucfirst($property->owner0->first_name) . ' ' . ucfirst($property->owner0->last_name);
                 $receipt->partner_telephone = 'Tel: 0487 854 881';
@@ -157,7 +166,7 @@ class ReceiptsController extends Controller
 
                 } else {
 
-                    $receipt->company_logo = base64_encode($default_logo_contents);
+                    $receipt->company_logo = $default_logo_contents;
                 }
                 /*-----( // End of Company Logo )------*/
 
