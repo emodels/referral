@@ -71,7 +71,7 @@ class ReceiptsController extends Controller
                         $this->refresh(true);
                     }
 
-                    $receipt = Receipt::model()->find("property_id = " . $property->id . " AND from_date BETWEEN '" . $_POST['start_date'] . "' AND '" . $_POST['end_date'] . "'");
+                    $receipt = Receipt::model()->find("property_id = " . $property->id . " AND from_date BETWEEN '" . $_POST['start_date'] . "' AND '" . $_POST['end_date'] . "' ORDER BY id DESC");
 
                     $html_content = $this->renderPartial('/receipts/summary_view', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range, 'model' => $receipt), true);
 
@@ -129,6 +129,14 @@ class ReceiptsController extends Controller
                 $receipt = Receipt::model()->findByPk($receipt_id);
             }
 
+            /*-----( Get Company Address )----------*/
+            $admin = User::model()->find('user_type = 0');
+
+            if (isset($admin)) {
+
+                $company_address = $admin->header_title ? $admin->header_title : 'ACN 605 162 847' . PHP_EOL . 'Suite 9 North, 215 Bell Street,' . PHP_EOL . 'Preston, VIC 3072' . PHP_EOL . 'Tel: 03 9863 6963';;
+            }
+
             if (!isset($receipt)) {
 
                 $receipt = new Receipt();
@@ -136,7 +144,7 @@ class ReceiptsController extends Controller
                 $receipt->property_id = $prop_id;
                 $receipt->company_logo = $default_logo_contents;
                 $receipt->company_name = $property->entry0->referrelUser->header_title ? $property->entry0->referrelUser->header_title : 'Dwellings Estate Agent PTY LTD';
-                $receipt->company_address = 'ACN 605 162 847' . PHP_EOL . 'Suite 9 North, 215 Bell Street,' . PHP_EOL . 'Preston, VIC 3072' . PHP_EOL . 'Tel: 03 9863 6963';
+                $receipt->company_address = $company_address;
                 $receipt->partner_name = ucfirst($property->owner0->first_name) . ' ' . ucfirst($property->owner0->last_name);
                 $receipt->partner_telephone = 'Tel: 0487 854 881';
                 $receipt->partner_email = $property->owner0->email;
