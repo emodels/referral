@@ -3,15 +3,15 @@
     <div>
         <img src="<?php echo Yii::app()->getBaseUrl(true) . '/images/happy_birthday_background.jpg'; ?>" style="width: 750px; height: 467px"/>
     </div>
-    <div>Best Regards,</div>
+    <div style="padding: 10px 0 10px 0; font-size:8.0pt; font-family: arial, sans-serif; color:#333399">Best Regards,</div>
     <div><img width="149" height="68" src="<?php echo Yii::app()->getBaseUrl(true) . '/images/logo.jpg'; ?>"></div>
-    <div>
+    <div style="font-size:8.0pt; font-family: arial, sans-serif; color:#333399">
         <?php
         $user = User::model()->find('user_type = 0');
 
         if (isset($user)) {
 
-            echo $user_>header_title;
+            echo $user->header_title;
         }
         ?>
     </div>
