@@ -213,7 +213,7 @@ class SiteController extends Controller
 
                 $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
 
-                $mailer->AddEmbeddedImage('images/happy_birthday_background.jpg', 'birthday');
+                //$mailer->AddEmbeddedImage('images/happy_birthday_background.jpg', 'birthday');
 
                 $mailer->Host = Yii::app()->params['SMTP_Host'];
                 $mailer->IsSMTP();

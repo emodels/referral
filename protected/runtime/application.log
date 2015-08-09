@@ -9929,3 +9929,19 @@ Stack trace:
 REQUEST_URI=/referral/documents/index/id/11
 HTTP_REFERER=http://localhost/referral/client/mission
 ---
+2015/08/09 08:09:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "email/template/notify_on_birthday".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('email/template/...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/email/template/notify_on_birthday
+---
+2015/08/09 09:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/happy_birthday_background".' in C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('images/happy_bi...')
+#1 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/referral/images/happy_birthday_background
+---

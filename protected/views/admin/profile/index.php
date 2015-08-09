@@ -60,8 +60,12 @@
             <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
         </div>
         <div class="row">
+            <div class="column">Address</div>
+            <div><?php echo $form->textArea($model, 'header_title', array('style' => 'width:600px', 'rows' => '5')); ?><?php echo $form->error($model, 'header_title'); ?></div>
+        </div>
+        <div class="row">
             <div class="column">&nbsp;</div>
-            <div><?php echo CHtml::submitButton('Change Password', array('class' => 'button')); ?></div>
+            <div><?php echo CHtml::submitButton('Save Changes', array('class' => 'button')); ?></div>
         </div>
     </div>
     <?php $this->endWidget(); ?>    
