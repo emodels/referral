@@ -9857,3 +9857,75 @@ Stack trace:
 #8 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
 #9 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
 REQUEST_URI=/referral/receipts/add/prop_id/10/receipt_id/3
+2015/08/06 19:06:23 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(16): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/08/06 19:06:35 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/08/06 19:06:36 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/08/06 19:06:49 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/08/06 19:06:51 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
+2015/08/06 19:06:52 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.user_type" is not defined.' in C:\xampp\htdocs\referral\protected\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\base\CModule.php(106): CComponent->__get('user_type')
+#1 C:\xampp\htdocs\referral\protected\controllers\DocumentsController.php(18): CModule->__get('user_type')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(275): DocumentsController->init()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('documents/index...')
+#4 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/referral/documents/index/id/11
+HTTP_REFERER=http://localhost/referral/client/mission
+---
