@@ -204,7 +204,7 @@
                 <?php if ($model->company_logo != null) { ?>
                     <img id="company_logo" src="data:image/jpeg;base64, <?php echo $model->company_logo; ?>" style="width: 200px; height: 80px"/>
                 <?php } ?>
-                <div style="margin-top: 10px"><?php echo $form->fileField($model, 'company_logo'); ?></div>
+                <div style="margin-top: 10px"><?php echo $form->fileField($model, 'company_logo'); ?><br><strong style="color: green">Recommended Logo size - 200px X 80px</strong></div>
             </div>
         </div>
         <div class="clearfix"></div>
