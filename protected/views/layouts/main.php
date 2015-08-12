@@ -47,13 +47,44 @@
     }
 ?>
 	<div id="header">
-        <?php if (isset($this->header_logo)) { ?>
-            <img id="logo" src="data:image/jpeg;base64, <?php echo $this->header_logo ?>" style="width: <?php echo isset($this->logo_width) ? $this->logo_width . 'px' : 'auto'; ?>; height: <?php echo isset($this->logo_height) ? $this->logo_height . 'px' : 'auto'; ?>;" />
-        <?php } else { ?>
-            <img id="logo" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.jpg"/>
-        <?php } ?>
-        <div id="logo_name"><?php echo isset($this->header_title) ? $this->header_title : 'Dwellings group - Customer collaboration portal'; ?></div>
+        <?php
+        if (Yii::app()->user->isGuest) {
+
+            $admin = User::model()->find('user_type = 0');
+
+            if (isset($admin)) {
+
+                $logo = $admin->logo;
+                $logo_width = $admin->logo_width;
+                $logo_height = $admin->logo_height;
+                $header_title = $admin->company;
+            }
+
+        } else {
+
+            $logo = Yii::app()->user->site_logo;
+            $logo_width = Yii::app()->user->site_logo_width;
+            $logo_height = Yii::app()->user->site_logo_height;
+            $header_title = Yii::app()->user->site_name;
+
+            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_logo)) {
+
+                $logo = Yii::app()->user->user_logo;
+                $logo_width = Yii::app()->user->user_logo_width;
+                $logo_height = Yii::app()->user->user_logo_height;
+            }
+
+            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_header_title)) {
+
+                $header_title = Yii::app()->user->user_header_title;
+            }
+
+        } ?>
+
+        <img id="logo" src="data:image/jpeg;base64, <?php echo $logo; ?>" style="width: <?php echo $logo_width . 'px'; ?>; height: <?php echo $logo_height . 'px'; ?>;" />
+        <div id="logo_name"><?php echo $header_title; ?></div>
         <div style="clear: both; height: 0px;"></div>
+
 	</div><!-- header -->
         
 	<div id="mainmenu">

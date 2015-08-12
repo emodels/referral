@@ -22,7 +22,7 @@
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'admin-user-profile',
-        'htmlOptions' => array('autocomplete' => 'off'),
+        'htmlOptions' => array('autocomplete' => 'off', 'enctype' => 'multipart/form-data'),
         'enableClientValidation' => true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
@@ -32,7 +32,7 @@
     ?>
     <div>
         <div class="row">
-            <div class="column">Company</div>
+            <div class="column">Company Name</div>
             <div><?php echo $form->textField($model, 'company', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'company'); ?></div>
         </div>
         <div class="row">
@@ -58,6 +58,26 @@
         <div class="row">
             <div class="column">Email</div>
             <div><?php echo $form->textField($model, 'email', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'email'); ?></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Company Logo <br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column">
+                <?php echo $form->fileField($model, 'logo'); ?><?php echo $form->error($model, 'logo'); ?>
+                <?php if ($model->logo != null) { ?>
+                    <img src="data:image/jpeg;base64, <?php echo $model->logo; ?>" style="width: 200px; height: 80px"/>
+                <?php } ?>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Logo Width<br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column"><?php echo $form->textField($model, 'logo_width', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'logo_width'); ?></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="column">Logo Height<br/>(<i style="font-size: 11px">Optional</i>)</div>
+            <div class="column"><?php echo $form->textField($model, 'logo_height', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'logo_height'); ?></div>
+            <div class="clearfix"></div>
         </div>
         <div class="row">
             <div class="column">Address</div>
