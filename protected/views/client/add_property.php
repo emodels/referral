@@ -39,7 +39,14 @@
                 </div>
                 <div class="row">
                     <div class="column">Address</div>
-                    <div class="column"><?php echo $form->textField($model, 'address', array('style' => 'width:200px')); ?><?php echo $form->error($model, 'address'); ?></div>
+                    <div class="column">
+                        <?php if ($model->entry0->property_holder == 'Tenant') { ?>
+                            <?php echo $form->dropDownList($model, 'address', CHtml::listData(Property::model()->findAllBySql('SELECT P.* FROM `property` as P, `entry` as E WHERE P.entry = E.id AND E.referrel_user = ' . $model->entry0->referrel_user), 'address', 'address') ,array('style' => 'width:200px', 'empty'=>'Select Address')); ?>
+                        <?php } else { ?>
+                            <?php echo $form->textField($model, 'address', array('style' => 'width:200px')); ?>
+                        <?php } ?>
+                        <?php echo $form->error($model, 'address'); ?>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">

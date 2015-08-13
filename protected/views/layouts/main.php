@@ -67,14 +67,14 @@
             $logo_height = Yii::app()->user->site_logo_height;
             $header_title = Yii::app()->user->site_name;
 
-            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_logo)) {
+            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_logo) && Yii::app()->user->user_logo != '') {
 
                 $logo = Yii::app()->user->user_logo;
                 $logo_width = Yii::app()->user->user_logo_width;
                 $logo_height = Yii::app()->user->user_logo_height;
             }
 
-            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_header_title)) {
+            if (Yii::app()->user->user_type != 0 && isset(Yii::app()->user->user_header_title) && Yii::app()->user->user_header_title != '') {
 
                 $header_title = Yii::app()->user->user_header_title;
             }

@@ -52,12 +52,23 @@
 
     <div style="width: 100px"><a id="lnkMenuToggle" href="javascript:ToggleMenu();"><h5><< Hide Menu</h5></a></div>
 
-    <?php if (Yii::app()->user->user_type == '0') { ?>
+    <?php
+    $partnerCompany = '';
+    $partnerListData = CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company');
+    $statusArray = array();
+
+    if (Yii::app()->user->user_type != '0') {
+
+        $partnerCompany = Yii::app()->user->id;
+        $partnerListData = CHtml::listData(User::model()->findAll('id = ' . Yii::app()->user->id),'id','company');
+        $statusArray = CHtml::listData(Status::model()->findAll('referral_user=:id',array(':id'=>Yii::app()->user->id)),'id','status');
+    }
+    ?>
 
     <?php echo CHtml::beginForm('','post',array('id'=>'Entry')); ?>
     <div class="row">
         <div class="column" style="padding-top: 2px">Partner Company :</div>
-        <div class="column"><?php echo CHtml::dropDownList('Entry[referrel_user]', '', CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company'), array('empty'=>'Select Partner','style' => 'width:153px',
+        <div class="column"><?php echo CHtml::dropDownList('Entry[referrel_user]', $partnerCompany, $partnerListData, array('empty'=> $partnerCompany != '' ? null : 'Select Partner','style' => 'width:153px',
                                        'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),
                                        'beforeSend' => 'function(){
                                             $(".ajax-loading").hide();
@@ -68,7 +79,7 @@
                                             $("#Entry_status").html(data);
                                         }'))); ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Status :</div>
-        <div class="column"><?php echo CHtml::dropDownList('Entry[status]', '', array(), array('empty'=>'Select Status', 'style' => 'width:153px')); ?></div>
+        <div class="column"><?php echo CHtml::dropDownList('Entry[status]', '', $statusArray, array('empty'=>'Select Status', 'style' => 'width:153px')); ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Property Holder :</div>
         <div class="column"><?php echo CHtml::dropDownList('Entry[property_holder]', '', array('Owner'=>'Owner','Tenant'=>'Tenant','Landlord'=>'Landlord'), array('empty'=>'Select Property Holder', 'style' => 'width:160px')); ?></div>
         <div class="column" style="padding-left: 40px"><?php echo CHtml::ajaxButton('List','', array('type'=>'POST',
@@ -108,8 +119,6 @@
         <span><img src="<?php echo Yii::app()->baseUrl; ?>/images/ajax-loader2.gif" style="width: 40px; vertical-align: middle"/></span>
         <span style="font-size: 16px; color: green"><b>Loading results . . .</b></span>
     </div>
-
-    <?php } ?>
 
     <div id="divGrid">
     <?php
