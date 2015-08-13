@@ -140,7 +140,7 @@ class SiteController extends Controller
                 $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                 $mailer->AddAddress($model->referrelUser->email);
                 $mailer->AddCC(Yii::app()->params['adminEmail']);
-                $mailer->FromName = 'Dwellings Group';
+                $mailer->FromName = Yii::app()->user->site_name;
                 $mailer->CharSet = 'UTF-8';
                 $mailer->Subject = 'Pending Action : Reminder for Referral ID : ' . $model->id;
                 $mailer->IsHTML();
@@ -180,7 +180,7 @@ class SiteController extends Controller
                 $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                 $mailer->AddAddress($model->referrelUser->email);
                 $mailer->AddCC(Yii::app()->params['adminEmail']);
-                $mailer->FromName = 'Dwellings Group';
+                $mailer->FromName = Yii::app()->user->site_name;
                 $mailer->CharSet = 'UTF-8';
                 $mailer->Subject = 'Pending Action : Reminder for Referral ID : ' . $model->id;
                 $mailer->IsHTML();
@@ -224,7 +224,7 @@ class SiteController extends Controller
                 $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                 $mailer->AddAddress($model->email);
                 $mailer->AddCC(Yii::app()->params['adminEmail']);
-                $mailer->FromName = 'Dwellings Group';
+                $mailer->FromName = Yii::app()->user->site_name;
                 $mailer->CharSet = 'UTF-8';
                 $mailer->Subject = ucwords($model->first_name) . ', Wish you a very happy birthday !!!';
                 $mailer->IsHTML();

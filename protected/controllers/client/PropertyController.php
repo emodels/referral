@@ -52,9 +52,9 @@ class PropertyController extends Controller
                         $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                         $mailer->AddAddress($model->entry0->email);
                         $mailer->AddCC(Yii::app()->params['adminEmail']);
-                        $mailer->FromName = 'Dwellings Group';
+                        $mailer->FromName = Yii::app()->user->site_name;
                         $mailer->CharSet = 'UTF-8';
-                        $mailer->Subject = 'Dwellings Group Referral Management System - Client portal enabled';
+                        $mailer->Subject = Yii::app()->user->site_name . ' - Client portal enabled';
                         $mailer->IsHTML();
                         $mailer->Body = $message;
 

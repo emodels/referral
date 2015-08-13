@@ -1,6 +1,6 @@
 <div style="font-family: arial">
-    <div style="float: left"><img width="149" height="68" src="http://referral.snt3.com/images/logo.jpg"/></div>
-    <div style="padding: 7px 0 0 20px; color: navy"><h2>Dwellings Group Referral Management System</h2></div>
+    <div style="float: left"><img width="<?php echo Yii::app()->user->site_logo_width; ?>" height="<?php echo Yii::app()->user->site_logo_height; ?>" src="<?php echo Yii::app()->getBaseUrl(true); ?>/images/logo.jpg"/></div>
+    <div style="padding: 7px 0 0 20px; color: navy"><h2><?php echo Yii::app()->user->site_name; ?></h2></div>
 </div>
 <br/>
 <div style="border: solid 1px silver; width: 100%; padding: 10px; background-color: #f7f7f7; font-family: arial">
@@ -19,14 +19,5 @@
     </p>
 </div>
 <div style="padding: 10px 0 10px 0; font-size:8.0pt; font-family: arial, sans-serif; color:#333399">Best Regards,</div>
-<div><img width="149" height="68" src="<?php echo Yii::app()->getBaseUrl(true) . '/images/logo.jpg'; ?>"></div>
-<div style="font-size:8.0pt; font-family: arial, sans-serif; color:#333399">
-    <?php
-    $user = User::model()->find('user_type = 0');
-
-    if (isset($user)) {
-
-        echo $user->header_title;
-    }
-    ?>
-</div>
+<div><img width="<?php echo Yii::app()->user->site_logo_width; ?>" height="<?php echo Yii::app()->user->site_logo_height; ?>" src="<?php echo Yii::app()->getBaseUrl(true) . '/images/logo.jpg'; ?>"></div>
+<div style="font-size:8.0pt; font-family: arial, sans-serif; color:#333399"><?php echo Yii::app()->user->site_address; ?></div>
