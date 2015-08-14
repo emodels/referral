@@ -176,6 +176,7 @@ class UserController extends Controller
                         'first_name'=>$user->first_name,
                         'last_name'=>$user->last_name,
                         'status'=>$user->status0->status,
+                        'type'=>$user->property_holder,
                         'priority'=>($user->priority == "0") ? "Low" : (($user->priority == "1") ? "Medium" : "High"),
                         'email'=>$user->email,
                         'address'=>$user->address,

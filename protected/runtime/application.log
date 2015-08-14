@@ -10262,3 +10262,25 @@ Stack trace:
 REQUEST_URI=/referral/site/login
 HTTP_REFERER=http://localhost/referral/site/login
 ---
+2015/08/14 18:39:03 [error] [php] array_keys() expects parameter 1 to be array, null given (C:\xampp\htdocs\referral\protected\controllers\admin\UserController.php:201)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): UserController->actionExportCSV()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): UserController->runAction()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): UserController->run()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/admin/user/ExportCSV
+2015/08/14 18:39:04 [error] [php] array_keys() expects parameter 1 to be array, null given (C:\xampp\htdocs\referral\protected\controllers\admin\UserController.php:201)
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\actions\CInlineAction.php(50): UserController->actionExportCSV()
+#1 C:\xampp\htdocs\referral\protected\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\referral\protected\framework\web\CController.php(287): UserController->runAction()
+#3 C:\xampp\htdocs\referral\protected\framework\web\CController.php(266): UserController->runActionWithFilters()
+#4 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): UserController->run()
+#5 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
+REQUEST_URI=/referral/admin/user/ExportCSV
