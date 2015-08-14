@@ -64,7 +64,7 @@
 
         var rent_received = Math.floor(parseFloat($('#Receipt_paid').val()) * 100) / 100;
 
-        $('#rent_received').html('$' + rent_received.toFixed(2));
+        $('#rent_received').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received.toFixed(2));
 
         var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (<?php echo $property->management_fee_percentage;?> / 100)) * 100) / 100;
         var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
@@ -243,8 +243,8 @@
     <div class="row" style="margin-top: 25px; padding-bottom: 20px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
         <div class="column" style="width: 25%"><?php echo $form->textField($model, 'property_address', array('style' => 'width:95%; font-size: 18px')); ?><?php echo $form->error($model, 'property_address', array('style' => 'font-size: 15px')); ?></div>
         <div class="column" style="width: 20%"><?php echo $form->textField($model, 'tenant_name', array('style' => 'width:95%; font-size: 18px')); ?><?php echo $form->error($model, 'tenant_name', array('style' => 'font-size: 15px')); ?></div>
-        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'rent', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'rent', array('style' => 'font-size: 15px')); ?></div>
-        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'paid', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'paid', array('style' => 'font-size: 15px')); ?></div>
+        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'rent', array('style' => 'width:80%; font-size: 18px')); ?><?php echo $form->error($model, 'rent', array('style' => 'font-size: 15px')); ?></div>
+        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'paid', array('style' => 'width:80%; font-size: 18px')); ?><?php echo $form->error($model, 'paid', array('style' => 'font-size: 15px')); ?></div>
         <div class="column" style="width: 10%">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker',
