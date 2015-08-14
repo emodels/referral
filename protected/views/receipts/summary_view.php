@@ -175,12 +175,12 @@
                 ),
                 array(
                     'name' => 'Rent',
-                    'value' => '"$" . $data->rent',
+                    'value' => 'Yii::app()->params["Currency"] . $data->rent',
                     'headerHtmlOptions'=>array('style'=>'text-align:left;'),
                 ),
                 array(
                     'name' => 'Paid',
-                    'value' => '"$" . $data->paid',
+                    'value' => 'Yii::app()->params["Currency"] . $data->paid',
                     'headerHtmlOptions'=>array('style'=>'text-align:left;'),
                 ),
                 array(

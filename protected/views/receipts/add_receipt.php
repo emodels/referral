@@ -85,14 +85,14 @@
         var your_account = Math.floor((rent_received - (management_fee + gst + costsTotal)) * 100) / 100;
 
         $('#Receipt_management_fees').val(management_fee);
-        $('#management_fees').html('$' + management_fee);
+        $('#management_fees').html('<?php echo Yii::app()->params['Currency']; ?>' + management_fee);
 
         $('#Receipt_gst').val(gst);
-        $('#gst').html('$' + gst);
+        $('#gst').html('<?php echo Yii::app()->params['Currency']; ?>' + gst);
 
-        $('#your_account').html('$' + your_account);
-        $('#total_debit').html('$' + rent_received);
-        $('#total_credit').html('$' + rent_received);
+        $('#your_account').html('<?php echo Yii::app()->params['Currency']; ?>' + your_account);
+        $('#total_debit').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received);
+        $('#total_credit').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received);
     }
 
     function addCostRow() {
@@ -101,7 +101,7 @@
 
         var strContent = '<div id="rowCost_' + inputCount + '" class="row" style="font-size: 18px">' +
                             '<div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][' + inputCount + ']" style="font-size: 18px"/></div>' +
-                            '<div class="column" style="width: 20%">$<input type="text" class="cost_value" name="Costs[value][' + inputCount + ']" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>' +
+                            '<div class="column" style="width: 20%"><?php echo Yii::app()->params['Currency']; ?><input type="text" class="cost_value" name="Costs[value][' + inputCount + ']" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>' +
                             '<div class="column" style="width: 15%"><a href="javascript:deleteCostRow(' + inputCount + ');" style="text-decoration: none; font-size: 32px; color: red">-</a></div>' +
                             '<div class="clearfix"></div>' +
                         '</div>';
@@ -243,8 +243,8 @@
     <div class="row" style="margin-top: 25px; padding-bottom: 20px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
         <div class="column" style="width: 25%"><?php echo $form->textField($model, 'property_address', array('style' => 'width:95%; font-size: 18px')); ?><?php echo $form->error($model, 'property_address', array('style' => 'font-size: 15px')); ?></div>
         <div class="column" style="width: 20%"><?php echo $form->textField($model, 'tenant_name', array('style' => 'width:95%; font-size: 18px')); ?><?php echo $form->error($model, 'tenant_name', array('style' => 'font-size: 15px')); ?></div>
-        <div class="column" style="width: 15%">$<?php echo $form->textField($model, 'rent', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'rent', array('style' => 'font-size: 15px')); ?></div>
-        <div class="column" style="width: 15%">$<?php echo $form->textField($model, 'paid', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'paid', array('style' => 'font-size: 15px')); ?></div>
+        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'rent', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'rent', array('style' => 'font-size: 15px')); ?></div>
+        <div class="column" style="width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $form->textField($model, 'paid', array('style' => 'width:92%; font-size: 18px')); ?><?php echo $form->error($model, 'paid', array('style' => 'font-size: 15px')); ?></div>
         <div class="column" style="width: 10%">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker',
@@ -317,7 +317,7 @@
 
                 <div id="rowCost_<?php echo $cost->index; ?>" class="row" style="font-size: 18px">
                     <div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][<?php echo $cost->index; ?>]" value="<?php echo $cost->name; ?>" style="font-size: 18px"/></div>
-                    <div class="column" style="width: 20%">$<input type="text" class="cost_value" name="Costs[value][<?php echo $cost->index; ?>]" value="<?php echo $cost->value; ?>" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>
+                    <div class="column" style="width: 20%"><?php echo Yii::app()->params['Currency']; ?><input type="text" class="cost_value" name="Costs[value][<?php echo $cost->index; ?>]" value="<?php echo $cost->value; ?>" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>
                     <div class="column" style="width: 15%"><a href="javascript:deleteCostRow(<?php echo $cost->index; ?>);" style="text-decoration: none; font-size: 32px; color: red">-</a></div>
                     <div class="clearfix"></div>
                 </div>

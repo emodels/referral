@@ -63,8 +63,8 @@
             <div class="row" style="margin-top: 25px; padding-bottom: 20px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
                 <div class="column" style="float: left; width: 25%"><?php echo $model->property_address; ?></div>
                 <div class="column" style="float: left; width: 20%"><?php echo $model->tenant_name; ?></div>
-                <div class="column" style="float: left; width: 15%">$<?php echo $model->rent; ?></div>
-                <div class="column" style="float: left; width: 15%">$<?php echo $model->paid; ?></div>
+                <div class="column" style="float: left; width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->rent; ?></div>
+                <div class="column" style="float: left; width: 15%"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->paid; ?></div>
                 <div class="column" style="float: left; width: 10%"><?php echo $model->from_date; ?></div>
                 <div class="column" style="float: left; width: 10%"><?php echo $model->to_date; ?></div>
                 <div class="clearfix" style="clear: both"></div>
@@ -80,18 +80,18 @@
             <div class="row" style="margin-top: 25px; font-size: 18px">
                 <div class="column" style="float: left; width: 61.5%">Rent received</div>
                 <div class="column" style="float: left; width: 20%">&nbsp;</div>
-                <div class="column" style="float: left; width: 15%">$<span id="rent_received"><?php echo $model->paid; ?></span></div>
+                <div class="column" style="float: left; width: 15%"><?php echo Yii::app()->params['Currency']; ?><span id="rent_received"><?php echo $model->paid; ?></span></div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
             <div class="row" style="font-size: 18px">
                 <div class="column" style="float: left; width: 61.5%">Management fees</div>
-                <div class="column" style="float: left; width: 20%"><span id="management_fees">$<?php echo $model->management_fees; ?></span></div>
+                <div class="column" style="float: left; width: 20%"><span id="management_fees"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->management_fees; ?></span></div>
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
             <div class="row" style="font-size: 18px">
                 <div class="column" style="float: left; width: 61.5%">GST</div>
-                <div class="column" style="float: left; width: 20%"><span id="gst">$<?php echo $model->gst; ?></span></div>
+                <div class="column" style="float: left; width: 20%"><span id="gst"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->gst; ?></span></div>
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
@@ -107,7 +107,7 @@
 
                         <div class="row" style="font-size: 18px">
                             <div class="column" style="float: left; width: 61.5%"><?php echo $cost->name; ?></div>
-                            <div class="column" style="float: left; width: 20%">$<?php echo $cost->value; ?></div>
+                            <div class="column" style="float: left; width: 20%"><?php echo Yii::app()->params['Currency']; ?><?php echo $cost->value; ?></div>
                             <div class="column" style="float: left; width: 15%">&nbsp;</div>
                             <div class="clearfix" style="clear: both"></div>
                         </div>
@@ -118,14 +118,14 @@
             </div>
             <div class="row" style="font-size: 18px">
                 <div class="column" style="float: left; width: 61.5%">Transfer to your account</div>
-                <div class="column" style="float: left; width: 20%">$<?php echo number_format($model->paid - ($model->management_fees + $model->gst + $costsTotal), 2, '.', ''); ?></div>
+                <div class="column" style="float: left; width: 20%"><?php echo Yii::app()->params['Currency']; ?><?php echo number_format($model->paid - ($model->management_fees + $model->gst + $costsTotal), 2, '.', ''); ?></div>
                 <div class="column" style="float: left; width: 15%">&nbsp;</div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
             <div class="row" style="font-size: 18px; border-bottom: solid 4px #000000; border-top: solid 4px #000000; padding: 2px 0 2px 0; margin-top: 20px">
                 <div class="column" style="float: left; width: 61.5%">Total</div>
-                <div class="column" style="float: left; width: 20%"><span id="total_debit">$<?php echo $model->paid; ?></span></div>
-                <div class="column" style="float: left; width: 15%"><span id="total_credit">$<?php echo $model->paid; ?></span></div>
+                <div class="column" style="float: left; width: 20%"><span id="total_debit"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->paid; ?></span></div>
+                <div class="column" style="float: left; width: 15%"><span id="total_credit"><?php echo Yii::app()->params['Currency']; ?><?php echo $model->paid; ?></span></div>
                 <div class="clearfix" style="clear: both"></div>
             </div>
             <?php } ?>
