@@ -91,6 +91,7 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>Yii::app()->request->baseUrl . '/site/logout', 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Change Password', 'url'=>Yii::app()->request->baseUrl . '/site/changepassword', 'visible'=>!Yii::app()->user->isGuest),
                 $this->menu
 			),
 		)); ?>

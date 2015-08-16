@@ -10284,3 +10284,14 @@ Stack trace:
 #6 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
 #7 C:\xampp\htdocs\referral\index.php(13): CWebApplication->run()
 REQUEST_URI=/referral/admin/user/ExportCSV
+2015/08/16 08:28:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "{".' in C:\xampp\htdocs\referral\protected\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\referral\protected\framework\web\CController.php(271): CController->missingAction('{')
+#1 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(276): CController->run('{')
+#2 C:\xampp\htdocs\referral\protected\framework\web\CWebApplication.php(135): CWebApplication->runController('site/{/referral...')
+#3 C:\xampp\htdocs\referral\protected\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\referral\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/referral/site/%7B/referral/mission%7D
+HTTP_REFERER=http://localhost/referral/site/changepassword
+---

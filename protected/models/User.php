@@ -59,6 +59,7 @@ class User extends CActiveRecord
 			array('first_name, last_name, email, username, password, confirm_password', 'length', 'max'=>50),
 			array('company', 'length', 'max'=>100),
 			array('logo, header_title', 'safe'),
+            array('password', 'compare', 'compareAttribute'=>'confirm_password', 'message'=>'Passwords not similar'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, first_name, last_name, email, company, user_type, username, password, confirm_password, allow_add_referral, entry, allow_portal_management, logo, logo_width, logo_height, header_title', 'safe', 'on'=>'search'),

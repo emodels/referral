@@ -114,7 +114,25 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-        
+
+    public function actionChangePassword() {
+
+        $model = User::model()->findByPk(Yii::app()->user->id);
+
+        if (isset($_POST['User'])) {
+
+            $model->attributes = $_POST['User'];
+
+            if ($model->save()) {
+
+                Yii::app()->user->setFlash('success', 'Password Changed Successfully');
+                Yii::app()->clientScript->registerMetaTag('2; url=' . Yii::app()->baseUrl . '/mission', null, 'refresh');
+            }
+        }
+
+        $this->render('changepassword', array('model'=>$model));
+    }
+
     public function actionCronjob(){
 
         $criteria = new CDbCriteria;
