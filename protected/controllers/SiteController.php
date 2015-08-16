@@ -102,6 +102,66 @@ class SiteController extends Controller
                             }
                         }        
 		}
+
+        if (isset($_POST['reset'])) {
+
+            $username = $_POST['LoginForm']['username'];
+
+            $user = User::model()->find("username = '" . $username . "'");
+
+            if (isset($user)) {
+
+                $settingsArray = array();
+
+                $admin = User::model()->find('user_type = 0');
+
+                if (isset($admin)) {
+
+                    $settingsArray['logo'] = $admin->logo;
+                    $settingsArray['logo_width'] = $admin->logo_width;
+                    $settingsArray['logo_height'] = $admin->logo_height;
+                    $settingsArray['site_name'] = $admin->company;
+                    $settingsArray['site_address'] = $admin->header_title;
+                }
+
+                $message = $this->renderPartial('//email/template/password_request', array('user'=>$user, 'settingsArray'=>$settingsArray), true);
+
+                if (isset($message) && $message != "") {
+
+                    $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                    $mailer->Host = Yii::app()->params['SMTP_Host'];
+                    $mailer->IsSMTP();
+                    $mailer->SMTPAuth = true;
+                    $mailer->Username = Yii::app()->params['SMTP_Username'];
+                    $mailer->Password = Yii::app()->params['SMTP_password'];
+                    $mailer->From = Yii::app()->params['SMTP_Username'];
+                    $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                    $mailer->AddAddress($user->email);
+                    $mailer->AddCC(Yii::app()->params['adminEmail']);
+                    $mailer->FromName = $admin->company;
+                    $mailer->CharSet = 'UTF-8';
+                    $mailer->Subject = $admin->company . ' - Password request';
+                    $mailer->IsHTML();
+                    $mailer->Body = $message;
+
+                    try{
+
+                        $mailer->Send();
+                    }
+                    catch (Exception $ex){
+
+                        echo $ex->getMessage();
+                    }
+                }
+
+                Yii::app()->user->setFlash('success', 'Password has been sent to your email : "' . $user->email . '"');
+
+            } else {
+
+                Yii::app()->user->setFlash('error', 'Unable to find any account with given user name : "' . $username . '"');
+            }
+        }
+
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}

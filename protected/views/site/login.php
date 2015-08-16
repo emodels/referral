@@ -38,8 +38,41 @@ $this->pageTitle=Yii::app()->name . ' - Login';
                     <div style="padding-left: 150px"><?php echo CHtml::submitButton('Login',array('class'=>'button')); ?></div>
                 </div>
 
+                <div class="row" style="margin-top: 10px">
+                    <div style="text-align: center">Forgot your password ? <a href="javascript:$('#divReset').show();">Click here to get your password</a></div>
+                </div>
+
         <?php $this->endWidget(); ?>
         </div><!-- form -->
+
+        <div id="divReset" class="form hide" style="margin-top: 20px">
+
+            <hr/>
+
+            <?php $form=$this->beginWidget('CActiveForm', array(
+                'id'=>'reset-form',
+                'enableClientValidation'=>true,
+                'clientOptions'=>array(
+                    'validateOnSubmit'=>true,
+                ),
+            )); ?>
+
+            <div class="row">
+
+                <h3>Request Password</h3>
+
+                <h5>You will receive an email with you password</h5>
+
+                <div class="column" style="margin-top: 5px">User Name</div>
+                <div class="column"><?php echo $form->textField($model,'username'); ?><?php echo $form->error($model,'username'); ?></div>
+                <div class="column"><?php echo CHtml::submitButton('Send Password',array('name'=>'reset', 'class'=>'button', 'style'=>'padding: 5px')); ?></div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <?php $this->endWidget(); ?>
+        </div>
+
     </div>
 </div>
 </div>
