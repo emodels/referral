@@ -8,7 +8,7 @@
     <p><?php echo Yii::app()->user->site_name; ?> have enabled your Clint Portal and please use following login information to access the portal.</p>
     <p>
         <b><u>Login Details:</u></b><br/><br/>
-        Portal Login URL : <?php echo Yii::app()->getBaseUrl(true); ?><br/><br/>
+        Portal Login URL : <?php echo Yii::app()->params['domain']; ?><br/><br/>
         User Name : <?php echo $user->username; ?><br/><br/>
         Password : <?php echo $user->password; ?><br/><br/>
     </p>
