@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                     <div class="column">Owner</div>
-                    <div class="column"><?php echo $form->dropDownList($model, 'owner', CHtml::listData(User::model()->findAll(array('condition'=>'user_type = 1','order' => 'first_name')),'id','first_name'),array('style' => 'width:200px', 'empty'=>'Select Owner')); ?><?php echo $form->error($model, 'owner'); ?></div>
+                    <div class="column"><?php echo $form->dropDownList($model, 'owner', CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(first_name, " ", last_name) as first_name FROM user WHERE user_type = 1 ORDER BY first_name'),'id','first_name'),array('style' => 'width:200px', 'empty'=>'Select Owner')); ?><?php echo $form->error($model, 'owner'); ?></div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
