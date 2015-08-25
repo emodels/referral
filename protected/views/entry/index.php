@@ -57,6 +57,12 @@
     $partnerListData = CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company');
     $statusArray = array();
 
+    if (Yii::app()->user->user_type == '0' && Yii::app()->session['referrel_user']) {
+
+        $partnerCompany = Yii::app()->session['referrel_user'];
+        $statusArray = CHtml::listData(Status::model()->findAll('referral_user=:id',array(':id'=>Yii::app()->session['referrel_user'])),'id','status');
+    }
+
     if (Yii::app()->user->user_type != '0') {
 
         $partnerCompany = Yii::app()->user->id;
@@ -130,6 +136,11 @@
     } else {
 
         $partners = User::model()->findAll('id = :id', array(':id'=>Yii::app()->user->id));
+    }
+
+    if (isset(Yii::app()->session['referrel_user'])) {
+
+        $partners = User::model()->findAll('id = :id', array(':id'=>Yii::app()->session['referrel_user']));
     }
 
     foreach ($partners as $partner) {
