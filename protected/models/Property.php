@@ -21,6 +21,8 @@
  * @property string $first_created_date
  * @property string $last_update_date
  * @property double $management_fee_percentage
+ * @property integer $send_reminder
+ * @property string $expected_settlement_date
  *
  * The followings are the available model relations:
  * @property Entry $entry0
@@ -57,14 +59,15 @@ class Property extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, first_created_date, last_update_date, management_fee_percentage', 'required'),
-			array('entry, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place', 'numerical', 'integerOnly'=>true),
+			array('entry, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, send_reminder', 'numerical', 'integerOnly'=>true),
 			array('management_fee_percentage', 'numerical'),
 			array('builder', 'length', 'max'=>200),
 			array('address', 'length', 'max'=>500),
 			array('status', 'length', 'max'=>50),
+			array('expected_settlement_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, first_created_date, last_update_date, management_fee_percentage', 'safe', 'on'=>'search'),
+			array('id, entry, builder, address, status, owner, initial_deposit, contracts_signed, five_ten_deposit, firb_approval, finance_approval, property_completion, rented_out, insurance_in_place, first_created_date, last_update_date, management_fee_percentage, send_reminder, expected_settlement_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -106,6 +109,8 @@ class Property extends CActiveRecord
 			'first_created_date' => 'First Created Date',
 			'last_update_date' => 'Last Update Date',
 			'management_fee_percentage' => 'Management Fee Percentage',
+			'send_reminder' => 'Send Reminder',
+			'expected_settlement_date' => 'Expected Settlement Date',
 		);
 	}
 
@@ -137,6 +142,8 @@ class Property extends CActiveRecord
 		$criteria->compare('first_created_date',$this->first_created_date,true);
 		$criteria->compare('last_update_date',$this->last_update_date,true);
 		$criteria->compare('management_fee_percentage',$this->management_fee_percentage);
+		$criteria->compare('send_reminder',$this->send_reminder);
+		$criteria->compare('expected_settlement_date',$this->expected_settlement_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

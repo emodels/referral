@@ -3,6 +3,32 @@
         width: 200px;
     }
 </style>
+<script type="application/javascript">
+    function validateForm(form, data, hasError){
+
+        if ($('#Property_send_reminder').val() != '' && parseInt($('#Property_send_reminder').val()) > 0) {
+
+            if ($('#Property_expected_settlement_date').val().trim() == '' || $('#Property_expected_settlement_date').val().trim() == '0000-00-00') {
+
+                $('#Property_expected_settlement_date_em_').html('Settlement Date cannot be blank').show();
+                $('#Property_expected_settlement_date_em_').parent().removeClass('success').addClass('error');
+                hasError = true;
+            }
+
+        } else {
+
+            $('#Property_expected_settlement_date_em_').html('').hide();
+            $('#Property_expected_settlement_date_em_').parent().removeClass('error').addClass('success');
+            hasError = false;
+        }
+
+        if (!hasError) {
+            return true;
+        }
+
+        return false;
+    }
+</script>
 <div style="float: left">
     <?php
     if (Yii::app()->user->user_type == '0') {
@@ -28,6 +54,7 @@
                 'clientOptions' => array(
                     'validateOnSubmit' => true,
                     'validateOnChange'=>true,
+                    'afterValidate'=>'js:validateForm'
                 ),
             ));
             ?>
@@ -105,6 +132,46 @@
                     <div class="column"><?php echo $form->checkBox($model, 'insurance_in_place', array('value'=>1,'uncheckValue'=>0), array('style' => 'width:200px')); ?></div>
                     <div class="clearfix"></div>
                 </div>
+                    <div class="row">
+                        <div class="column">Send Reminder</div>
+                        <div class="column">
+                            <?php echo $form->dropDownList($model, 'send_reminder',
+                                array(
+                                    '0'=>'No Reminder',
+                                    '1'=>'1 Week',
+                                    '2'=>'2 Weeks',
+                                    '3'=>'3 Weeks',
+                                    '4'=>'4 Weeks',
+                                    '5'=>'5 Weeks',
+                                    '6'=>'6 Weeks',
+                                    '7'=>'7 Weeks',
+                                    '8'=>'8 Weeks',
+                                ),
+                                array('style' => 'width:200px', 'empty'=>'Select Reminder', 'onChange'=>'js:validateForm()')); ?>
+                            <?php echo $form->error($model, 'send_reminder'); ?></div>
+                    </div>
+                    <div class="row">
+                        <div class="column">Expected Settlement Date</div>
+                        <div class="column">
+                            <?php
+                            $this->widget('zii.widgets.jui.CJuiDatePicker',
+                                array(
+                                    'model'=>$model,
+                                    'attribute'=>'expected_settlement_date',
+                                    'options'=>array(
+                                        'showAnim'=>'fold',
+                                        'dateFormat'=>'yy-mm-dd',
+                                        'changeMonth' => 'true',
+                                        'changeYear' => 'true',
+                                        'constrainInput' => 'false'
+                                    ),
+                                    'htmlOptions'=>array('style'=>'width:200px'),
+                                ));
+                            ?>
+                            <?php echo $form->error($model, 'expected_settlement_date'); ?>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                 <?php } ?>
                 <div class="row">
                     <div class="column">&nbsp;</div>

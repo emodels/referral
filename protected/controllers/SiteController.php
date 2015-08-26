@@ -278,6 +278,45 @@ class SiteController extends Controller
         echo 'Cron Job completed.';
     }
 
+    public function actionCronjobSettlementDate(){
+
+        $propertyCollec = Property::model()->findAll('send_reminder >= 1 AND expected_settlement_date = CURDATE() + INTERVAL send_reminder WEEK');
+
+        foreach ($propertyCollec as $property) {
+
+            //--------Send Email notification to Referral---------------
+            $message = $this->renderPartial('//email/template/notify_on_settlement_date', array('property'=>$property, 'customer'=> $property->entry0), true);
+
+            if (isset($message) && $message != "") {
+                $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                $mailer->Host = Yii::app()->params['SMTP_Host'];
+                $mailer->IsSMTP();
+                $mailer->SMTPAuth = true;
+                $mailer->Username = Yii::app()->params['SMTP_Username'];
+                $mailer->Password = Yii::app()->params['SMTP_password'];
+                $mailer->From = Yii::app()->params['SMTP_Username'];
+                $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                $mailer->AddAddress(Yii::app()->params['adminEmail']);
+                $mailer->FromName = Yii::app()->user->site_name;
+                $mailer->CharSet = 'UTF-8';
+                $mailer->Subject = 'Reminder based on Settlement Date set for Property : ' . $property->address;
+                $mailer->IsHTML();
+                $mailer->Body = $message;
+
+                try{
+                    $mailer->Send();
+                }
+                catch (Exception $ex){
+                    echo $ex->getMessage();
+                }
+            }
+            //----------------------------------------------------------
+        }
+
+        echo 'Sent reminder emails to ' . count($propertyCollec) . ' number of Properties <br><br>';
+        echo 'Cron Job completed.';
+    }
+
     public function actionCronjobBirthday(){
 
         $entryCollec = Entry::model()->findAll('date_of_birth IS NOT NULL AND MONTH(date_of_birth) = MONTH(CURDATE()) AND DAY(date_of_birth) = DAY(CURDATE())');
