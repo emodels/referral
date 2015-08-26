@@ -24,6 +24,7 @@
                     <th style="background: #cecece; color: #000000; text-align: left">Property Completion ?</th>
                     <th style="background: #cecece; color: #000000; text-align: left">Rented Out ?</th>
                     <th style="background: #cecece; color: #000000; text-align: left">Insurance in Place ?</th>
+                    <th style="background: #cecece; color: #000000; text-align: left">Expected Settlement Date</th>
                     <?php } ?>
                     <th style="background: #cecece; color: #000000; text-align: left">Documents</th>
                 </tr>
@@ -44,6 +45,7 @@
                     <td style="background-color: <?php echo $property->property_completion == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->property_completion == 1 ? 'Yes' : 'No'; ?></td>
                     <td style="background-color: <?php echo $property->rented_out == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->rented_out == 1 ? 'Yes' : 'No'; ?></td>
                     <td style="background-color: <?php echo $property->insurance_in_place == 1 ? '#aed375' : '#FF884B'; ?>"><?php echo $property->insurance_in_place == 1 ? 'Yes' : 'No'; ?></td>
+                    <td style="text-align: center; background-color: <?php echo isset($property->expected_settlement_date) && $property->expected_settlement_date != '0000-00-00' ? '#aed375' : '#FF884B'; ?>"><?php echo isset($property->expected_settlement_date) && $property->expected_settlement_date != '0000-00-00' ? $property->expected_settlement_date : 'N/A'; ?></td>
                     <?php } ?>
                     <td style="text-align: center"><a style="text-decoration: none" title="Documents" href="../documents/index/id/<?php echo $property->id ?>"><img src="../images/document.png" alt="Documents"></a></td>
                 </tr>
