@@ -61,8 +61,8 @@
         <div class="row">
             <div class="column">Partner Company</div>
             <div>
-                <?php echo $form->dropDownList($model, 'referrel_user', 
-                      CHtml::listData(User::model()->findAll('user_type=:user_type', array(':user_type'=>'1')), 'id', 'company'), 
+                <?php echo $form->dropDownList($model, 'referrel_user',
+                      CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(company, " - ", first_name, " ", last_name) as company FROM user WHERE user_type = 1 ORDER BY first_name'), 'id', 'company'),
                       array('style'=>'width:135px','empty'=>'Select Partner', 'ajax' => array('type'=>'POST','url'=>CController::createUrl('ListStatus'),'update'=>'#Entry_status'), 'disabled'=> Yii::app()->user->user_type !== '0' ?'disabled' : '')); ?>
            </div>
         </div>
