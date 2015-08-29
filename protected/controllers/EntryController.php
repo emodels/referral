@@ -206,7 +206,7 @@ class EntryController extends Controller
                     foreach ($partners as $partner) {
 
                         $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
-                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company), true, false);
+                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company . ' - '. $partner->first_name . ' ' . $partner->last_name), true, false);
                     }
                 }
 
