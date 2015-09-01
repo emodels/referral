@@ -54,7 +54,7 @@
 
     <?php
     $partnerCompany = '';
-    $partnerListData = CHtml::listData(User::model()->findAll('user_type = :user_type', array(':user_type'=>'1')),'id','company');
+    $partnerListData = CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(company, " - ", first_name, " ", last_name) as company FROM user WHERE user_type = 1 ORDER BY first_name'),'id','company');
     $statusArray = array();
 
     if (Yii::app()->user->user_type == '0' && Yii::app()->session['referrel_user']) {
@@ -66,7 +66,7 @@
     if (Yii::app()->user->user_type != '0') {
 
         $partnerCompany = Yii::app()->user->id;
-        $partnerListData = CHtml::listData(User::model()->findAll('id = ' . Yii::app()->user->id),'id','company');
+        $partnerListData = CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(company, " - ", first_name, " ", last_name) as company FROM user WHERE id = ' . Yii::app()->user->id . ' ORDER BY first_name'),'id','company');
         $statusArray = CHtml::listData(Status::model()->findAll('referral_user=:id',array(':id'=>Yii::app()->user->id)),'id','status');
     }
     ?>
