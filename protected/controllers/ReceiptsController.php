@@ -141,9 +141,12 @@ class ReceiptsController extends Controller
                 $receipt->status = 0;
 
                 $receipt_auto_increment = Yii::app()->params['Receipts_auto_increment'];
-                $receipt_count = Receipt::model()->count();
 
-                $receipt->receipt_number = $receipt_count + $receipt_auto_increment;
+                $criteria = new CDbCriteria;
+                $criteria->select='IFNULL(max(receipt_number), 0) AS receipt_number';
+                $row = $receipt->model()->find($criteria);
+
+                $receipt->receipt_number =  $row['receipt_number'] == 0 ? $receipt_auto_increment : ($row['receipt_number'] + 1);
             }
 
             if (isset($_POST['Receipt'])) {
