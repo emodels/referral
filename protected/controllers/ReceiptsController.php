@@ -153,6 +153,20 @@ class ReceiptsController extends Controller
 
                 $receipt->attributes = $_POST['Receipt'];
 
+                /*------( Validate for Duplicate Receipt number )-----------*/
+                $duplicate_receipt = Receipt::model()->find('receipt_number = ' . $receipt->receipt_number);
+
+                if (isset($duplicate_receipt)) {
+
+                    if ((isset($receipt->id) && $receipt->id != $duplicate_receipt->id) || !isset($receipt->id)) {
+
+                        Yii::app()->user->setFlash('error','Receipt number : ' . $receipt->receipt_number . ' already exists, please try else.');
+
+                        $this->render('/receipts/add_receipt', array('property' => $property, 'model' => $receipt));
+                        Yii::app()->end();
+                    }
+                }
+
                 /*-----( Company Logo )------*/
                 $logo = CUploadedFile::getInstance($receipt, 'company_logo');
 

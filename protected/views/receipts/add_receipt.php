@@ -199,7 +199,7 @@
         <div class="column left"><div id="progress" style="font-size: 32px; padding: 10px; border: solid 1px #c0c0c0; border-radius: 5px; display: none"><img src="<?php echo Yii::app()->baseUrl ?>/images/ajax-loader2.gif" style="vertical-align: middle" /> Update in progress. Please wait...</div></div>
         <div class="column right" style="text-align: right">
             <div style="font-size: 32px"><strong>Trust Account</strong></div>
-            <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $model->receipt_number; ?></div>
+            <div style="font-size: 28px"><strong>Receipt number: </strong><?php echo $form->textField($model, 'receipt_number', array('style' => 'width:80px; font-size: 28px; margin-bottom: 0px')); ?></div>
             <div style="margin-top: 10px">
                 <?php if ($model->company_logo != null) { ?>
                     <img id="company_logo" src="data:image/jpeg;base64, <?php echo $model->company_logo; ?>" style="width: 200px; height: 80px"/>
@@ -282,61 +282,63 @@
             <?php echo $form->error($model, 'to_date', array('style' => 'font-size: 15px')); ?></div>
         <div class="clearfix"></div>
     </div>
-    <div style="margin-top: 20px; font-size: 18px; border-bottom: solid 4px #000000"><strong>Disbursements</strong></div>
-    <div class="row" style="margin-top: 25px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
-        <div class="column" style="width: 61.5%">Item</div>
-        <div class="column" style="width: 20%">Debit</div>
-        <div class="column" style="width: 15%">Credit</div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="row" style="margin-top: 25px; font-size: 18px">
-        <div class="column" style="width: 61.5%">Rent received</div>
-        <div class="column" style="width: 20%">&nbsp;</div>
-        <div class="column" style="width: 15%"><span id="rent_received"><?php echo $model->paid; ?></span></div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="row" style="font-size: 18px">
-        <div class="column" style="width: 61.5%">Management fees</div>
-        <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->hiddenField($model, 'management_fees'); ?></div>
-        <div class="column" style="width: 15%">&nbsp;</div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="row" style="font-size: 18px">
-        <div class="column" style="width: 61.5%">GST</div>
-        <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->hiddenField($model, 'gst'); ?></div>
-        <div class="column" style="width: 15%">&nbsp;</div>
-        <div class="clearfix"></div>
-    </div>
-    <a href="javascript:addCostRow();" style="text-decoration: none; font-size: 32px">+</a>
-    <div id="divCosts">
-        <?php if (isset($model->costs) && $model->costs !== '') {
+    <div style="display: <?php echo $property->entry0->property_holder == 'Tenant' ? 'none;' : 'block;'; ?>">
+        <div style="margin-top: 20px; font-size: 18px; border-bottom: solid 4px #000000"><strong>Disbursements</strong></div>
+        <div class="row" style="margin-top: 25px; font-size: 18px; font-weight: bold; border-bottom: solid 5px #000000">
+            <div class="column" style="width: 61.5%">Item</div>
+            <div class="column" style="width: 20%">Debit</div>
+            <div class="column" style="width: 15%">Credit</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="margin-top: 25px; font-size: 18px">
+            <div class="column" style="width: 61.5%">Rent received</div>
+            <div class="column" style="width: 20%">&nbsp;</div>
+            <div class="column" style="width: 15%"><span id="rent_received"><?php echo $model->paid; ?></span></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="font-size: 18px">
+            <div class="column" style="width: 61.5%">Management fees</div>
+            <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->hiddenField($model, 'management_fees'); ?></div>
+            <div class="column" style="width: 15%">&nbsp;</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="font-size: 18px">
+            <div class="column" style="width: 61.5%">GST</div>
+            <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->hiddenField($model, 'gst'); ?></div>
+            <div class="column" style="width: 15%">&nbsp;</div>
+            <div class="clearfix"></div>
+        </div>
+        <a href="javascript:addCostRow();" style="text-decoration: none; font-size: 32px">+</a>
+        <div id="divCosts">
+            <?php if (isset($model->costs) && $model->costs !== '') {
 
-            $costArray = json_decode($model->costs);
+                $costArray = json_decode($model->costs);
 
-            foreach ($costArray as $cost) { ?>
+                foreach ($costArray as $cost) { ?>
 
-                <div id="rowCost_<?php echo $cost->index; ?>" class="row" style="font-size: 18px">
-                    <div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][<?php echo $cost->index; ?>]" value="<?php echo $cost->name; ?>" style="font-size: 18px"/></div>
-                    <div class="column" style="width: 20%"><?php echo Yii::app()->params['Currency']; ?><input type="text" class="cost_value" name="Costs[value][<?php echo $cost->index; ?>]" value="<?php echo $cost->value; ?>" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>
-                    <div class="column" style="width: 15%"><a href="javascript:deleteCostRow(<?php echo $cost->index; ?>);" style="text-decoration: none; font-size: 32px; color: red">-</a></div>
-                    <div class="clearfix"></div>
-                </div>
+                    <div id="rowCost_<?php echo $cost->index; ?>" class="row" style="font-size: 18px">
+                        <div class="column" style="width: 61.5%"><input type="text" class="cost_name" name="Costs[name][<?php echo $cost->index; ?>]" value="<?php echo $cost->name; ?>" style="font-size: 18px"/></div>
+                        <div class="column" style="width: 20%"><?php echo Yii::app()->params['Currency']; ?><input type="text" class="cost_value" name="Costs[value][<?php echo $cost->index; ?>]" value="<?php echo $cost->value; ?>" style="font-size: 18px" onKeyUp="javascript:calculateDisbursements();"/></div>
+                        <div class="column" style="width: 15%"><a href="javascript:deleteCostRow(<?php echo $cost->index; ?>);" style="text-decoration: none; font-size: 32px; color: red">-</a></div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                <?php } ?>
 
             <?php } ?>
-
-        <?php } ?>
-    </div>
-    <div class="row" style="font-size: 18px">
-        <div class="column" style="width: 61.5%">Transfer to your account</div>
-        <div class="column" style="width: 20%"><span id="your_account"></span></div>
-        <div class="column" style="width: 15%">&nbsp;</div>
-        <div class="clearfix"></div>
-    </div>
-    <div class="row" style="font-size: 18px; border-bottom: solid 4px #000000; border-top: solid 4px #000000; padding: 2px 0 2px 0; margin-top: 20px">
-        <div class="column" style="width: 61.5%">Total</div>
-        <div class="column" style="width: 20%"><span id="total_debit"></span></div>
-        <div class="column" style="width: 15%"><span id="total_credit"></span></div>
-        <div class="clearfix"></div>
+        </div>
+        <div class="row" style="font-size: 18px">
+            <div class="column" style="width: 61.5%">Transfer to your account</div>
+            <div class="column" style="width: 20%"><span id="your_account"></span></div>
+            <div class="column" style="width: 15%">&nbsp;</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row" style="font-size: 18px; border-bottom: solid 4px #000000; border-top: solid 4px #000000; padding: 2px 0 2px 0; margin-top: 20px">
+            <div class="column" style="width: 61.5%">Total</div>
+            <div class="column" style="width: 20%"><span id="total_debit"></span></div>
+            <div class="column" style="width: 15%"><span id="total_credit"></span></div>
+            <div class="clearfix"></div>
+        </div>
     </div>
     <div style="margin-top: 20px; font-size: 18px">Note: If there any dispute regarding your payment and receipt please contact the undersigned</div>
     <div class="row" style="margin-top: 15px; font-size: 18px">
