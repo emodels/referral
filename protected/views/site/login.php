@@ -27,7 +27,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
                        
                 </div>
 
-                <div class="row rememberMe">
+                <div class="row rememberMe" style="display: none">
                     <div style="padding-left: 150px"><?php echo $form->checkBox($model,'rememberMe'); ?>
                         <?php echo $form->label($model,'rememberMe'); ?>
                         <?php echo $form->error($model,'rememberMe'); ?>
