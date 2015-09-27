@@ -172,6 +172,11 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <div class="row">
+                    <div class="column">Tenant</div>
+                    <div class="column"><?php echo $form->dropDownList($model, 'tenant', CHtml::listData(Entry::model()->findAllbySql("SELECT id, CONCAT(first_name, ' ', last_name) as first_name FROM entry WHERE property_holder = 'Tenant' ORDER BY first_name"),'id','first_name'),array('style' => 'width:200px', 'empty'=>'Not Applicable')); ?></div>
+                    <div class="clearfix"></div>
+                </div>
                 <?php } ?>
                 <div class="row">
                     <div class="column">&nbsp;</div>

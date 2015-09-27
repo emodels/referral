@@ -1,10 +1,16 @@
 <tr class="odd">
-    <td><?php echo $data->id; ?></td>
+    <td><a name="<?php echo $data->id; ?>" style="text-decoration: none; color: #000000"><?php echo $data->id; ?></a></td>
     <td><?php echo $data->first_name; ?></td>
     <td><?php echo $data->last_name; ?></td>
     <td>
         <?php echo str_replace('_', ' ', $data->property_holder); ?>
-        <?php if ($data->property_holder == 'Tenant') { ?><img src="images/icon_tenant.png" style="padding-left: 20px; vertical-align: middle" /><?php } ?>
+        <?php if ($data->property_holder == 'Tenant') { ?>
+            <img src="images/icon_tenant.png" style="padding-left: 20px; vertical-align: middle" />
+            <?php $landload_property = Property::model()->find('tenant = ' . $data->id); ?>
+            <?php if (isset($landload_property)) { ?>
+                <div style="float: right; padding: 5px; background-color: blue; width: 90px; text-align: center; border: solid 1px #000000"><a href="#<?php echo $landload_property->entry; ?>" onclick="javascript:highlightRow('<?php echo $landload_property->entry; ?>', 'blue');" style="color: white; text-decoration: none">View Landlord</a></div>
+            <?php } ?>
+        <?php } ?>
         <?php if ($data->property_holder == 'Landlord') { ?><img src="images/icon_rental_agent.png" style="width: 23px; padding-left: 10px; vertical-align: middle" /><?php } ?>
     </td>
     <td><?php echo $data->country; ?></td>
@@ -53,7 +59,12 @@
             <?php foreach ($data->properties as $property) { ?>
                 <tr>
                     <td><?php echo $property->builder; ?></td>
-                    <td><a href="<?php echo Yii::app()->baseUrl . '/client/property/update/id/' . $property->id ?>" title="Update Property Information"><?php echo $property->address; ?></a></td>
+                    <td>
+                        <a href="<?php echo Yii::app()->baseUrl . '/client/property/update/id/' . $property->id ?>" title="Update Property Information"><?php echo $property->address; ?></a>
+                        <?php if (isset($property->tenant) && $property->tenant != 0) { ?>
+                            <div style="padding: 5px; margin: 5px 0 5px 0; background-color: red; width: 65px; text-align: center; border: solid 1px #000000"><a href="#<?php echo $property->tenant; ?>" onclick="javascript:highlightRow('<?php echo $property->tenant; ?>', 'red');" style="color: white; text-decoration: none">View Tenant</a></div>
+                        <?php } ?>
+                    </td>
                     <td class="hover_highlight" onclick="javascript:ChangePropValue('<?php echo $property->id; ?>', 'status', '<?php echo $property->status == 'Open' ? 'Closed' : 'Open'; ?>');" style="cursor: pointer; <?php echo $property->status == 'Open' ? 'background-color: #FFF733; color: black' : 'background-color: #006600; color: white'; ?>"><?php echo $property->status; ?></td>
                     <td><?php echo $property->owner0->first_name; ?></td>
                     <?php if ($data->property_holder !== 'Tenant') { ?>

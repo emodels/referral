@@ -51,6 +51,14 @@
             });
         }
     }
+
+    function highlightRow(id, color) {
+
+        $('a[name="' + id + '"]').parent('td').css('background', color);
+        setTimeout(function () {
+            $('a[name="' + id + '"]').parent('td').css('background', 'none');
+        }, 5000);
+    }
 </script>
 
 <?php if(isset($grid_title)){ ?>

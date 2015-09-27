@@ -1,1 +1,3 @@
 ALTER TABLE `property` ADD `send_reminder` INT NULL , ADD `expected_settlement_date` DATE NULL ;
+
+ALTER TABLE `property` ADD `tenant` INT NOT NULL ;
