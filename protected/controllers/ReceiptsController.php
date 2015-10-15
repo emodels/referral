@@ -135,7 +135,28 @@ class ReceiptsController extends Controller
                 $receipt->partner_email = $property->owner0->email;
                 $receipt->landlord_name = $property->entry0->property_holder !== 'Tenant' ? ucfirst($property->entry0->first_name) . ' ' . ucfirst($property->entry0->last_name) : '';
                 $receipt->property_address = $property->address;
-                $receipt->tenant_name = $property->entry0->property_holder !== 'Tenant' ? '' : ucfirst($property->entry0->first_name) . ' ' . ucfirst($property->entry0->last_name);
+
+                if ($property->entry0->property_holder !== 'Tenant') {
+
+                    if ($property->tenant != null && $property->tenant > 0) {
+
+                        $tenant_entry = Entry::model()->findByPk($property->tenant);
+
+                        if (isset($tenant_entry)) {
+
+                            $receipt->tenant_name =  ucfirst($tenant_entry->first_name) . ' ' . ucfirst($tenant_entry->last_name);
+                        }
+
+                    } else {
+
+                        $receipt->tenant_name =  '';
+                    }
+
+                } else {
+
+                    $receipt->tenant_name = ucfirst($property->entry0->first_name) . ' ' . ucfirst($property->entry0->last_name);
+                }
+
                 $receipt->receipt_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
                 $receipt->signature = base64_encode($default_signature_contents);
                 $receipt->status = 0;
