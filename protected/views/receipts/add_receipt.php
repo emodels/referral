@@ -67,7 +67,8 @@
         $('#rent_received').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received.toFixed(2));
 
         var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (<?php echo $property->management_fee_percentage;?> / 100)) * 100) / 100;
-        var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
+        //var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
+        var gst = Math.round((management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
 
         /*----( Calculate Costs )-------*/
         var costsTotal = 0;
@@ -85,10 +86,10 @@
         var your_account = Math.floor((rent_received - (management_fee + gst + costsTotal)) * 100) / 100;
 
         $('#Receipt_management_fees').val(management_fee);
-        $('#management_fees').html('<?php echo Yii::app()->params['Currency']; ?>' + management_fee);
+        $('#management_fees').html('<?php echo Yii::app()->params['Currency']; ?>');
 
         $('#Receipt_gst').val(gst);
-        $('#gst').html('<?php echo Yii::app()->params['Currency']; ?>' + gst);
+        $('#gst').html('<?php echo Yii::app()->params['Currency']; ?>');
 
         $('#your_account').html('<?php echo Yii::app()->params['Currency']; ?>' + your_account);
         $('#total_debit').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received);
@@ -297,14 +298,14 @@
             <div class="clearfix"></div>
         </div>
         <div class="row" style="font-size: 18px">
-            <div class="column" style="width: 61.5%">Management fees</div>
-            <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->hiddenField($model, 'management_fees'); ?></div>
+            <div class="column" style="width: 61.5%; margin-top: 7px">Management fees</div>
+            <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->textField($model, 'management_fees', array('style'=>'width:50%; font-size: 18px')); ?></div>
             <div class="column" style="width: 15%">&nbsp;</div>
             <div class="clearfix"></div>
         </div>
         <div class="row" style="font-size: 18px">
-            <div class="column" style="width: 61.5%">GST</div>
-            <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->hiddenField($model, 'gst'); ?></div>
+            <div class="column" style="width: 61.5%; margin-top: 7px">GST</div>
+            <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->textField($model, 'gst', array('style'=>'width:50%; font-size: 18px')); ?></div>
             <div class="column" style="width: 15%">&nbsp;</div>
             <div class="clearfix"></div>
         </div>
