@@ -60,15 +60,26 @@
         }
     }
 
-    function calculateDisbursements() {
+    function calculateDisbursements(skip_management_fee, skip_gst) {
 
         var rent_received = Math.floor(parseFloat($('#Receipt_paid').val()) * 100) / 100;
 
         $('#rent_received').html('<?php echo Yii::app()->params['Currency']; ?>' + rent_received.toFixed(2));
 
         var management_fee = Math.floor(parseFloat(parseFloat($('#Receipt_paid').val()) * (<?php echo $property->management_fee_percentage;?> / 100)) * 100) / 100;
+
+        if (skip_management_fee !== undefined) {
+
+            management_fee = Math.floor(parseFloat($('#Receipt_management_fees').val()) * 100) / 100;
+        }
+
         //var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
         var gst = Math.round((management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
+
+        if (skip_gst !== undefined) {
+
+            gst = Math.floor(parseFloat($('#Receipt_gst').val()) * 100) / 100;
+        }
 
         /*----( Calculate Costs )-------*/
         var costsTotal = 0;
@@ -299,13 +310,13 @@
         </div>
         <div class="row" style="font-size: 18px">
             <div class="column" style="width: 61.5%; margin-top: 7px">Management fees</div>
-            <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->textField($model, 'management_fees', array('style'=>'width:50%; font-size: 18px')); ?></div>
+            <div class="column" style="width: 20%"><span id="management_fees"><?php echo $model->management_fees; ?></span><?php echo $form->textField($model, 'management_fees', array('style'=>'width:50%; font-size: 18px', 'onChange'=>'calculateDisbursements(true)')); ?></div>
             <div class="column" style="width: 15%">&nbsp;</div>
             <div class="clearfix"></div>
         </div>
         <div class="row" style="font-size: 18px">
             <div class="column" style="width: 61.5%; margin-top: 7px">GST</div>
-            <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->textField($model, 'gst', array('style'=>'width:50%; font-size: 18px')); ?></div>
+            <div class="column" style="width: 20%"><span id="gst"><?php echo $model->gst; ?></span><?php echo $form->textField($model, 'gst', array('style'=>'width:50%; font-size: 18px', 'onChange'=>'calculateDisbursements(true, true)')); ?></div>
             <div class="column" style="width: 15%">&nbsp;</div>
             <div class="clearfix"></div>
         </div>
