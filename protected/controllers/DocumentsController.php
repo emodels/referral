@@ -58,7 +58,7 @@ class DocumentsController extends Controller
 
                         try{
 
-                            $mailer->Send();
+                            //$mailer->Send();
                         }
                         catch (Exception $ex){
 
