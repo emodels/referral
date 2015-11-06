@@ -60,7 +60,8 @@ class ReceiptsController extends Controller
 
                     $html_content = $this->renderPartial('/receipts/summary_view', array('property' => $property, 'dataProvider' => $dataProvider, 'date_range' => $date_range, 'model' => $receipt), true);
 
-                    $url = 'http://freehtmltopdf.com';
+                    /*----( Using Free HTML to PDF API - freehtmltopdf.com )--------------------*/
+                    /*$url = 'http://freehtmltopdf.com';
                     $data = array('convert' => '',
                         'html' => $html_content,
                         'orientation' => 'landscape',
@@ -75,7 +76,28 @@ class ReceiptsController extends Controller
                     );
 
                     $context  = stream_context_create($options);
+                    $pdf_result = file_get_contents($url, false, $context);*/
+                    /*----( Using Free HTML to PDF API - freehtmltopdf.com )--------------------*/
+
+                    /*----( Using HTML to PDF Rocket API - html2pdfrocket.com )--------------------*/
+                    $url = 'http://api.html2pdfrocket.com/pdf';
+                    $data = array('convert' => '',
+                        'value' => $html_content,
+                        'apikey' => 'a33187e7-1336-4530-807e-6ae43364fd2e'
+                    );
+
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($data),
+                        ),
+                    );
+
+                    $context  = stream_context_create($options);
+
                     $pdf_result = file_get_contents($url, false, $context);
+                    /*----( //End of Using HTML to PDF Rocket API - html2pdfrocket.com )-----------*/
 
                     header('Content-type: application/pdf');
                     header('Content-Disposition: attachment; filename="Receipt_Summary.pdf"');
@@ -236,12 +258,13 @@ class ReceiptsController extends Controller
                     /*----( Generate PDF )---------------*/
                     $html_content = $this->renderPartial('/receipts/receipt_view', array('model' => $receipt), true);
 
-                    $url = 'http://freehtmltopdf.com';
+                    /*----( Using Free HTML to pdf API - freehtmltopdf.com )--------------------*/
+                    /*$url = 'http://freehtmltopdf.com';
                     $data = array('convert' => '',
                         'html' => $html_content,
-                        'baseurl' => Yii::app()->request->baseUrl);
+                        'baseurl' => Yii::app()->request->baseUrl
+                    );
 
-                    // use key 'http' even if you send the request to https://...
                     $options = array(
                         'http' => array(
                             'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -251,7 +274,30 @@ class ReceiptsController extends Controller
                     );
 
                     $context  = stream_context_create($options);
+
+                    $pdf_result = file_get_contents($url, false, $context);*/
+                    /*----( //End of Using Free HTML to pdf API - freehtmltopdf.com )--------------------*/
+
+                    /*----( Using HTML to PDF Rocket API - html2pdfrocket.com )--------------------*/
+                    $url = 'http://api.html2pdfrocket.com/pdf';
+                    $data = array('convert' => '',
+                        'value' => $html_content,
+                        'apikey' => 'a33187e7-1336-4530-807e-6ae43364fd2e'
+                    );
+
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($data),
+                        ),
+                    );
+
+                    $context  = stream_context_create($options);
+
                     $pdf_result = file_get_contents($url, false, $context);
+                    /*----( //End of Using HTML to PDF Rocket API - html2pdfrocket.com )-----------*/
+
                     /*----( //End of Generate PDF )------*/
 
                     /*----( Publish to Invoices Category )-----*/
