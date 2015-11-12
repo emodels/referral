@@ -70,7 +70,8 @@
 
         if (skip_management_fee !== undefined) {
 
-            management_fee = Math.floor(parseFloat($('#Receipt_management_fees').val()) * 100) / 100;
+            //management_fee = Math.floor(parseFloat($('#Receipt_management_fees').val()) * 100) / 100;
+            management_fee = parseFloat($('#Receipt_management_fees').val());
         }
 
         //var gst = Math.floor(parseFloat(management_fee * (<?php echo Yii::app()->params['GST']; ?>/100)) * 100) / 100;
@@ -78,7 +79,8 @@
 
         if (skip_gst !== undefined) {
 
-            gst = Math.floor(parseFloat($('#Receipt_gst').val()) * 100) / 100;
+            //gst = Math.floor(parseFloat($('#Receipt_gst').val()) * 100) / 100;
+            gst = parseFloat($('#Receipt_gst').val());
         }
 
         /*----( Calculate Costs )-------*/
