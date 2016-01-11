@@ -54,6 +54,7 @@
 
     <?php
     $partnerCompany = '';
+    $partnerStatus = '';
     $partnerListData = CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(company, " - ", first_name, " ", last_name) as company FROM user WHERE user_type = 1 ORDER BY first_name'),'id','company');
     $statusArray = array();
 
@@ -61,6 +62,11 @@
 
         $partnerCompany = Yii::app()->session['referrel_user'];
         $statusArray = CHtml::listData(Status::model()->findAll('referral_user=:id',array(':id'=>Yii::app()->session['referrel_user'])),'id','status');
+
+        if (isset(Yii::app()->session['status'])) {
+
+            $partnerStatus = Yii::app()->session['status'];
+        }
     }
 
     if (Yii::app()->user->user_type != '0') {
@@ -68,6 +74,11 @@
         $partnerCompany = Yii::app()->user->id;
         $partnerListData = CHtml::listData(User::model()->findAllbySql('SELECT id, CONCAT(company, " - ", first_name, " ", last_name) as company FROM user WHERE id = ' . Yii::app()->user->id . ' ORDER BY first_name'),'id','company');
         $statusArray = CHtml::listData(Status::model()->findAll('referral_user=:id',array(':id'=>Yii::app()->user->id)),'id','status');
+
+        if (isset(Yii::app()->session['status'])) {
+
+            $partnerStatus = Yii::app()->session['status'];
+        }
     }
     ?>
 
@@ -85,7 +96,7 @@
                                             $("#Entry_status").html(data);
                                         }'))); ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Status :</div>
-        <div class="column"><?php echo CHtml::dropDownList('Entry[status]', '', $statusArray, array('empty'=>'Select Status', 'style' => 'width:153px')); ?></div>
+        <div class="column"><?php echo CHtml::dropDownList('Entry[status]', $partnerStatus, $statusArray, array('empty'=>'Select Status', 'style' => 'width:153px')); ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px; padding-right: 28px">Property Holder :</div>
         <div class="column"><?php echo CHtml::dropDownList('Entry[property_holder]', '', array('Owner'=>'Owner','Tenant'=>'Tenant','Landlord'=>'Landlord'), array('empty'=>'Select Property Holder', 'style' => 'width:160px')); ?></div>
         <div class="column" style="padding-left: 40px"><?php echo CHtml::ajaxButton('List','', array('type'=>'POST',
@@ -145,7 +156,15 @@
 
     foreach ($partners as $partner) {
 
-        $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
+        if ($partnerStatus != '') {
+
+            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id . ' AND status = ' . $partnerStatus, 'order'=>'id DESC'), 'pagination' => false));
+
+        } else {
+
+            $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id, 'order'=>'id DESC'), 'pagination' => false));
+        }
+
         echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company . ' - '. $partner->first_name . ' ' . $partner->last_name),true,false);
     }
     ?>
