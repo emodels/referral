@@ -135,7 +135,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'header' => 'Status',
             'type'=>'html',
-            'value'=>'($data->status == 0)?"<img src=\'" . Yii::app()->baseUrl . "/images/notify_error.png\' style=\'width: 24px\' title=\'Still not Published and Emailed\'/>":"<img src=\'" . Yii::app()->baseUrl . "/images/notify_success.png\' style=\'width: 24px\' title=\'Already Published and Emailed\'/>"',
+            'value'=>'($data->status == 0)?"<a href=\'" . Yii::app()->baseUrl . "/receipts/PublishEmailReceipt/id/" . $data->id . "\'><img src=\'" . Yii::app()->baseUrl . "/images/notify_error.png\' style=\'width: 24px\' title=\'Still not Published and Emailed, Click here to send again\'/></a>":"<img src=\'" . Yii::app()->baseUrl . "/images/notify_success.png\' style=\'width: 24px\' title=\'Already Published and Emailed\'/>"',
             'htmlOptions'=>array('style'=>'text-align: center')
         ),
         array(

@@ -113,6 +113,73 @@ class ReceiptsController extends Controller
         }
     }
 
+    public function actionPublishEmailReceipt($id) {
+
+        $receipt = Receipt::model()->findAllByPk($id);
+
+        if (isset($receipt)) {
+
+            $category = DocumentCategory::model()->find("name = 'Receipts'");
+
+            if (isset($category)) {
+
+                $document = new PropertyDocument();
+
+                $document->property = $receipt->property_id;
+                $document->category = $category->id;
+                $document->caption = 'Receipt - ' . $receipt->receipt_number;
+                $document->document = Yii::app()->getBaseUrl(true) . '/receipts/download/id/' . base64_encode($receipt->id);
+                $document->entry_date = Yii::app()->dateFormatter->format('yyyy-MM-dd', time());
+
+                $document->save();
+
+                /*-----( Send Email to Client )-------------*/
+                $message = $this->renderPartial('//email/template/notify_document_added', array('document'=>$document), true);
+
+                if (isset($message) && $message != "") {
+
+                    $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+                    $mailer->Host = Yii::app()->params['SMTP_Host'];
+                    $mailer->IsSMTP();
+                    $mailer->SMTPAuth = true;
+                    $mailer->Username = Yii::app()->params['SMTP_Username'];
+                    $mailer->Password = Yii::app()->params['SMTP_password'];
+                    $mailer->From = Yii::app()->params['SMTP_Username'];
+                    $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
+                    $mailer->AddAddress($document->property0->entry0->email);
+                    $mailer->AddCC(Yii::app()->params['adminEmail']);
+                    $mailer->FromName = Yii::app()->user->site_name;
+                    $mailer->CharSet = 'UTF-8';
+                    $mailer->Subject = Yii::app()->user->site_name . ' - New Receipt Added';
+                    $mailer->IsHTML();
+                    $mailer->Body = $message;
+
+                    try{
+
+                        $mailer->Send();
+                    }
+                    catch (Exception $ex){
+
+                        echo $ex->getMessage();
+                    }
+                }
+                /*-----( //End of Send Email to Client )----*/
+
+                $receipt->status = 1;
+
+                $receipt->save();
+
+                Yii::app()->user->setFlash('success','Receipt Published Successfully');
+
+            } else {
+
+                Yii::app()->user->setFlash('error','Unable to publish receipt because category "Receipts" does NOT exists');
+            }
+
+            $this->redirect(Yii::app()->baseUrl . '/receipts/index/id/' . $receipt->property_id);
+        }
+    }
+
     public function actionAdd($prop_id, $receipt_id = null) {
 
         $property = Property::model()->findByPk($prop_id);
@@ -300,8 +367,8 @@ class ReceiptsController extends Controller
 
                     /*----( //End of Generate PDF )------*/
 
-                    /*----( Publish to Invoices Category )-----*/
-                    $category = DocumentCategory::model()->find("name = 'Invoices'");
+                    /*----( Publish to Receipts Category )-----*/
+                    $category = DocumentCategory::model()->find("name = 'Receipts'");
 
                     if (isset($category)) {
 
