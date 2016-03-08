@@ -115,7 +115,7 @@ class ReceiptsController extends Controller
 
     public function actionPublishEmailReceipt($id) {
 
-        $receipt = Receipt::model()->findAllByPk($id);
+        $receipt = Receipt::model()->findByPk($id);
 
         if (isset($receipt)) {
 
