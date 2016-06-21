@@ -5,5 +5,5 @@
         <button class="button viewMessage">View Message</button>
         <div class="hide"><?php echo $data->message; ?></div>
     </td>
-    <td style="text-align: center"><?php echo Yii::app()->dateFormatter->format("yyyy-MM-dd h:i:s", strtotime($data->entry_date)); ?></td>
+    <td style="text-align: center"><?php echo Yii::app()->dateFormatter->format("yyyy-MM-dd HH:mm:ss", strtotime($data->entry_date)); ?></td>
 </tr>
