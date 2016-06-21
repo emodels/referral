@@ -23,7 +23,7 @@
 </div>
 <div style="float: left; width: 82%; padding-left: 10px">
     <div style="float: right">
-        <h1>Mail Log for <?php echo (isset($user->company) ? $user->company . ' - ' : '') . $user->first_name . ' ' . $user->last_name; ?></h1>
+        <h1>Mail Log for <?php echo (isset($user->company) ? $user->company : $user->referrelUser->company) . ' - ' . $user->first_name . ' ' . $user->last_name; ?></h1>
     </div>
     <div class="clearfix"></div>
     <div class="grid-view">
