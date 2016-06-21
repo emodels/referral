@@ -90,7 +90,19 @@ class EntryController extends Controller
                             }
                         }
                         //----------------------------------------------------------
-                        
+
+                        /*-----( Add to Mail Log )------*/
+
+                        Utility::addMailLog(
+                            Yii::app()->params['SMTP_Username'],
+                            Yii::app()->user->site_name,
+                            $model->referrelUser->email,
+                            $model->referrelUser->first_name . ' ' . $model->referrelUser->last_name,
+                            Yii::app()->user->site_name . ' - New Referral Added',
+                            $message,
+                            $model->referrel_user,
+                            1);
+
                         Yii::app()->user->setFlash('success','Referral Added');
 
                         $this->redirect(Yii::app()->baseUrl . '/entry');
@@ -277,7 +289,19 @@ class EntryController extends Controller
                             }
                         }
                         //----------------------------------------------------------
-                        
+
+                        /*-----( Add to Mail Log )------*/
+
+                        Utility::addMailLog(
+                            Yii::app()->params['SMTP_Username'],
+                            Yii::app()->user->site_name,
+                            $model->referrelUser->email,
+                            $model->referrelUser->first_name . ' ' . $model->referrelUser->last_name,
+                            Yii::app()->user->site_name . ' - Referral Updated',
+                            $message,
+                            $model->referrel_user,
+                            1);
+
                         Yii::app()->user->setFlash('success','Referral Updated');
 
                         $this->redirect(Yii::app()->baseUrl . '/entry');

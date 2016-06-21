@@ -28,6 +28,9 @@
         <a style="display: <?php echo ((Yii::app()->user->user_type == 1 && Yii::app()->user->allow_portal_management == 0) ? 'none' : 'inline-block' )?>;" title="<?php echo $data->client_portal_status == 0 ? 'Enable Client Portal' : 'Manage Client Portal'; ?>" href="client/manageclientportal/<?php echo $data->id ?>">
             <img src="images/<?php echo $data->client_portal_status == 0 ? 'add' : 'cog'; ?>.png" alt="Manage Client Portal">
         </a>
+        <a href="site/maillog/entry/<?php echo $data->id; ?>/type/0">
+            <img src="images/mail.png" alt="Mail Log" title="Mail Log">
+        </a>
     </td>
 </tr>
 <?php if (count($data->properties) > 0) { ?>

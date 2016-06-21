@@ -62,7 +62,12 @@
 </script>
 
 <?php if(isset($grid_title)){ ?>
-<div style="float: left; padding-bottom: 5px"><font style="font-size: 14px"><b><?php echo $grid_title; ?></b></font></div>
+<div style="float: left; padding-bottom: 5px">
+    <font style="font-size: 14px"><b><?php echo $grid_title; ?></b></font>
+    <a href="site/maillog/entry/<?php echo $grid_id; ?>/type/1" style="margin-left: 10px">
+        <img src="images/mail.png" alt="Mail Log" style="vertical-align: middle" title="Mail Log">
+    </a>
+</div>
 <?php } ?>
 
 <?php

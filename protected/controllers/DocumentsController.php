@@ -58,7 +58,7 @@ class DocumentsController extends Controller
 
                         try{
 
-                            //$mailer->Send();
+                            $mailer->Send();
                         }
                         catch (Exception $ex){
 
@@ -66,6 +66,19 @@ class DocumentsController extends Controller
                         }
                     }
                     //----------------------------------------------------------
+
+                    /*-----( Add to Mail Log )------*/
+
+                    Utility::addMailLog(
+                        Yii::app()->params['SMTP_Username'],
+                        Yii::app()->user->site_name,
+                        $model->property0->entry0->email,
+                        $model->property0->entry0->first_name . ' ' . $model->property0->entry0->last_name,
+                        Yii::app()->user->site_name . ' - New Document Added',
+                        $message,
+                        $model->property0->entry,
+                        0
+                        );
 
                     Yii::app()->user->setFlash('success', 'Document Added');
                     $this->refresh();

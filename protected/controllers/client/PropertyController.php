@@ -66,6 +66,18 @@ class PropertyController extends Controller
 
                             echo $ex->getMessage();
                         }
+
+                        /*-----( Add to Mail Log )------*/
+
+                        Utility::addMailLog(
+                            Yii::app()->params['SMTP_Username'],
+                            Yii::app()->user->site_name,
+                            $model->entry0->email,
+                            $model->entry0->first_name . ' ' . $model->entry0->last_name,
+                            Yii::app()->user->site_name . ' - Client portal enabled',
+                            $message,
+                            $model->entry,
+                            0);
                     }
                 }
 

@@ -152,6 +152,18 @@ class SiteController extends Controller
 
                         echo $ex->getMessage();
                     }
+
+                    /*-----( Add to Mail Log )------*/
+
+                    Utility::addMailLog(
+                        Yii::app()->params['SMTP_Username'],
+                        $admin->company,
+                        $user->email,
+                        $user->first_name . ' ' . $user->last_name,
+                        $admin->company . ' - Password request',
+                        $message,
+                        $user->id,
+                        1);
                 }
 
                 Yii::app()->user->setFlash('success', 'Password has been sent to your email : "' . $user->email . '"');
@@ -208,6 +220,7 @@ class SiteController extends Controller
             $message = $this->renderPartial('//email/template/notify_reminder', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
 
             if (isset($message) && $message != "") {
+
                 $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                 $mailer->Host = Yii::app()->params['SMTP_Host'];
                 $mailer->IsSMTP();
@@ -230,6 +243,18 @@ class SiteController extends Controller
                 catch (Exception $ex){
                     echo $ex->getMessage();
                 }
+
+                /*-----( Add to Mail Log )------*/
+
+                Utility::addMailLog(
+                    Yii::app()->params['SMTP_Username'],
+                    Yii::app()->user->site_name,
+                    $model->referrelUser->email,
+                    $model->referrelUser->first_name . ' ' . $model->referrelUser->last_name,
+                    'Pending Action : Reminder for Referral ID : ' . $model->id,
+                    $message,
+                    $model->referrel_user,
+                    1);
             }
             //----------------------------------------------------------
         }
@@ -248,6 +273,7 @@ class SiteController extends Controller
             $message = $this->renderPartial('//email/template/notify_on_reminder_date', array('entry_id'=>$model->id,'client_name'=>$model->referrelUser->first_name,'customer'=>$model,'link'=> Yii::app()->request->hostInfo . Yii::app()->baseUrl .  '?returnUrl=/referral/main/update/id/' . $model->id), true);
 
             if (isset($message) && $message != "") {
+
                 $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                 $mailer->Host = Yii::app()->params['SMTP_Host'];
                 $mailer->IsSMTP();
@@ -270,6 +296,18 @@ class SiteController extends Controller
                 catch (Exception $ex){
                     echo $ex->getMessage();
                 }
+
+                /*-----( Add to Mail Log )------*/
+
+                Utility::addMailLog(
+                    Yii::app()->params['SMTP_Username'],
+                    Yii::app()->user->site_name,
+                    $model->referrelUser->email,
+                    $model->referrelUser->first_name . ' ' . $model->referrelUser->last_name,
+                    'Pending Action : Reminder for Referral ID : ' . $model->id,
+                    $message,
+                    $model->referrel_user,
+                    1);
             }
             //----------------------------------------------------------
         }
@@ -288,6 +326,7 @@ class SiteController extends Controller
             $message = $this->renderPartial('//email/template/notify_on_settlement_date', array('property'=>$property, 'customer'=> $property->entry0), true);
 
             if (isset($message) && $message != "") {
+
                 $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
                 $mailer->Host = Yii::app()->params['SMTP_Host'];
                 $mailer->IsSMTP();
@@ -309,6 +348,18 @@ class SiteController extends Controller
                 catch (Exception $ex){
                     echo $ex->getMessage();
                 }
+
+                /*-----( Add to Mail Log )------*/
+
+                Utility::addMailLog(
+                    Yii::app()->params['SMTP_Username'],
+                    Yii::app()->user->site_name,
+                    Yii::app()->params['adminEmail'],
+                    'Admin User',
+                    'Reminder based on Settlement Date set for Property : ' . $property->address,
+                    $message,
+                    1,
+                    1);
             }
             //----------------------------------------------------------
         }
@@ -353,11 +404,39 @@ class SiteController extends Controller
                 catch (Exception $ex){
                     echo $ex->getMessage();
                 }
+
+                /*-----( Add to Mail Log )------*/
+
+                Utility::addMailLog(
+                    Yii::app()->params['SMTP_Username'],
+                    Yii::app()->user->site_name,
+                    $model->email,
+                    $model->first_name . ' ' . $model->last_name,
+                    ucwords($model->first_name) . ', Wish you a very happy birthday !!!',
+                    $message,
+                    $model->id,
+                    0);
             }
             //----------------------------------------------------------
         }
 
         echo 'Sent birthday emails to ' . count($entryCollec) . ' number of Referrals <br><br>';
         echo 'Cron Job completed.';
+    }
+
+    public function actionMailLog($entry, $type){
+
+        if ($type == 0) {
+
+            $user = Entry::model()->findByPk($entry);
+
+        } else {
+
+            $user = User::model()->findByPk($entry);
+        }
+
+        $dataProvider = new CActiveDataProvider('MailLog', array('criteria'=>array('condition'=> 'entry = ' . $entry . ' AND type = ' . $type, 'order'=>'id DESC'), 'pagination' => false));
+
+        $this->render('mail_log', array('dataProvider'=>$dataProvider, 'user'=>$user));
     }
 }

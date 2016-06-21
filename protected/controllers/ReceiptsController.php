@@ -169,6 +169,18 @@ class ReceiptsController extends Controller
 
                 $receipt->save();
 
+                /*-----( Add to Mail Log )------*/
+
+                Utility::addMailLog(
+                    Yii::app()->params['SMTP_Username'],
+                    Yii::app()->user->site_name,
+                    $document->property0->entry0->email,
+                    $document->property0->entry0->first_name . ' ' . $document->property0->entry0->last_name,
+                    Yii::app()->user->site_name . ' - New Receipt Added',
+                    $message,
+                    $document->property0->entry,
+                    0);
+
                 Yii::app()->user->setFlash('success','Receipt Published Successfully');
 
             } else {
@@ -411,6 +423,18 @@ class ReceiptsController extends Controller
 
                                 echo $ex->getMessage();
                             }
+
+                            /*-----( Add to Mail Log )------*/
+
+                            Utility::addMailLog(
+                                Yii::app()->params['SMTP_Username'],
+                                Yii::app()->user->site_name,
+                                $document->property0->entry0->email,
+                                $document->property0->entry0->first_name . ' ' . $document->property0->entry0->last_name,
+                                Yii::app()->user->site_name . ' - New Receipt Added',
+                                $message,
+                                $document->property0->entry,
+                                0);
                         }
                         /*-----( //End of Send Email to Client )----*/
 
