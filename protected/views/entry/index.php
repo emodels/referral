@@ -51,7 +51,7 @@
     </script>
 
     <div style="float: left; width: 100px"><a id="lnkMenuToggle" href="javascript:ToggleMenu();"><h5><< Hide Menu</h5></a></div>
-    <div style="float: right"><a href="<?php echo Yii::app()->baseUrl;?>/entry"><h5><< Back to Home</h5></a></div>
+    <div style="float: right"><a href="<?php echo Yii::app()->baseUrl;?>/entry?mode=home"><h5><< Back to Home</h5></a></div>
     <div class="clearfix"></div>
 
     <?php

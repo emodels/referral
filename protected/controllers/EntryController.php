@@ -133,6 +133,12 @@ class EntryController extends Controller
         
 	public function actionIndex() {
 
+        if (isset($_GET['mode']) && $_GET['mode'] == 'home') {
+
+            unset(Yii::app()->session['referrel_user']);
+            unset(Yii::app()->session['status']);
+        }
+
         $first_name = '';
         $last_name = '';
         $isPortalClientsOnly = '';
