@@ -209,7 +209,16 @@ class EntryController extends Controller
 
                 if (isset($dataProvider)) {
 
-                    echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider), true, false);
+                    if (isset(Yii::app()->session['referrel_user'])) {
+
+                        $partner = User::model()->findByPk(Yii::app()->session['referrel_user']);
+
+                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider, 'grid_title'=>$partner->company . ' - '. $partner->first_name . ' ' . $partner->last_name, 'grid_id'=>$partner->id), true, false);
+
+                    } else {
+
+                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider), true, false);
+                    }
                 }
                 else{
 
@@ -218,7 +227,7 @@ class EntryController extends Controller
                     foreach ($partners as $partner) {
 
                         $dataProvider_custom = new CActiveDataProvider('Entry', array('criteria'=>array('condition'=> 'referrel_user = ' . $partner->id . $isPortalClientsOnly, 'order'=>'id DESC'), 'pagination' => false));
-                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company . ' - '. $partner->first_name . ' ' . $partner->last_name), true, false);
+                        echo $this->renderPartial('_entry_gridview', array('dataProvider'=>$dataProvider_custom,'grid_title'=>$partner->company . ' - '. $partner->first_name . ' ' . $partner->last_name, 'grid_id'=>$partner->id), true, false);
                     }
                 }
 
