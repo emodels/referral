@@ -401,7 +401,7 @@ class SiteController extends Controller
                 $mailer->AddReplyTo(Yii::app()->params['SMTP_Username']);
                 $mailer->AddAddress($model->email);
                 $mailer->AddCC(Yii::app()->params['adminEmail']);
-                $mailer->FromName = Yii::app()->user->site_name;
+                $mailer->FromName = 'Dwellings Group';
                 $mailer->CharSet = 'UTF-8';
                 $mailer->Subject = ucwords($model->first_name) . ', Wish you a very happy birthday !!!';
                 $mailer->IsHTML();
@@ -418,7 +418,7 @@ class SiteController extends Controller
 
                 Utility::addMailLog(
                     Yii::app()->params['SMTP_Username'],
-                    Yii::app()->user->site_name,
+                    'Dwellings Group',
                     $model->email,
                     $model->first_name . ' ' . $model->last_name,
                     ucwords($model->first_name) . ', Wish you a very happy birthday !!!',
