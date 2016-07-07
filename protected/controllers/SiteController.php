@@ -374,7 +374,15 @@ class SiteController extends Controller
 
         foreach ($entryCollec as $model) {
 
+            /*---( Check if email already sent today )---*/
+
+            if (MailLog::model()->count("entry = " . $model->id . " AND DATE(entry_date) = CURDATE() AND subject = '" . ucwords($model->first_name) . ", Wish you a very happy birthday !!!" . "'") > 0) {
+
+                continue;
+            }
+
             //--------Send birthday notification to Referral---------------
+
             $message = $this->renderPartial('//email/template/notify_on_birthday', array('model'=>$model), true);
 
             if (isset($message) && $message != "") {
