@@ -372,6 +372,8 @@ class SiteController extends Controller
 
         $entryCollec = Entry::model()->findAll('date_of_birth IS NOT NULL AND MONTH(date_of_birth) = MONTH(CURDATE()) AND DAY(date_of_birth) = DAY(CURDATE())');
 
+        $emailCount = 0;
+
         foreach ($entryCollec as $model) {
 
             /*---( Check if email already sent today )---*/
@@ -409,6 +411,8 @@ class SiteController extends Controller
 
                 try{
                     $mailer->Send();
+
+                    $emailCount++;
                 }
                 catch (Exception $ex){
                     echo $ex->getMessage();
@@ -429,7 +433,7 @@ class SiteController extends Controller
             //----------------------------------------------------------
         }
 
-        echo 'Sent birthday emails to ' . count($entryCollec) . ' number of Referrals <br><br>';
+        echo 'Sent birthday emails to ' . $emailCount . ' number of Referrals <br><br>';
         echo 'Cron Job completed.';
     }
 
