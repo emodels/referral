@@ -378,6 +378,7 @@ class SiteController extends Controller
 
             if (MailLog::model()->count("entry = " . $model->id . " AND DATE(entry_date) = CURDATE() AND subject = '" . ucwords($model->first_name) . ", Wish you a very happy birthday !!!" . "'") > 0) {
 
+                echo 'Birthday email already sent to ' . $model->first_name . ' and therefore skipped <br><br>';
                 continue;
             }
 
