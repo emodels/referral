@@ -105,15 +105,23 @@
         </div>
         <div class="row">
             <div class="column">Status</div>
-            <div><?php echo $form->dropDownList($model, 'status', $status, array('style'=>'width:135px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'status', $status, array('style'=>'width:204px','empty'=>'Select Status')); ?><?php echo $form->error($model, 'status'); ?></div>
         </div>
         <div class="row">
             <div class="column">Priority</div>
-            <div><?php echo $form->dropDownList($model, 'priority', array('0'=>'Low','1'=>'Medium','2'=>'High'), array('style'=>'width:135px','empty'=>'Select Priority')); ?><?php echo $form->error($model, 'priority'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'priority', array('0'=>'Low','1'=>'Medium','2'=>'High'), array('style'=>'width:204px','empty'=>'Select Priority')); ?><?php echo $form->error($model, 'priority'); ?></div>
         </div>
         <div class="row">
             <div class="column">Property Holder</div>
-            <div><?php echo $form->dropDownList($model, 'property_holder', array('Owner'=>'Owner','Tenant'=>'Tenant','Landlord'=>'Landlord'), array('style'=>'width:135px','empty'=>'Select Property Holder')); ?><?php echo $form->error($model, 'property_holder'); ?></div>
+            <div><?php echo $form->dropDownList($model, 'property_holder', array('Owner'=>'Owner','Tenant'=>'Tenant','Landlord'=>'Landlord'), array('style'=>'width:204px','empty'=>'Select Property Holder')); ?><?php echo $form->error($model, 'property_holder'); ?></div>
+        </div>
+        <div class="row">
+            <div class="column">Property Type</div>
+            <div><?php echo $form->dropDownList($model, 'property_type', array('1'=>'House','2'=>'Town House','3'=>'Land','4'=>'Apartment','5'=>'Building'), array('style'=>'width:204px','empty'=>'Select Property Type')); ?><?php echo $form->error($model, 'property_type'); ?></div>
+        </div>
+        <div class="row">
+            <div class="column">Inquiry Type</div>
+            <div><?php echo $form->dropDownList($model, 'inquiry_type', array('1'=>'Buyer','2'=>'Seller'), array('style'=>'width:204px','empty'=>'Select Inquiry Type')); ?><?php echo $form->error($model, 'inquiry_type'); ?></div>
         </div>
         <div class="row">
             <div class="column">Send Reminder</div>

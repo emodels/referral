@@ -115,7 +115,7 @@
     </div>
     <div class="clearfix" style="padding-bottom: 5px"></div>
     <div class="row" style="border-top: solid 1px silver; padding-top: 5px">
-        <div class="column" style="padding-top: 2px; padding-right: 45px">First Name</div>
+        <div class="column" style="padding-top: 2px; padding-right: 45px">First Name :</div>
         <div class="column"><?php echo CHtml::textField('Entry[first_name]', '') ?></div>
         <div class="column" style="padding-top: 2px; padding-left: 40px">Last Name :</div>
         <div class="column"><?php echo CHtml::textField('Entry[last_name]', '') ?></div>
@@ -131,6 +131,24 @@
         </div>
         <div class="column right"><?php echo CHtml::checkBox('Entry[isNonPortalClientsOnly]', false, array('style' => 'width:20px', 'onclick' => 'js:ValidatePortalClients(this);')); ?> Show Non-Portal Clients Only</div>
     </div>
+    <div class="clearfix" style="padding-bottom: 5px"></div>
+    <div class="row" style="border-top: solid 1px silver; padding-top: 5px">
+        <div class="column" style="padding-top: 2px; padding-right: 29px">Property Type :</div>
+        <div class="column"><?php echo CHtml::dropDownList('Entry[property_type]', '', array('1'=>'House','2'=>'Town House','3'=>'Land','4'=>'Apartment','5'=>'Building'), array('style'=>'width:173px','empty'=>'Select Property Type')); ?></div>
+        <div class="column" style="padding-top: 2px; padding-left: 33px">Inquiry Type :</div>
+        <div class="column"><?php echo CHtml::dropDownList('Entry[inquiry_type]', '', array('1'=>'Buyer','2'=>'Seller'), array('style'=>'width:173px','empty'=>'Select Inquiry Type')); ?></div>
+        <div class="column" style="padding-left: 38px"><?php echo CHtml::ajaxButton('List','', array('type'=>'POST',
+                'beforeSend' => 'function(){
+                                            $(".ajax-loading").hide();
+                                            $("#divProgress").show();
+                                       }',
+                'success'=>'js:function(data) {
+                                            $("#divProgress").hide();
+                                            $("#divGrid").html(data);
+                                       }'), array('class'=>'button','style'=>'padding:2px 10px 2px 10px')); ?>
+        </div>
+    </div>
+    <div class="clearfix" style="padding-bottom: 5px"></div>
     <div class="row"><hr style="padding-top: 2px"/></div>
     <?php echo CHtml::endForm();  ?>
 

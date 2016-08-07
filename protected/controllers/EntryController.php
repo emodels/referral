@@ -2,20 +2,20 @@
 
 class EntryController extends Controller
 {
-        public function init(){
+    public function init(){
 
-            if (Yii::app()->user->isGuest) {
+        if (Yii::app()->user->isGuest) {
 
-                $this->redirect(Yii::app()->createUrl('site/login'));
+            $this->redirect(Yii::app()->createUrl('site/login'));
 
-            } else {
+        } else {
 
-                if (Yii::app()->user->user_type == '2') {
+            if (Yii::app()->user->user_type == '2') {
 
-                    $this->redirect(Yii::app()->baseUrl . '/mission');
-                }
+                $this->redirect(Yii::app()->baseUrl . '/mission');
             }
         }
+    }
     
 	public function actionAdd()
 	{
@@ -163,6 +163,16 @@ class EntryController extends Controller
                     if (isset($_POST['Entry']['property_holder']) && $_POST['Entry']['property_holder'] != '') {
 
                         $isPortalClientsOnly .= " AND property_holder = '" . $_POST['Entry']['property_holder'] . "'";
+                    }
+
+                    if (isset($_POST['Entry']['property_type']) && $_POST['Entry']['property_type'] != '') {
+
+                        $isPortalClientsOnly .= " AND property_type = " . $_POST['Entry']['property_type'];
+                    }
+
+                    if (isset($_POST['Entry']['inquiry_type']) && $_POST['Entry']['inquiry_type'] != '') {
+
+                        $isPortalClientsOnly .= " AND inquiry_type = " . $_POST['Entry']['inquiry_type'];
                     }
 
                     if ($_POST['Entry']['referrel_user'] == '' && $_POST['Entry']['status'] == ''){

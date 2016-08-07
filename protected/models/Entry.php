@@ -27,6 +27,8 @@
  * @property string $date_of_birth
  * @property string $property_holder
  * @property integer $client_portal_status
+ * @property integer $property_type
+ * @property integer $inquiry_type
  *
  * The followings are the available model relations:
  * @property User $referrelUser
@@ -63,7 +65,7 @@ class Entry extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('referrel_user, first_name, last_name, telephone, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, property_holder, client_portal_status', 'required'),
-			array('referrel_user, status, priority, remind, client_portal_status', 'numerical', 'integerOnly'=>true),
+			array('referrel_user, status, priority, remind, client_portal_status, property_type, inquiry_type', 'numerical', 'integerOnly'=>true),
 			array('referral_commission_amount', 'numerical'),
 			array('first_name, last_name, state, email, additional_email', 'length', 'max'=>50),
 			array('address, telephone', 'length', 'max'=>200),
@@ -74,7 +76,7 @@ class Entry extends CActiveRecord
 			array('description, remind_date, date_of_birth', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, additional_email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth, property_holder, client_portal_status', 'safe', 'on'=>'search'),
+			array('id, referrel_user, first_name, last_name, address, state, zip, country, telephone, email, additional_email, description, entry_added_date, entry_last_updated_date, referral_commission_amount, status, priority, remind, remind_date, remarks, date_of_birth, property_holder, client_portal_status, property_type, inquiry_type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -122,6 +124,8 @@ class Entry extends CActiveRecord
 			'date_of_birth' => 'Date Of Birth',
 			'property_holder' => 'Property Holder',
 			'client_portal_status' => 'Client Portal Status',
+			'property_type' => 'Property Type',
+			'inquiry_type' => 'Inquiry Type',
 		);
 	}
 
@@ -159,6 +163,8 @@ class Entry extends CActiveRecord
 		$criteria->compare('date_of_birth',$this->date_of_birth,true);
 		$criteria->compare('property_holder',$this->property_holder,true);
 		$criteria->compare('client_portal_status',$this->client_portal_status);
+		$criteria->compare('property_type',$this->property_type);
+		$criteria->compare('inquiry_type',$this->inquiry_type);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
